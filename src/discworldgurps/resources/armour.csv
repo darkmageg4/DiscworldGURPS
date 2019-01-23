@@ -1,0 +1,8 @@
+﻿Armour,DR,Cost,Weight,TL
+None,0,0,0
+Very Light,1,7.5,9,1
+Light,2,17.5,20,1
+Medium,3,26,30,2
+Mail,4,50,75,2
+Plate,6,200,90,3
+Jousting Plate,7,320,110,3

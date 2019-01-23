@@ -1,0 +1,166 @@
+name,cost,lvl
+Attractive,4,0
+Handsome/Beautiful,12,0
+Very Handsome/Beautiful,16,0
+Charisma,5,1
+Voice,10,0
+High TL,5,1
+Language Talent,10,0
+Multilingual,20,0
+Universal Translator,30,0
+Comfortable,10,0
+Wealthy,20,0
+Very Wealthy,30,0
+Filthy Rich,50,0
+Multimillionaire,50,0
+Reputation(Details),0,0
+Clerical Investment,5,0
+Legal Enforcement,5,1
+Legal Immunity,5,1
+Rank,5,1
+Social Regard,5,1
+Status +1,5,0
+Status +2,10,0
+Status +3,15,0
+Status +4,20,0
+Status +5,25,0
+Status +6,30,0
+Status +7,35,0
+Status +8,40,0
+Congregation(Details),0,0
+Contacts(Details),0,0
+Patron(Details),0,0
+Acute Senses,2,1
+Ambidexterity,5,0
+Channelling,10,0
+Combat Reflexes,15,0
+Danger Sense,15,0
+Empathy-Animal,5,0
+Empathy,15,0
+Empathy-Sensitive,5,0
+Empathy-Spirit(Full),10,0
+Empathy-Spirit(Specialised),5,0
+Enhanced Block,5,0
+Enhanced Dodge,15,0
+Enhanced Parry(Unarmed),5,0
+Enhanced Parry(One Melee),5,0
+Enhanced Parry(All),10,0
+Extra Attack,25,1
+Extra Life,25,1
+Fearlessness,2,1
+Flexibility,5,0
+Double-Jointed,15,0
+Gadgeteer,25,0
+High Manual Dex,5,1
+High Pain Threshold,10,0
+Indomitable,15,0
+Less Sleep,2,1
+Lifting ST(Details),0,0
+Luck-Daredevil,15,0
+Luck-Ordinary,15,0
+Luck-Extraordinary,30,0
+Luck-Ridiculous,60,0
+Luck-Serendipity,15,1
+Mad Medicine,15,0
+Magery(Magery),0,0
+Medium,10,0
+MG-Absolute Direction,5,0
+MG-Eidetic Memory,5,0
+MG-Lightening Calculator,2,0
+Photographic Memory,10,0
+Mind Shield,4,1
+Night Vision,1,1
+Patchwork Man,10,0
+Perfect Balance,15,0
+Healing-Rapid,5,0
+Healing-Very Rapid,15,0
+Resistant-Disease 1,3,0
+Resistant-Disease 2,5,0
+Resistant-Disease 3,10,0
+Resistant-Poison 1,5,0
+Resistant-Poison 2,7,0
+Resistant-Poison 3,15,0
+Resistant-Specific 1,1,0
+Resistant-Specific 2,2,0
+Resistant-Specific 3,5,0
+See Invisible,15,0
+Silence,5,1
+Single-Minded,5,0
+Speak With Animals-All,25,0
+Speak With Animals-Land,15,0
+Speak With Animals-Aquatic,15,0
+Speak With Animals-Class,13,0
+Speak With Animals-Family,10,0
+Speak With Animals-Species,5,0
+Talent(Details),0,0
+Tenure,5,0
+True Faith,15,0
+Unfazeable,15,0
+Unnoticed,70,0
+Unusual Background(Details),0,0
+Versatile,5,0
+Versatile(Inspiration Magnet),5,0
+Voice Of Command(Details),0,0
+Alcohol Tolerance,1,0
+Archaic Training,1,1
+Assassin in Good Standing,1,0
+Autotrance,1,0
+Blade-Proof Bare-Chestedness,1,0
+Check The Exits,1,0
+Climatic Emphasis,1,0
+Cobblstone Sense,1,0
+Cold or Heat Resistance,1,0
+Controllable Disadvantage,1,0
+Crossbow Safety,1,0
+Cutting-Edge Training,1,1
+Deep Sleeper,1,0
+Divine News-Feed,1,0
+Dual Ready,1,0
+Forgettable Face,1,0
+Good With(Animals),1,0
+Good With(Social Group),1,0
+High-Heeled Heroine,1,0
+Honest Face,1,0
+Hyper-Specialisation,1,0
+Improvised Weapons,1,0
+Longevity,1,0
+No Hangover,1,0
+Off-Hand Training,1,0
+Oggham Reader,1,0
+Penetrating Voice,1,0
+Secret Name,1,0
+Self-Styling Hair,1,0
+Statuesque,1,0
+There On Call,1,0
+Understands The Librarian,1,0
+Wordless Influence,1,0
+Perk(Other),1,0
+Alternate Form(NH),0,0
+Brachiator,5,0
+Short-Range Flame(Die),4,1
+Flame Jet(Die),5,1
+Lightning Bolt(Die),10,1
+Cast-Iron Stomach,3,0
+Catfall,10,0
+Blunt Claws,3,0
+Hooves,3,0
+Sharp Claws,5,0
+Talons,8,0
+Long Talons,11,0
+Damage Resistance,5,1
+Damage Resistance(Reduced),3,1
+Dimension Shift,80,0
+Discriminatory Smell,15,0
+Discriminatory Smell(Emotion),23,0
+Doesn't Breath,20,0
+Doesn't Eat or Drink,10,0
+Doesn't Sleep,20,0
+Enhanced Move,20,1
+Levitation,40,0
+Winged,24,0
+Winged(Hover),30,0
+Foot Manipulators,4,0
+No Blood,5,0
+No Vitals,5,0
+Unliving,20,0
+Insubstantiality(NH),0,0

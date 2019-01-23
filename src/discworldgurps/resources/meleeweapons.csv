@@ -1,0 +1,37 @@
+name,damage,reach,parry,cost,weight,ST,DX,TL,Type
+None,0,0,0,0,0,0,0,0,0
+Axe,sw+2 cut,1,0U,3,4,11,5,0,Axe/Mace
+Club,sw+2 cr,1,0U,1.75,5,12,-5,0,Axe/Mace
+Hatchet,sw cut,1,0,2,2,8,-5,0,Axe/Mace
+Mace,sw+3 cr,1,0U,2.50,5,12,-5,1,Axe/Mace
+Small Mace,sw+2 cr,1,0U,1.75,3,10,-5,1,Axe/Mace
+Pick,sw+1 imp,1,0U,3.50,3,10,-5,3,Axe/Mace
+Large Truncheon,sw+1 cr thr+1 cr,1,0,0.25,3,10,-5,0,Broadsword
+Broadsword,sw+1 cut thr+2 imp,1,0,30,3,10,-5,2,Broadsword
+Agatean Numknuts,sw+1 cr,1,0U,1,2,7,-6,3,Flail
+Morningstar,sw+3 cr,1,0U,4,6,12,-6,3,Flail
+Large Knife,sw-2 cut thr imp,C/1,-1,2,1,6,-4,0,Knife
+Small Knife,sw-3 cut thr-1 imp,C/1,-1,1.50,0.5,5,-4,0,Knife
+Dagger,thr-1 imp,C,-1,1,0.25,5,-4,1,Knife
+Hatpin,thr-2 imp,C,-2,0.30,0.1,2,-4,2,Knife
+Halberd,sw+5 cut sw+4 imp thr+3 imp,2/3* 1-3*,0U,7.50,12,13** 12*,-5,3,Polearm
+Short Glaive,sw+2 cut thr+3 imp,1/2*,0U/0,4,6,9*,-5,3,Polearm
+Rapier,thr+1 imp,1/2,0F,25,2.75,9,-5,4,Rapier
+Shield Bash,thr cr,1,No,3,15,-,-4,0,Shield
+Small Truncheon,sw cr thr cr,1,0,1,1,6,-5,0,Shortsword
+Shortsword,sw cut thr+1 imp,1,0,20,2,8,-5,1,Shortsword
+Sickle Sword,sw+1 thr-2 imp,1,0,20,3,10,-5,2,Shortsword
+Smallsword,thr+1 imp,1,0F,20,1.5,5,-5,4,Smallsword
+Spear,thr+2 imp thr+3 imp,1* 1/2*,0,2,4,9/9*,-5,0,Spear
+Javelin,thr+1 imp,1,0,1.50,2,6,-5,1,Spear
+Quarterstaff,sw+2 cr thr+2 cr,1/2,2,0.50,4,7*,-5,0,Staff
+Big Club,sw+4 cr,1/2*,0U,4,12,13**,-5,0,Two-Handed Axe/Mace
+Very Big Club,sw+5 cr,1/2*,0U,5,15,16**,-5,0,Two-Handed Axe/Mace
+Huge Club,sw+7 cr,1/2*,0U,7,21,23**,-5,0,Two-Handed Axe/Mace
+Monster Club,sw+9 cr,1/2*,0U,9,27,29**,-5,0,Two-Handed Axe/Mace
+Great Axe,sw+3 cut,1/2*,0U,5,8,12**,-5,1,Two-Handed Axe/Mace
+Scythe,sw+2 cut sw imp,1,0U,0.75,5,11**,-5,1,Two-Handed Axe/Mace
+Greatsword,sw+3 cut thr+3 imp,1/2 2,0,45,7,12*,-5,3,Two-Handed Sword
+Brass Knuckles,thr cr,C,0,0.50,0.25,-,-,1,Boxing Brawling Karate or DX
+Blackjack,thr cr,C,0,1,1,7,-,1,Brawling or DX
+Sap,thr cr,C,0,1,1,7,-,1,Brawling or DX
