@@ -44,6 +44,8 @@ public class Sheet extends javax.swing.JFrame {
     JLabel[] dislab = new JLabel[10];
     JLabel[] discost = new JLabel[10];
 
+    int Rep = 0;
+
     /**
      * Creates new form Sheet
      */
@@ -85,10 +87,20 @@ public class Sheet extends javax.swing.JFrame {
                                 }
                             });
                         }
+                        if (e.getNewValue() instanceof JComboBox) {
+                            //  invokeLater needed for JFormattedTextField
+                            SwingUtilities.invokeLater(new Runnable() {
+                                public void run() {
+                                    JComboBox comboBox = (JComboBox) e.getNewValue();
+                                    Calc();
+                                }
+                            });
+                        }
                     }
                 });
 
         this.setExtendedState(MAXIMIZED_VERT);
+        jPanelReputation.setVisible(false);
         Start();
 
     }
@@ -172,6 +184,13 @@ public class Sheet extends javax.swing.JFrame {
         SheetBG = new javax.swing.JLabel();
         jScrollPaneDetails = new javax.swing.JScrollPane();
         jPanelDetails = new javax.swing.JPanel();
+        jPanelReputation = new javax.swing.JPanel();
+        jLabelRepTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        RepCost3 = new javax.swing.JLabel();
         jScrollPaneInventory = new javax.swing.JScrollPane();
         jPanelInventory = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -503,6 +522,69 @@ public class Sheet extends javax.swing.JFrame {
 
         jTabbedPaneSheet.addTab("Sheet", jScrollPaneSheet);
 
+        jLabelRepTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelRepTitle.setText("Reputation");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Reputation");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("People Affected");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Frequency");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Description");
+
+        RepCost3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        RepCost3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RepCost3.setText("0");
+
+        javax.swing.GroupLayout jPanelReputationLayout = new javax.swing.GroupLayout(jPanelReputation);
+        jPanelReputation.setLayout(jPanelReputationLayout);
+        jPanelReputationLayout.setHorizontalGroup(
+            jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelReputationLayout.createSequentialGroup()
+                .addGroup(jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelReputationLayout.createSequentialGroup()
+                        .addGroup(jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelReputationLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel2)
+                                .addGap(61, 61, 61)
+                                .addComponent(jLabel3)
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanelReputationLayout.createSequentialGroup()
+                                .addGap(333, 333, 333)
+                                .addComponent(jLabelRepTitle)))
+                        .addGap(0, 300, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReputationLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(RepCost3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanelReputationLayout.setVerticalGroup(
+            jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelReputationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelRepTitle)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addComponent(RepCost3)
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+
+        jPanelDetails.add(jPanelReputation);
+
         jScrollPaneDetails.setViewportView(jPanelDetails);
 
         jTabbedPaneSheet.addTab("Details", jScrollPaneDetails);
@@ -575,9 +657,12 @@ public class Sheet extends javax.swing.JFrame {
             if (add == 0) {
                 advCount++;
                 int i = adv.getSelectedIndex();
-                advlab[advCount].setText(DL.getAdvantages().get(i).toString());
-                advcost[advCount].setText(DL.getAdvantages().get(i).getCost());
-
+                if ("Reputation (0)".equals(DL.getAdvantages().get(i).toString())) {
+                    Reputation();
+                } else {
+                    advlab[advCount].setText(DL.getAdvantages().get(i).toString());
+                    advcost[advCount].setText(DL.getAdvantages().get(i).getCost());
+                }
             }
 
         } catch (Exception ex) {
@@ -711,6 +796,9 @@ public class Sheet extends javax.swing.JFrame {
         Calc();
     }//GEN-LAST:event_jButtonAddPointsActionPerformed
 
+    /**
+     * Runs Start.java
+     */
     public void Start() {
         Start start = new Start(this, true);
         start.setModal(true);
@@ -734,6 +822,10 @@ public class Sheet extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Takes input from NewCharacter.java and creates a new instance of
+     * character
+     */
     public void NewChar() {
         character = new Character();
         NewCharacter newCharacter = new NewCharacter(this, true);
@@ -773,14 +865,20 @@ public class Sheet extends javax.swing.JFrame {
                 this.character.setMpCurrent(Integer.parseInt(jTextFieldMPCurrent.getText()));
                 this.character.setBs(Double.parseDouble(jTextFieldBS.getText()));
                 this.character.setBm(Integer.parseInt(jTextFieldBM.getText()));
-                String[] adv = new String[10];
+                String[] adv = new String[20];
                 for (int i = 0; i < advlab.length; i++) {
                     adv[i] = advlab[i].getText();
                 }
+                for (int i = 0; i < advcost.length; i++) {
+                    adv[i + 10] = advcost[i].getText();
+                }
                 this.character.setAdvantages(adv);
-                String[] dis = new String[10];
+                String[] dis = new String[20];
                 for (int i = 0; i < dislab.length; i++) {
                     dis[i] = dislab[i].getText();
+                }
+                for (int i = 0; i < discost.length; i++) {
+                    dis[i + 10] = dislab[i].getText();
                 }
                 this.character.setDisadvantages(dis);
 
@@ -818,12 +916,15 @@ public class Sheet extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     */
     public void SetDetails() {
         jLabelName.setText(this.character.getName());
         jLabelPlayerName.setText(this.character.getPlayerName());
         jLabelPoints.setText(Integer.toString(this.character.getPoints()));
         jLabelHeight.setText(this.character.HeighttoString());
-        
+
         jLabelWeight.setText(Integer.toString(this.character.getWeight()) + " lbs");
         jLabelAge.setText(Integer.toString(this.character.getAge()));
         jTextFieldST.setText(Integer.toString(this.character.getSt()));
@@ -839,20 +940,29 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldBS.setText(Double.toString(this.character.getBs()));
         jTextFieldBM.setText(Integer.toString(this.character.getBm()));
         advCount = -1;
-        for (int i = 0; i < this.character.getAdvantages().length; i++) {
+        for (int i = 0; i < advlab.length; i++) {
             if (!"".equals(this.character.getAdvantages()[i]) && this.character.getAdvantages()[i] != null) {
                 advlab[i].setText(this.character.getAdvantages()[i]);
                 advCount++;
             }
         }
+        for (int i = 0; i < advcost.length; i++) {
+            if (!"".equals(this.character.getAdvantages()[i + 10]) && this.character.getAdvantages()[i + 10] != null) {
+                advcost[i].setText(this.character.getAdvantages()[i + 10]);
+            }
+        }
         disCount = -1;
-        for (int i = 0; i < this.character.getDisadvantages().length; i++) {
+        for (int i = 0; i < dislab.length; i++) {
             if (!"".equals(this.character.getDisadvantages()[i]) && this.character.getDisadvantages()[i] != null) {
                 dislab[i].setText(this.character.getDisadvantages()[i]);
                 disCount++;
             }
         }
-        Advantages();
+        for (int i = 0; i < discost.length; i++) {
+            if (!"".equals(this.character.getDisadvantages()[i + 10]) && this.character.getDisadvantages()[i + 10] != null) {
+                discost[i].setText(this.character.getDisadvantages()[i + 10]);
+            }
+        }
 
         Calc();
         this.setTitle(character.getName());
@@ -927,48 +1037,11 @@ public class Sheet extends javax.swing.JFrame {
         jLabelEncBM3.setText(Integer.toString((int) (Integer.parseInt(jTextFieldBM.getText()) * 0.6)));
         jLabelEncBM4.setText(Integer.toString((int) (Integer.parseInt(jTextFieldBM.getText()) * 0.4)));
         jLabelEncBM5.setText(Integer.toString((int) (Integer.parseInt(jTextFieldBM.getText()) * 0.2)));
-        jLabelEncDodge1.setText(Integer.toString((int) (Double.parseDouble(jTextFieldBS.getText())+3)));
-        jLabelEncDodge2.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText())-1)));
-        jLabelEncDodge3.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText())-2)));
-        jLabelEncDodge4.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText())-3)));
-        jLabelEncDodge5.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText())-4)));
-    }
-
-    public void Advantages() {
-        DL.LoadAdv();
-        for (int i = 0; i < advlab.length; i++) {
-            if (advlab[i].getText() != "" && advlab[i].getText() != null) {
-                String test = advlab[i].getText().substring(0, advlab[i].getText().length() - 4);
-                int j = 0;
-                while (true) {
-                    String test2 = DL.getAdvantages().get(j).getName();
-                    if (test2.equals(test)) {
-                        advcost[i].setText(DL.getAdvantages().get(j).getCost());
-                        break;
-                    } else {
-                        j++;
-                    }
-                }
-            }
-
-        }
-        DL.LoadDis();
-        for (int i = 0; i < dislab.length; i++) {
-            if (dislab[i].getText() != ""  && dislab[i].getText() != null) {
-                String test = dislab[i].getText().substring(0, dislab[i].getText().length() - 4);
-                int j = 0;
-                while (true) {
-                    String test2 = DL.getDisadvantages().get(j).getName();
-                    if (test2.equals(test)) {
-                        discost[i].setText(DL.getDisadvantages().get(j).getCost());
-                        break;
-                    } else {
-                        j++;
-                    }
-                }
-            }
-
-        }
+        jLabelEncDodge1.setText(Integer.toString((int) (Double.parseDouble(jTextFieldBS.getText()) + 3)));
+        jLabelEncDodge2.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText()) - 1)));
+        jLabelEncDodge3.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText()) - 2)));
+        jLabelEncDodge4.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText()) - 3)));
+        jLabelEncDodge5.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText()) - 4)));
     }
 
     public void LabelCreator() {
@@ -988,8 +1061,20 @@ public class Sheet extends javax.swing.JFrame {
 
         }
     }
-    
-    public void DataLoader(){
+
+    public void Reputation() {
+        Reputation rep = new Reputation(this, true);
+        rep.setModal(true);
+        rep.setLocationRelativeTo(null);
+        rep.setVisible(true);
+        if (rep.closed != 1) {
+            advlab[advCount].setText(rep.getRepDesc());
+            advcost[advCount].setText(rep.getRepCost());
+        }
+
+    }
+
+    public void DataLoader() {
         DL.LoadDis();
     }
 
@@ -1033,6 +1118,7 @@ public class Sheet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel RepCost3;
     private javax.swing.JLabel SheetBG;
     private javax.swing.JButton jButtonAddPoints;
     private javax.swing.JButton jButtonAdvAdd;
@@ -1040,6 +1126,10 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDisAdd;
     private javax.swing.JButton jButtonDisRemove;
     private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAdvTotal;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelBL;
@@ -1072,6 +1162,7 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPlayerName;
     private javax.swing.JLabel jLabelPoints;
     private javax.swing.JLabel jLabelPointsUnspent;
+    private javax.swing.JLabel jLabelRepTitle;
     private javax.swing.JLabel jLabelSTCost;
     private javax.swing.JLabel jLabelSizeMod;
     private javax.swing.JLabel jLabelSwing;
@@ -1090,6 +1181,7 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelDis;
     private javax.swing.JPanel jPanelDisCost;
     private javax.swing.JPanel jPanelInventory;
+    private javax.swing.JPanel jPanelReputation;
     private javax.swing.JPanel jPanelSheet;
     private javax.swing.JScrollPane jScrollPaneDetails;
     private javax.swing.JScrollPane jScrollPaneInventory;

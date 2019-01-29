@@ -13,7 +13,7 @@ public class DataLoader {
     ArrayList<WeaponsMelee> wepmel = new ArrayList<>();
 
     /**
-     * Loads the advantages and perks
+     * Loads in the Damage.csv which gives the damage values
      */
     public void LoadDamage() {
         try {
@@ -32,6 +32,9 @@ public class DataLoader {
 //        }
     }
 
+    /**
+     * Loads the advantages and perks
+     */
     public void LoadAdv() {
         try {
             load.reader("./src/discworldgurps/resources/advantages.csv");
@@ -47,6 +50,10 @@ public class DataLoader {
 //            System.out.printf("%s - %s\n", a, a.getCost());
 //        }
     }
+
+    /**
+     * Loads in the Disadvantages
+     */
     public void LoadDis() {
         try {
             load.reader("./src/discworldgurps/resources/disadvantages.csv");
@@ -101,6 +108,9 @@ public class DataLoader {
 //        }
     }
 
+    /**
+     *  UNUSED: Loads in all CSVs
+     */
     public void LoadAll() {
         LoadDamage();
         LoadAdv();
@@ -127,7 +137,5 @@ public class DataLoader {
     public ArrayList<Disadvantages> getDisadvantages() {
         return disadvantages;
     }
-    
-    
 
 }

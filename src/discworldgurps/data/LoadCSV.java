@@ -12,7 +12,8 @@ public class LoadCSV {
     ArrayList<ItemLoader> tmp = new ArrayList();
 
     /**
-     *  Loads the CSV passed in by file and splits it
+     * Loads the CSV passed in by file and splits it
+     *
      * @param file filepath passed in from Sheet.java
      */
     public void reader(String file) {

@@ -26,6 +26,9 @@ public class Character implements Serializable {
     private int tl;
     private String[] advantages, disadvantages;
 
+    /**
+     * Default values
+     */
     public Character() {
         this.name = "Name";
         this.playerName = "playerName";
@@ -48,8 +51,8 @@ public class Character implements Serializable {
         this.bs = (this.dx + this.ht) / 4;
         this.bm = (int) this.bs;
         this.tl = 4;
-        this.advantages = new String[10];
-        this.disadvantages = new String[10];
+        this.advantages = new String[20];
+        this.disadvantages = new String[20];
 
     }
 
@@ -77,8 +80,8 @@ public class Character implements Serializable {
         this.bs = bs;
         this.bm = bm;
         this.tl = tl;
-        this.advantages = new String[10];
-        this.disadvantages = new String[10];
+        this.advantages = new String[20];
+        this.disadvantages = new String[20];
     }
 
     public String getName() {
@@ -113,6 +116,11 @@ public class Character implements Serializable {
         this.height = height;
     }
 
+    /**
+     * Converts inches to feet and inches
+     *
+     * @return String of feet and inches
+     */
     public String HeighttoString() {
         int feet = (int) this.height / 12;
         int inches = (int) this.height % 12;
@@ -271,6 +279,13 @@ public class Character implements Serializable {
         this.disadvantages = disadvantages;
     }
 
+    /**
+     * Saves the current character
+     *
+     * @param file passed in from Sheet.java
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void Save(File file) throws FileNotFoundException, IOException {
         FileOutputStream fo = new FileOutputStream(file);
         ObjectOutputStream output = new ObjectOutputStream(fo);
@@ -279,6 +294,13 @@ public class Character implements Serializable {
         fo.close();
     }
 
+    /**
+     *  Loads a character and sets all the details to current character on Sheet.java
+     * @param file Selected in File Selector
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void Load(File file) throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream is = new FileInputStream(file);
         ObjectInputStream input = new ObjectInputStream(is);

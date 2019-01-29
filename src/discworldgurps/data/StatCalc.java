@@ -30,6 +30,9 @@ public class StatCalc {
         this.dis = dis;
     }
 
+    /**
+     * Takes in the height and calculates the height related modifiers
+     */
     public void SizeMods() {
         if (height <= 2.5) {
             sm = -9;
@@ -74,6 +77,9 @@ public class StatCalc {
         }
     }
 
+    /**
+     *  Calculates all the costs and deducts them from the total points
+     */
     public void Calc() {
         SizeMods();
         spentST = (this.st - 10) * STCost;
