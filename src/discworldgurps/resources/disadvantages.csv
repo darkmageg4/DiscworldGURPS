@@ -16,12 +16,12 @@ Low TL,-5,1
 Dead Broke,-25,0
 Poor,-15,0
 Struggling,-10,0
-Reputation(Details),0,0
+Reputation,D,0
 Social Stigma,-5,1
 Status-1,-5,0
 Status-2,-10,0
-Dependents(Details),0,0
-Enemies(Details),0,0
+Dependents,D,0
+Enemies,D,0
 Addiction(Modify),-5,1
 Alcoholism,-15,0
 Alcoholism(Withdrawn),-10,0
@@ -43,7 +43,7 @@ Delusions-Minor,-5,0
 Delusions-Major,-10,0
 Delusions-Severe,-15,0
 Disciplines Of Faith(Modify),-5,1
-Duty(Details),0,0
+Duty,D,0
 Easy To Read,-10,0
 Fearfulness,-2,1
 Gullibility,-10,0
@@ -58,12 +58,12 @@ Miserliness,-10,0
 Obsessive Ideas(Modify),-5,1
 Overconfidence,-5,0
 Pacifism(Modify)-5,1
-Phobias(Details),0,0
-Physical Problems(Details),0,0
-Poor Impulse Control(Details),0,0
+Phobias,D,0
+Physical Problems,D,0
+Poor Impulse Control,D,0
 Post-Combat Shakes,-5,0
 Pyromania,-5,0
-Secret(Details),0,0
+Secret,D,0
 Sense Of Duty-Individual,-2,0
 Sense Of Duty-Small Group,-5,0
 Sense Of Duty-Large Group,-10,0

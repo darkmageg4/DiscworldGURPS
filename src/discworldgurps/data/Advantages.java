@@ -38,7 +38,11 @@ public class Advantages {
 
     @Override
     public String toString() {
-        return String.format("%s (%s)", this.name, this.lvl);
+        if (!"1".equals(this.lvl)){
+        return String.format("%s : %s points", this.name, this.cost);
+        } else {
+            return String.format("%s : %s points per level", this.name, this.cost);
+        }
     }
 
 }

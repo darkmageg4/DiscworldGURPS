@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package discworldgurps;
+package discworldgurps.details;
 
 /**
  *
  * @author mageg
  */
-public class Reputation extends javax.swing.JDialog {
+public class Contact extends javax.swing.JDialog {
+
+    private int contSkillCost, contReliCost;
+    private double contFrqCost;
+    private int contCost;
+    private String contDesc;
 
     public int closed = 0;
-    private double repLvlCost, repAffCost, repFrqCost;
-    private String repMod;
-    private int repCost;
-    private String repDesc;
 
     /**
-     * Creates new form Rep
+     * Creates new form Contacts
      */
-    public Reputation(java.awt.Frame parent, boolean modal) {
+    public Contact(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -38,10 +39,10 @@ public class Reputation extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBoxRepLvl = new javax.swing.JComboBox<>();
-        jComboBoxRepAff = new javax.swing.JComboBox<>();
-        jComboBoxRepFrq = new javax.swing.JComboBox<>();
-        jTextFieldRepDesc = new javax.swing.JTextField();
+        jComboBoxContSkill = new javax.swing.JComboBox<>();
+        jComboBoxContReli = new javax.swing.JComboBox<>();
+        jComboBoxContFreq = new javax.swing.JComboBox<>();
+        jTextFieldContDesc = new javax.swing.JTextField();
         jButtonAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -55,10 +56,10 @@ public class Reputation extends javax.swing.JDialog {
         });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Reputation Level");
+        jLabel1.setText("Contact Skill");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("People Affected");
+        jLabel2.setText("Reliability");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Frequency");
@@ -66,11 +67,11 @@ public class Reputation extends javax.swing.JDialog {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Description");
 
-        jComboBoxRepLvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reputation + 1", "Reputation + 2", "Reputation + 3", "Reputation + 4" }));
+        jComboBoxContSkill.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "15", "18", "21" }));
 
-        jComboBoxRepAff.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Almost Everyone", "AE except a Large Class", "Large Class", "Small Class" }));
+        jComboBoxContReli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Completely Reliable", "Usually Reliable", "Somewhat Reliable" }));
 
-        jComboBoxRepFrq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All The Time", "Occasionally", "Sometimes" }));
+        jComboBoxContFreq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "15 or below", "12 or below", "9 or below", "6 or below" }));
 
         jButtonAdd.setText("Add");
         jButtonAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -87,22 +88,24 @@ public class Reputation extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldRepDesc)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxRepLvl, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxRepAff, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxRepFrq, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldContDesc)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBoxContSkill, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBoxContReli, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBoxContFreq, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,20 +117,75 @@ public class Reputation extends javax.swing.JDialog {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxRepLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxRepAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxRepFrq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxContSkill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxContReli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxContFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldRepDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jTextFieldContDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAdd)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+        switch (jComboBoxContSkill.getSelectedIndex()) {
+            case 0:
+                contSkillCost = 1;
+                break;
+            case 1:
+                contSkillCost = 2;
+                break;
+            case 2:
+                contSkillCost = 3;
+                break;
+            case 3:
+                contSkillCost = 4;
+                break;
+            default:
+                break;
+        }
+        switch (jComboBoxContReli.getSelectedIndex()) {
+            case 0:
+                contReliCost = 3;
+                break;
+            case 1:
+                contReliCost = 2;
+                break;
+            case 2:
+                contReliCost = 1;
+                break;
+            default:
+                break;
+        }
+        switch (jComboBoxContFreq.getSelectedIndex()) {
+            case 0:
+                contFrqCost = 3;
+                break;
+            case 1:
+                contFrqCost = 2;
+                break;
+            case 2:
+                contFrqCost = 1;
+                break;
+            case 3:
+                contFrqCost = 0.5;
+                break;
+            default:
+                break;
+        }
+        contCost = (int) ((contSkillCost * contFrqCost) * contReliCost);
+        if (contCost < 1) {
+            contCost = 1;
+        }
+        contDesc = String.format("Cont: %s (Skill: %s | Freq: %s | Rel: %s)",
+                jTextFieldContDesc.getText(), jComboBoxContSkill.getSelectedItem(), jComboBoxContFreq.getSelectedItem(), jComboBoxContReli.getSelectedItem());
+        dispose();
+    }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         closed = 1;
@@ -137,71 +195,12 @@ public class Reputation extends javax.swing.JDialog {
         closed = 1;
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        switch (jComboBoxRepLvl.getSelectedIndex()) {
-            case 0:
-                repLvlCost = 5;
-                repMod = "+1";
-                break;
-            case 1:
-                repLvlCost = 10;
-                repMod = "+2";
-                break;
-            case 2:
-                repLvlCost = 15;
-                repMod = "+3";
-                break;
-            case 3:
-                repLvlCost = 20;
-                repMod = "+4";
-                break;
-            default:
-                break;
-        }
-        switch (jComboBoxRepAff.getSelectedIndex()) {
-            case 0:
-                repAffCost = 1;
-                break;
-            case 1:
-                repAffCost = 0.67;
-                break;
-            case 2:
-                repAffCost = 0.5;
-                break;
-            case 3:
-                repAffCost = 0.34;
-                break;
-            default:
-                break;
-        }
-        switch (jComboBoxRepFrq.getSelectedIndex()) {
-            case 0:
-                repFrqCost = 1;
-                break;
-            case 1:
-                repFrqCost = 0.5;
-                break;
-            case 2:
-                repFrqCost = 0.34;
-                break;
-            default:
-                break;
-        }
-        repCost = (int) ((repLvlCost * repAffCost) * repFrqCost);
-        if (repCost < 1) {
-            repCost = 1;
-        }
-        repDesc = String.format("Rep: %s (Mod: %s | Freq: %s)", jTextFieldRepDesc.getText(), repMod, jComboBoxRepFrq.getSelectedItem().toString());
-        dispose();
-
-    }//GEN-LAST:event_jButtonAddActionPerformed
-
-    public String getRepCost() {
-        return String.format("%d", repCost);
+    public String getContCost() {
+        return String.format("%d", contCost);
     }
 
-    public String getRepDesc() {
-        return repDesc;
+    public String getContDesc() {
+        return contDesc;
     }
 
     /**
@@ -221,13 +220,13 @@ public class Reputation extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reputation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reputation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reputation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reputation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -235,7 +234,7 @@ public class Reputation extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Reputation dialog = new Reputation(new javax.swing.JFrame(), true);
+                Contact dialog = new Contact(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -249,13 +248,13 @@ public class Reputation extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdd;
-    private javax.swing.JComboBox<String> jComboBoxRepAff;
-    private javax.swing.JComboBox<String> jComboBoxRepFrq;
-    private javax.swing.JComboBox<String> jComboBoxRepLvl;
+    private javax.swing.JComboBox<String> jComboBoxContFreq;
+    private javax.swing.JComboBox<String> jComboBoxContReli;
+    private javax.swing.JComboBox<String> jComboBoxContSkill;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextFieldRepDesc;
+    private javax.swing.JTextField jTextFieldContDesc;
     // End of variables declaration//GEN-END:variables
 }

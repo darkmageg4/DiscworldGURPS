@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package discworldgurps;
+package discworldgurps.details;
 
 /**
  *
  * @author mageg
  */
-public class Contact extends javax.swing.JDialog {
-
-    private int contSkillCost, contReliCost;
-    private double contFrqCost;
-    private int contCost;
-    private String contDesc;
+public class Patron extends javax.swing.JDialog {
 
     public int closed = 0;
 
+    private int patPowCost;
+    private double patFreqCost;
+    private int patCost;
+    private String patDesc;
+
     /**
-     * Creates new form Contacts
+     * Creates new form Patron
      */
-    public Contact(java.awt.Frame parent, boolean modal) {
+    public Patron(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -36,13 +36,11 @@ public class Contact extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBoxContSkill = new javax.swing.JComboBox<>();
-        jComboBoxContReli = new javax.swing.JComboBox<>();
-        jComboBoxContFreq = new javax.swing.JComboBox<>();
-        jTextFieldContDesc = new javax.swing.JTextField();
+        jComboBoxPatPow = new javax.swing.JComboBox<>();
+        jComboBoxPatFrq = new javax.swing.JComboBox<>();
+        jTextFieldPatDesc = new javax.swing.JTextField();
         jButtonAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -56,10 +54,7 @@ public class Contact extends javax.swing.JDialog {
         });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Contact Skill");
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Reliability");
+        jLabel1.setText("Patron Power");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Frequency");
@@ -67,11 +62,9 @@ public class Contact extends javax.swing.JDialog {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Description");
 
-        jComboBoxContSkill.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "15", "18", "21" }));
+        jComboBoxPatPow.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" }));
 
-        jComboBoxContReli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Completely Reliable", "Usually Reliable", "Somewhat Reliable" }));
-
-        jComboBoxContFreq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "15 or below", "12 or below", "9 or below", "6 or below" }));
+        jComboBoxPatFrq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "15 or below", "12 or below", "9 or below", "6 or below" }));
 
         jButtonAdd.setText("Add");
         jButtonAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -86,26 +79,23 @@ public class Contact extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldContDesc)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBoxContSkill, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBoxContReli, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBoxContFreq, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldPatDesc)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                            .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxPatPow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxPatFrq, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,17 +103,15 @@ public class Contact extends javax.swing.JDialog {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxContSkill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxContReli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxContFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxPatPow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxPatFrq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldContDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldPatDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAdd)
                 .addContainerGap())
@@ -133,57 +121,43 @@ public class Contact extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        switch (jComboBoxContSkill.getSelectedIndex()) {
+        switch (jComboBoxPatPow.getSelectedIndex()) {
             case 0:
-                contSkillCost = 1;
+                patPowCost = 10;
                 break;
             case 1:
-                contSkillCost = 2;
+                patPowCost = 15;
                 break;
             case 2:
-                contSkillCost = 3;
+                patPowCost = 20;
                 break;
             case 3:
-                contSkillCost = 4;
+                patPowCost = 25;
+                break;
+            case 4:
+                patPowCost = 30;
                 break;
             default:
                 break;
         }
-        switch (jComboBoxContReli.getSelectedIndex()) {
+        switch (jComboBoxPatFrq.getSelectedIndex()) {
             case 0:
-                contReliCost = 3;
+                patFreqCost = 3;
                 break;
             case 1:
-                contReliCost = 2;
+                patFreqCost = 2;
                 break;
             case 2:
-                contReliCost = 1;
-                break;
-            default:
-                break;
-        }
-        switch (jComboBoxContFreq.getSelectedIndex()) {
-            case 0:
-                contFrqCost = 3;
-                break;
-            case 1:
-                contFrqCost = 2;
-                break;
-            case 2:
-                contFrqCost = 1;
+                patFreqCost = 1;
                 break;
             case 3:
-                contFrqCost = 0.5;
+                patFreqCost = 0.5;
                 break;
             default:
                 break;
         }
-        contCost = (int) ((contSkillCost * contFrqCost) * contReliCost);
-        if (contCost < 1) {
-            contCost = 1;
-        }
-        contDesc = String.format("Cont: %s (Skill: %s | Freq: %s | Rel: %s)",
-                jTextFieldContDesc.getText(), jComboBoxContSkill.getSelectedItem(), jComboBoxContFreq.getSelectedItem(), jComboBoxContReli.getSelectedItem());
+        patCost = (int) (patPowCost * patFreqCost);
+        patDesc = String.format("Pat: %s (%s appears on %s)", jTextFieldPatDesc.getText(), jComboBoxPatPow.getSelectedItem(), jComboBoxPatFrq.getSelectedItem());
         dispose();
     }//GEN-LAST:event_jButtonAddActionPerformed
 
@@ -195,12 +169,12 @@ public class Contact extends javax.swing.JDialog {
         closed = 1;
     }//GEN-LAST:event_formWindowClosing
 
-    public String getContCost() {
-        return String.format("%d", contCost);
+    public String getPatCost() {
+        return String.format("%d",patCost);
     }
 
-    public String getContDesc() {
-        return contDesc;
+    public String getPatDesc() {
+        return patDesc;
     }
 
     /**
@@ -220,21 +194,20 @@ public class Contact extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Contact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Patron.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Contact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Patron.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Contact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Patron.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Contact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Patron.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Contact dialog = new Contact(new javax.swing.JFrame(), true);
+                Patron dialog = new Patron(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -248,13 +221,11 @@ public class Contact extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdd;
-    private javax.swing.JComboBox<String> jComboBoxContFreq;
-    private javax.swing.JComboBox<String> jComboBoxContReli;
-    private javax.swing.JComboBox<String> jComboBoxContSkill;
+    private javax.swing.JComboBox<String> jComboBoxPatFrq;
+    private javax.swing.JComboBox<String> jComboBoxPatPow;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextFieldContDesc;
+    private javax.swing.JTextField jTextFieldPatDesc;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,7 @@
 package discworldgurps.data;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DataLoader {
 
@@ -11,6 +12,7 @@ public class DataLoader {
     ArrayList<Disadvantages> disadvantages = new ArrayList<>();
     ArrayList<Armour> armour = new ArrayList<>();
     ArrayList<WeaponsMelee> wepmel = new ArrayList<>();
+    ArrayList<Talents> talents = new ArrayList<>();
 
     /**
      * Loads in the Damage.csv which gives the damage values
@@ -40,8 +42,25 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        Collections.sort(load.tmp, new ItemComparator());
         for (ItemLoader il : load.tmp) {
             advantages.add(new Advantages(il.a, il.b, il.c));
+        }
+        load.tmp.clear();
+//        for (Advantages a : advantages) {
+//            System.out.printf("%s - %s\n", a, a.getCost());
+//        }
+    }
+
+    public void LoadTalents() {
+        try {
+            load.reader("./src/discworldgurps/resources/talents.csv");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Collections.sort(load.tmp, new ItemComparator());
+        for (ItemLoader il : load.tmp) {
+            talents.add(new Talents(il.a, il.b));
         }
         load.tmp.clear();
 //        for (Advantages a : advantages) {
@@ -58,6 +77,7 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        Collections.sort(load.tmp, new ItemComparator());
         for (ItemLoader il : load.tmp) {
             disadvantages.add(new Disadvantages(il.a, il.b, il.c));
         }
@@ -94,6 +114,7 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        Collections.sort(load.tmp, new ItemComparator());
         for (ItemLoader il : load.tmp) {
             wepmel.add(new WeaponsMelee(il.a, il.b, il.c, il.d, il.e, il.f, il.g, il.h, il.i, il.j));
         }
@@ -120,6 +141,10 @@ public class DataLoader {
 
     public ArrayList<Advantages> getAdvantages() {
         return advantages;
+    }
+
+    public ArrayList<Talents> getTalents() {
+        return talents;
     }
 
     public ArrayList<Armour> getArmour() {

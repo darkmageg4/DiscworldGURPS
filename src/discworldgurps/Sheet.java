@@ -8,7 +8,7 @@ package discworldgurps;
 import discworldgurps.data.Advantages;
 import discworldgurps.data.Character;
 import discworldgurps.data.DataLoader;
-import discworldgurps.data.Details;
+import discworldgurps.details.Details;
 import discworldgurps.data.Disadvantages;
 import discworldgurps.data.StatCalc;
 import java.awt.GridLayout;
@@ -53,6 +53,7 @@ public class Sheet extends javax.swing.JFrame {
      */
     public Sheet() {
         initComponents();
+        this.setLocationRelativeTo(null);
         LabelCreator();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -651,15 +652,13 @@ public class Sheet extends javax.swing.JFrame {
         for (Advantages s : DL.getAdvantages()) {
             adv.addItem(s);
         }
-        int add = JOptionPane.showConfirmDialog(this, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        int add = JOptionPane.showConfirmDialog(null, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
         try {
             if (add == 0) {
                 advCount++;
                 int i = adv.getSelectedIndex();
-                String advAdd = DL.getAdvantages().get(i).toString();
-                if ("Reputation (0)".equals(advAdd) || "Congregation (0)".equals(advAdd)
-                        || "Contacts (0)".equals(advAdd)) {
-                    details.run(advAdd);
+                if ("D".equals(DL.getAdvantages().get(i).getCost())) {
+                    details.run(DL.getAdvantages().get(i).getName(), "a");
                     if (details.isResult() == true) {
                         advlab[advCount].setText(details.getDesc());
                         advcost[advCount].setText(details.getCost());
@@ -667,8 +666,19 @@ public class Sheet extends javax.swing.JFrame {
                         advCount--;
                     }
                 } else {
-                    advlab[advCount].setText(DL.getAdvantages().get(i).toString());
-                    advcost[advCount].setText(DL.getAdvantages().get(i).getCost());
+                    if ("1".equals(DL.getAdvantages().get(i).getLvl())) {
+                        String lvl = JOptionPane.showInputDialog("What level?");
+                        if (lvl != null && !"".equals(lvl)){
+                        int cost = Integer.parseInt(DL.getAdvantages().get(i).getCost()) * Integer.parseInt(lvl);
+                        advlab[advCount].setText(String.format("%s (Level %s)", DL.getAdvantages().get(i).getName(), lvl));
+                        advcost[advCount].setText(Integer.toString(cost));
+                        } else {
+                            advCount--;
+                        }
+                    } else {
+                        advlab[advCount].setText(DL.getAdvantages().get(i).getName());
+                        advcost[advCount].setText(DL.getAdvantages().get(i).getCost());
+                    }
                 }
             }
         } catch (Exception ex) {
@@ -688,7 +698,8 @@ public class Sheet extends javax.swing.JFrame {
                 ra++;
             }
         }
-        int rem = JOptionPane.showConfirmDialog(this, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        if (ra > 0){
+        int rem = JOptionPane.showConfirmDialog(null, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
         try {
             if (rem == 0) {
                 int i = adv.getSelectedIndex();
@@ -718,6 +729,7 @@ public class Sheet extends javax.swing.JFrame {
         } catch (Exception ex) {
         }
         Calc();
+        }
     }//GEN-LAST:event_jButtonAdvRemoveActionPerformed
 
     private void jButtonDisAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisAddActionPerformed
@@ -728,13 +740,30 @@ public class Sheet extends javax.swing.JFrame {
         for (Disadvantages s : DL.getDisadvantages()) {
             dis.addItem(s);
         }
-        int add = JOptionPane.showConfirmDialog(this, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        int add = JOptionPane.showConfirmDialog(null, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
         try {
             if (add == 0) {
                 disCount++;
                 int i = dis.getSelectedIndex();
-                dislab[disCount].setText(DL.getDisadvantages().get(i).toString());
-                discost[disCount].setText(DL.getDisadvantages().get(i).getCost());
+                if ("D".equals(DL.getDisadvantages().get(i).getCost())) {
+                    details.run(DL.getDisadvantages().get(i).getName(), "d");
+                    if (details.isResult() == true) {
+                        dislab[disCount].setText(details.getDesc());
+                        discost[disCount].setText(details.getCost());
+                    } else {
+                        disCount--;
+                    }
+                } else {
+                    if ("1".equals(DL.getDisadvantages().get(i).getLvl())) {
+                        String lvl = JOptionPane.showInputDialog("What level?");
+                        int cost = Integer.parseInt(DL.getDisadvantages().get(i).getCost()) * Integer.parseInt(lvl);
+                        dislab[disCount].setText(String.format("%s (Level %s)", DL.getDisadvantages().get(i).getName(), lvl));
+                        discost[disCount].setText(Integer.toString(cost));
+                    } else {
+                        dislab[disCount].setText(DL.getDisadvantages().get(i).getName());
+                        discost[disCount].setText(DL.getDisadvantages().get(i).getCost());
+                    }
+                }
             }
         } catch (Exception ex) {
         }
@@ -752,7 +781,8 @@ public class Sheet extends javax.swing.JFrame {
                 ra++;
             }
         }
-        int rem = JOptionPane.showConfirmDialog(this, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        if (ra > 0){
+        int rem = JOptionPane.showConfirmDialog(null, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
         try {
             if (rem == 0) {
                 int i = dis.getSelectedIndex();
@@ -783,10 +813,11 @@ public class Sheet extends javax.swing.JFrame {
         } catch (Exception ex) {
         }
         Calc();
+        }
     }//GEN-LAST:event_jButtonDisRemoveActionPerformed
 
     private void jButtonAddPointsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddPointsActionPerformed
-        String addPoints = (JOptionPane.showInputDialog(this, "How many points?", "Add Points", JOptionPane.QUESTION_MESSAGE));
+        String addPoints = (JOptionPane.showInputDialog(null, "How many points?", "Add Points", JOptionPane.QUESTION_MESSAGE));
         if (!"".equals(addPoints) && addPoints != null) {
             int pointsSum = Integer.parseInt(addPoints) + Integer.parseInt(jLabelPoints.getText());
             jLabelPoints.setText(Integer.toString(pointsSum));

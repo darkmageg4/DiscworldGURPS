@@ -13,7 +13,7 @@ Wealthy,20,0
 Very Wealthy,30,0
 Filthy Rich,50,0
 Multimillionaire,50,0
-Reputation,0,0
+Reputation,D,0
 Clerical Investment,5,0
 Legal Enforcement,5,1
 Legal Immunity,5,1
@@ -27,9 +27,9 @@ Status +5,25,0
 Status +6,30,0
 Status +7,35,0
 Status +8,40,0
-Congregation,0,0
-Contacts,0,0
-Patron,0,0
+Congregation,D,0
+Contacts,D,0
+Patron,D,0
 Acute Senses,2,1
 Ambidexterity,5,0
 Channelling,10,0
@@ -55,14 +55,14 @@ High Manual Dex,5,1
 High Pain Threshold,10,0
 Indomitable,15,0
 Less Sleep,2,1
-Lifting ST,0,0
+Lifting ST,D,0
 Luck-Daredevil,15,0
 Luck-Ordinary,15,0
 Luck-Extraordinary,30,0
 Luck-Ridiculous,60,0
 Luck-Serendipity,15,1
 Mad Medicine,15,0
-Magery(Magery),0,0
+Magery(Magery),M,0
 Medium,10,0
 MG-Absolute Direction,5,0
 MG-Eidetic Memory,5,0
@@ -92,15 +92,15 @@ Speak With Animals-Aquatic,15,0
 Speak With Animals-Class,13,0
 Speak With Animals-Family,10,0
 Speak With Animals-Species,5,0
-Talent,0,0
+Talent,D,0
 Tenure,5,0
 True Faith,15,0
 Unfazeable,15,0
 Unnoticed,70,0
-Unusual Background,0,0
+Unusual Background,D,0
 Versatile,5,0
 Versatile(Inspiration Magnet),5,0
-Voice Of Command,0,0
+Voice Of Command,D,0
 Alcohol Tolerance,1,0
 Archaic Training,1,1
 Assassin in Good Standing,1,0
@@ -135,7 +135,7 @@ There On Call,1,0
 Understands The Librarian,1,0
 Wordless Influence,1,0
 Perk(Other),1,0
-Alternate Form(NH),0,0
+Alternate Form(NH),NH,0
 Brachiator,5,0
 Short-Range Flame(Die),4,1
 Flame Jet(Die),5,1
@@ -163,4 +163,4 @@ Foot Manipulators,4,0
 No Blood,5,0
 No Vitals,5,0
 Unliving,20,0
-Insubstantiality(NH),0,0
+Insubstantiality(NH),NH,0
