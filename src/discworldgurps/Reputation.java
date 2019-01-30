@@ -146,17 +146,14 @@ public class Reputation extends javax.swing.JDialog {
             case 1:
                 repLvlCost = 10;
                 repMod = "+2";
-
                 break;
             case 2:
                 repLvlCost = 15;
                 repMod = "+3";
-
                 break;
             case 3:
                 repLvlCost = 20;
                 repMod = "+4";
-
                 break;
             default:
                 break;

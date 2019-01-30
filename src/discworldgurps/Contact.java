@@ -139,15 +139,12 @@ public class Contact extends javax.swing.JDialog {
                 break;
             case 1:
                 contSkillCost = 2;
-
                 break;
             case 2:
                 contSkillCost = 3;
-
                 break;
             case 3:
                 contSkillCost = 4;
-
                 break;
             default:
                 break;

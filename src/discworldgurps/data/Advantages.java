@@ -1,8 +1,7 @@
 package discworldgurps.data;
 
-
 public class Advantages {
-    
+
     private String name;
     private String cost;
     private String lvl;
@@ -39,10 +38,7 @@ public class Advantages {
 
     @Override
     public String toString() {
-        return String.format("%s (%s)", this.name,this.lvl);
+        return String.format("%s (%s)", this.name, this.lvl);
     }
-    
-    
-    
 
 }

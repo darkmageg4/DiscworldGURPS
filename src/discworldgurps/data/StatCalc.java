@@ -2,15 +2,17 @@ package discworldgurps.data;
 
 public class StatCalc {
 
-    private int st, dx, iq, hp, ht, will, per, fp;
-    private double height;
+    final private int st, dx, iq, hp, ht, will, per, fp;
+    final private double height;
     private int STCost = 10, HPCost = 2, sm = 0;
     private int spentST, spentDX, spentIQ, spentHT, spentHP, spentWill, spentPer, spentFP, spentBS, spentBM, spentTL;
-    private double initialBS, bs;
-    private int bm;
-    private int points, pointsUnspent;
-    private int tl;
-    private int adv, dis;
+    private double initialBS;
+    final private double bs;
+    final private int bm;
+    final private int points;
+    private int pointsUnspent;
+    final private int tl;
+    final private int adv, dis;
 
     public StatCalc(int st, int dx, int iq, int hp, int ht, int will, int per, int fp, double height, double bs, int bm, int points, int tl, int adv, int dis) {
         this.st = st;
@@ -78,7 +80,7 @@ public class StatCalc {
     }
 
     /**
-     *  Calculates all the costs and deducts them from the total points
+     * Calculates all the costs and deducts them from the total points
      */
     public void Calc() {
         SizeMods();
@@ -96,7 +98,6 @@ public class StatCalc {
         spentTL = (this.tl - 4) * 5;
         pointsUnspent = this.points - (spentST + spentDX + spentIQ + spentHT + spentHP
                 + spentWill + spentPer + spentFP + spentBS + spentBM + spentTL + adv + dis);
-
     }
 
     public int getSpentST() {

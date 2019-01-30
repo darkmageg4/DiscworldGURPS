@@ -176,7 +176,6 @@ public class NewCharacter extends javax.swing.JDialog {
         weight = jTextFieldWeight.getText();
         age = jTextFieldAge.getText();
         dispose();
-
     }//GEN-LAST:event_jButtonCreateActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

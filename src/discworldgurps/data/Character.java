@@ -53,7 +53,6 @@ public class Character implements Serializable {
         this.tl = 4;
         this.advantages = new String[20];
         this.disadvantages = new String[20];
-
     }
 
     public Character(String name, String playerName, int points, double height, int weight,
@@ -295,7 +294,9 @@ public class Character implements Serializable {
     }
 
     /**
-     *  Loads a character and sets all the details to current character on Sheet.java
+     * Loads a character and sets all the details to current character on
+     * Sheet.java
+     *
      * @param file Selected in File Selector
      * @throws FileNotFoundException
      * @throws IOException
@@ -304,7 +305,6 @@ public class Character implements Serializable {
     public void Load(File file) throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream is = new FileInputStream(file);
         ObjectInputStream input = new ObjectInputStream(is);
-
         try {
             Character tmp = (Character) input.readObject();
             this.name = tmp.getName();
@@ -329,10 +329,8 @@ public class Character implements Serializable {
             this.bm = tmp.getBm();
             this.advantages = tmp.getAdvantages();
             this.disadvantages = tmp.getDisadvantages();
-
         } catch (EOFException ex) {
             ex.printStackTrace();
-
         }
     }
 

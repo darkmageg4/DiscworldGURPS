@@ -21,7 +21,6 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         for (ItemLoader il : load.tmp) {
             damage.add(new Damage(il.a, il.b, il.c));
         }
@@ -41,7 +40,6 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         for (ItemLoader il : load.tmp) {
             advantages.add(new Advantages(il.a, il.b, il.c));
         }
@@ -60,7 +58,6 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         for (ItemLoader il : load.tmp) {
             disadvantages.add(new Disadvantages(il.a, il.b, il.c));
         }
@@ -79,7 +76,6 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         for (ItemLoader il : load.tmp) {
             armour.add(new Armour(il.a, il.b, il.c, il.d, il.e));
         }
@@ -109,7 +105,7 @@ public class DataLoader {
     }
 
     /**
-     *  UNUSED: Loads in all CSVs
+     * UNUSED: Loads in all CSVs
      */
     public void LoadAll() {
         LoadDamage();

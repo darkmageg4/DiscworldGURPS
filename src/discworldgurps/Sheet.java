@@ -645,7 +645,6 @@ public class Sheet extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemLoadActionPerformed
 
     private void jButtonAdvAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvAddActionPerformed
-
         DL.LoadAdv();
         JComboBox adv = new JComboBox();
         adv.removeAllItems();

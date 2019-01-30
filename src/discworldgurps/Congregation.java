@@ -125,11 +125,9 @@ public class Congregation extends javax.swing.JDialog {
                 break;
             case 1:
                 congSizeCost = 12;
-
                 break;
             case 2:
                 congSizeCost = 15;
-
                 break;
             default:
                 break;
@@ -151,7 +149,6 @@ public class Congregation extends javax.swing.JDialog {
                 break;
         }
         congCost = (int) (congSizeCost * congFreqCost);
-
         congDesc = String.format("Cong: %s (%s appears on %s)", jTextFieldCongDesc.getText(), jComboBoxCongSize.getSelectedItem(), jComboBoxCongFrq.getSelectedItem());
         dispose();
     }//GEN-LAST:event_jButtonAddActionPerformed
@@ -165,7 +162,7 @@ public class Congregation extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosing
 
     public String getCongCost() {
-        return String.format("%d",congCost);
+        return String.format("%d", congCost);
     }
 
     public String getCongDesc() {

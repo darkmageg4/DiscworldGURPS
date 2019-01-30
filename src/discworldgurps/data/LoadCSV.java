@@ -19,7 +19,6 @@ public class LoadCSV {
     public void reader(String file) {
         int count = 10;
         Scanner scanner = null;
-
         try {
             scanner = new Scanner(new File(file));
             scanner.nextLine();
@@ -27,14 +26,12 @@ public class LoadCSV {
                 String[] split = scanner.nextLine().split(COMMA_DELIMITER);
                 String[] j = new String[count];
                 int i = 0;
-
                 for (String token : split) {
                     j[i] = token;
                     i++;
                 }
                 tmp.add(new ItemLoader(j[0], j[1], j[2], j[3], j[4], j[5], j[6], j[7], j[8], j[9]));
             }
-
         } catch (FileNotFoundException fe) {
             fe.printStackTrace();
         } finally {
