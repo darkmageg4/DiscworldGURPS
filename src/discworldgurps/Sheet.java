@@ -8,6 +8,7 @@ package discworldgurps;
 import discworldgurps.data.Advantages;
 import discworldgurps.data.Character;
 import discworldgurps.data.DataLoader;
+import discworldgurps.data.Details;
 import discworldgurps.data.Disadvantages;
 import discworldgurps.data.StatCalc;
 import java.awt.GridLayout;
@@ -36,6 +37,7 @@ public class Sheet extends javax.swing.JFrame {
     Character character;
 
     DataLoader DL = new DataLoader();
+    Details details = new Details();
 
     int advCount = -1;
     int disCount = -1;
@@ -71,7 +73,6 @@ public class Sheet extends javax.swing.JFrame {
                         System.exit(0);
                     }
                 }
-
             }
         });
         KeyboardFocusManager.getCurrentKeyboardFocusManager()
@@ -651,20 +652,26 @@ public class Sheet extends javax.swing.JFrame {
         for (Advantages s : DL.getAdvantages()) {
             adv.addItem(s);
         }
-
         int add = JOptionPane.showConfirmDialog(this, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
         try {
             if (add == 0) {
                 advCount++;
                 int i = adv.getSelectedIndex();
-                if ("Reputation (0)".equals(DL.getAdvantages().get(i).toString())) {
-                    Reputation();
+                String advAdd = DL.getAdvantages().get(i).toString();
+                if ("Reputation (0)".equals(advAdd) || "Congregation (0)".equals(advAdd)
+                        || "Contacts (0)".equals(advAdd)) {
+                    details.run(advAdd);
+                    if (details.isResult() == true) {
+                        advlab[advCount].setText(details.getDesc());
+                        advcost[advCount].setText(details.getCost());
+                    } else {
+                        advCount--;
+                    }
                 } else {
                     advlab[advCount].setText(DL.getAdvantages().get(i).toString());
                     advcost[advCount].setText(DL.getAdvantages().get(i).getCost());
                 }
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -701,7 +708,6 @@ public class Sheet extends javax.swing.JFrame {
                 }
                 int ab = 0;
                 for (int a = 0; a <= t.length; a++) {
-
                     if (t[ta - 1] != "") {
                         advlab[ab].setText(t[ta - 1]);
                         advcost[ab].setText(tc[ta - 1]);
@@ -709,9 +715,7 @@ public class Sheet extends javax.swing.JFrame {
                     }
                     ta--;
                 }
-
             }
-
         } catch (Exception ex) {
         }
         Calc();
@@ -725,7 +729,6 @@ public class Sheet extends javax.swing.JFrame {
         for (Disadvantages s : DL.getDisadvantages()) {
             dis.addItem(s);
         }
-
         int add = JOptionPane.showConfirmDialog(this, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
         try {
             if (add == 0) {
@@ -733,9 +736,7 @@ public class Sheet extends javax.swing.JFrame {
                 int i = dis.getSelectedIndex();
                 dislab[disCount].setText(DL.getDisadvantages().get(i).toString());
                 discost[disCount].setText(DL.getDisadvantages().get(i).getCost());
-
             }
-
         } catch (Exception ex) {
         }
         Calc();
@@ -779,9 +780,7 @@ public class Sheet extends javax.swing.JFrame {
                     }
                     ta--;
                 }
-
             }
-
         } catch (Exception ex) {
         }
         Calc();
@@ -799,7 +798,7 @@ public class Sheet extends javax.swing.JFrame {
     /**
      * Runs Start.java
      */
-    public void Start() {
+    private void Start() {
         Start start = new Start(this, true);
         start.setModal(true);
         start.setLocationRelativeTo(null);
@@ -819,14 +818,13 @@ public class Sheet extends javax.swing.JFrame {
                     System.exit(0);
             }
         }
-
     }
 
     /**
      * Takes input from NewCharacter.java and creates a new instance of
      * character
      */
-    public void NewChar() {
+    private void NewChar() {
         character = new Character();
         NewCharacter newCharacter = new NewCharacter(this, true);
         newCharacter.setModal(true);
@@ -845,7 +843,7 @@ public class Sheet extends javax.swing.JFrame {
         }
     }
 
-    public void Save() {
+    private void Save() {
         int returnval = this.jFileChooser1.showSaveDialog(this);
         if (returnval == JFileChooser.APPROVE_OPTION) {
             File file = jFileChooser1.getSelectedFile();
@@ -884,7 +882,6 @@ public class Sheet extends javax.swing.JFrame {
 
                 this.character.Save(file);
                 this.setTitle(file.getName());
-
             } catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(this, ex);
                 ex.printStackTrace();
@@ -895,7 +892,7 @@ public class Sheet extends javax.swing.JFrame {
         }
     }
 
-    public void Load() {
+    private void Load() {
         character = new Character();
         int returnval = this.jFileChooser1.showOpenDialog(this);
         if (returnval == JFileChooser.APPROVE_OPTION) {
@@ -903,7 +900,6 @@ public class Sheet extends javax.swing.JFrame {
             try {
                 this.character.Load(file);
                 SetDetails();
-
             } catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(this, ex);
             } catch (IOException ex) {
@@ -919,12 +915,11 @@ public class Sheet extends javax.swing.JFrame {
     /**
      *
      */
-    public void SetDetails() {
+    private void SetDetails() {
         jLabelName.setText(this.character.getName());
         jLabelPlayerName.setText(this.character.getPlayerName());
         jLabelPoints.setText(Integer.toString(this.character.getPoints()));
         jLabelHeight.setText(this.character.HeighttoString());
-
         jLabelWeight.setText(Integer.toString(this.character.getWeight()) + " lbs");
         jLabelAge.setText(Integer.toString(this.character.getAge()));
         jTextFieldST.setText(Integer.toString(this.character.getSt()));
@@ -963,13 +958,11 @@ public class Sheet extends javax.swing.JFrame {
                 discost[i].setText(this.character.getDisadvantages()[i + 10]);
             }
         }
-
         Calc();
         this.setTitle(character.getName());
-
     }
 
-    public void Calc() {
+    private void Calc() {
         int st = Integer.parseInt(jTextFieldST.getText());
         int dx = Integer.parseInt(jTextFieldDX.getText());
         int iq = Integer.parseInt(jTextFieldIQ.getText());
@@ -1014,16 +1007,13 @@ public class Sheet extends javax.swing.JFrame {
         jLabelAdvTotal.setText(Integer.toString(adv));
         jLabelDisTotal.setText(Integer.toString(dis));
         jLabelPointsUnspent.setText(Integer.toString(sc.getPointsUnspent()));
-
         DL.LoadDamage();
         jLabelThrust.setText(DL.getDamage().get(Integer.parseInt(jTextFieldST.getText()) - 1).thrust());
         jLabelSwing.setText(DL.getDamage().get(Integer.parseInt(jTextFieldST.getText()) - 1).swing());
-
         Encumberance();
-
     }
 
-    public void Encumberance() {
+    private void Encumberance() {
         double blcalc = Math.round((double) (Integer.parseInt(jTextFieldST.getText()) * Integer.parseInt(jTextFieldST.getText())) / 5);
         int blset = (int) blcalc;
         jLabelBL.setText(Integer.toString(blset));
@@ -1044,43 +1034,22 @@ public class Sheet extends javax.swing.JFrame {
         jLabelEncDodge5.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText()) - 4)));
     }
 
-    public void LabelCreator() {
+    private void LabelCreator() {
         GridLayout experimentLayout = new GridLayout(0, 1);
         jPanelAdv.setLayout(experimentLayout);
         jPanelAdvCost.setLayout(experimentLayout);
         for (int i = 0; i < advlab.length; i++) {
             jPanelAdv.add(advlab[i] = new JLabel());
             jPanelAdvCost.add(advcost[i] = new JLabel());
-
         }
         jPanelDis.setLayout(experimentLayout);
         jPanelDisCost.setLayout(experimentLayout);
         for (int i = 0; i < advlab.length; i++) {
             jPanelDis.add(dislab[i] = new JLabel());
             jPanelDisCost.add(discost[i] = new JLabel());
-
         }
     }
 
-    public void Reputation() {
-        Reputation rep = new Reputation(this, true);
-        rep.setModal(true);
-        rep.setLocationRelativeTo(null);
-        rep.setVisible(true);
-        if (rep.closed != 1) {
-            advlab[advCount].setText(rep.getRepDesc());
-            advcost[advCount].setText(rep.getRepCost());
-        }
-
-    }
-
-    public void DataLoader() {
-        DL.LoadDis();
-    }
-
-    /**
-     * Loads all the datastores
-     */
     /**
      * @param args the command line arguments
      */
@@ -1089,7 +1058,7 @@ public class Sheet extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
