@@ -44,5 +44,9 @@ public class Advantages {
             return String.format("%s : %s points per level", this.name, this.cost);
         }
     }
+    
+    public void runAdvantages() {
+    
+}
 
 }

@@ -183,6 +183,24 @@ public class Sheet extends javax.swing.JFrame {
         jPanelDis = new javax.swing.JPanel();
         jPanelDisCost = new javax.swing.JPanel();
         jLabelDisTotal = new javax.swing.JLabel();
+        jButtonAdvAdd1 = new javax.swing.JButton();
+        jButtonAdvRemove1 = new javax.swing.JButton();
+        jLabelLang1 = new javax.swing.JLabel();
+        jLabelLangSpoken1 = new javax.swing.JLabel();
+        jLabelLangWritten1 = new javax.swing.JLabel();
+        jLabelLangCost1 = new javax.swing.JLabel();
+        jLabelLang2 = new javax.swing.JLabel();
+        jLabelLangSpoken2 = new javax.swing.JLabel();
+        jLabelLangWritten2 = new javax.swing.JLabel();
+        jLabelLangCost2 = new javax.swing.JLabel();
+        jLabelLangWritten3 = new javax.swing.JLabel();
+        jLabelLang3 = new javax.swing.JLabel();
+        jLabelLangSpoken3 = new javax.swing.JLabel();
+        jLabelLangCost3 = new javax.swing.JLabel();
+        jLabelLang4 = new javax.swing.JLabel();
+        jLabelLangSpoken4 = new javax.swing.JLabel();
+        jLabelLangWritten4 = new javax.swing.JLabel();
+        jLabelLangCost4 = new javax.swing.JLabel();
         SheetBG = new javax.swing.JLabel();
         jScrollPaneDetails = new javax.swing.JScrollPane();
         jPanelDetails = new javax.swing.JPanel();
@@ -514,6 +532,70 @@ public class Sheet extends javax.swing.JFrame {
         jLabelDisTotal.setText("0");
         jPanelSheet.add(jLabelDisTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 1270, 40, 20));
 
+        jButtonAdvAdd1.setText("Add");
+        jButtonAdvAdd1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonAdvAdd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdvAdd1ActionPerformed(evt);
+            }
+        });
+        jPanelSheet.add(jButtonAdvAdd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 60, 20));
+
+        jButtonAdvRemove1.setText("Rem");
+        jButtonAdvRemove1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonAdvRemove1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdvRemove1ActionPerformed(evt);
+            }
+        });
+        jPanelSheet.add(jButtonAdvRemove1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 70, 20));
+        jPanelSheet.add(jLabelLang1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 220, 30));
+
+        jLabelLangSpoken1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelSheet.add(jLabelLangSpoken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 100, 30));
+
+        jLabelLangWritten1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelSheet.add(jLabelLangWritten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 90, 30));
+
+        jLabelLangCost1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLangCost1.setText("0");
+        jPanelSheet.add(jLabelLangCost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, 30, 20));
+
+        jLabelLang2.setToolTipText("");
+        jPanelSheet.add(jLabelLang2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 220, 20));
+
+        jLabelLangSpoken2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelSheet.add(jLabelLangSpoken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 100, 20));
+
+        jLabelLangWritten2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelSheet.add(jLabelLangWritten2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 280, 90, 20));
+
+        jLabelLangCost2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLangCost2.setText("0");
+        jPanelSheet.add(jLabelLangCost2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 280, 30, 20));
+
+        jLabelLangWritten3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelSheet.add(jLabelLangWritten3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, 90, 30));
+        jPanelSheet.add(jLabelLang3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 220, 30));
+
+        jLabelLangSpoken3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelSheet.add(jLabelLangSpoken3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 100, 30));
+
+        jLabelLangCost3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLangCost3.setText("0");
+        jPanelSheet.add(jLabelLangCost3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 300, 30, 30));
+        jPanelSheet.add(jLabelLang4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 220, 20));
+
+        jLabelLangSpoken4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelSheet.add(jLabelLangSpoken4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 100, 20));
+
+        jLabelLangWritten4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelSheet.add(jLabelLangWritten4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 330, 90, 20));
+
+        jLabelLangCost4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLangCost4.setText("0");
+        jPanelSheet.add(jLabelLangCost4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 330, 30, 20));
+
         SheetBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/discworldgurps/resources/CharacterSheet.jpg"))); // NOI18N
         SheetBG.setMaximumSize(null);
         SheetBG.setMinimumSize(null);
@@ -825,6 +907,14 @@ public class Sheet extends javax.swing.JFrame {
         Calc();
     }//GEN-LAST:event_jButtonAddPointsActionPerformed
 
+    private void jButtonAdvAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvAdd1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAdvAdd1ActionPerformed
+
+    private void jButtonAdvRemove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvRemove1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAdvRemove1ActionPerformed
+
     /**
      * Runs Start.java
      */
@@ -1121,7 +1211,9 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JLabel SheetBG;
     private javax.swing.JButton jButtonAddPoints;
     private javax.swing.JButton jButtonAdvAdd;
+    private javax.swing.JButton jButtonAdvAdd1;
     private javax.swing.JButton jButtonAdvRemove;
+    private javax.swing.JButton jButtonAdvRemove1;
     private javax.swing.JButton jButtonDisAdd;
     private javax.swing.JButton jButtonDisRemove;
     private javax.swing.JFileChooser jFileChooser1;
@@ -1156,6 +1248,22 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelHTCost;
     private javax.swing.JLabel jLabelHeight;
     private javax.swing.JLabel jLabelIQCost;
+    private javax.swing.JLabel jLabelLang1;
+    private javax.swing.JLabel jLabelLang2;
+    private javax.swing.JLabel jLabelLang3;
+    private javax.swing.JLabel jLabelLang4;
+    private javax.swing.JLabel jLabelLangCost1;
+    private javax.swing.JLabel jLabelLangCost2;
+    private javax.swing.JLabel jLabelLangCost3;
+    private javax.swing.JLabel jLabelLangCost4;
+    private javax.swing.JLabel jLabelLangSpoken1;
+    private javax.swing.JLabel jLabelLangSpoken2;
+    private javax.swing.JLabel jLabelLangSpoken3;
+    private javax.swing.JLabel jLabelLangSpoken4;
+    private javax.swing.JLabel jLabelLangWritten1;
+    private javax.swing.JLabel jLabelLangWritten2;
+    private javax.swing.JLabel jLabelLangWritten3;
+    private javax.swing.JLabel jLabelLangWritten4;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelPerCost;
     private javax.swing.JLabel jLabelPlayerName;
