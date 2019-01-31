@@ -807,24 +807,23 @@ public class Sheet extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddPointsActionPerformed
 
     private void jButtonLangAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLangAddActionPerformed
-if (langCount < 3){
-        details.runLang();
-if (details.isResult() == true){
-    langCount++;
-    lang[langCount].setText(details.getLang());
-    langspok[langCount].setText(details.getLangSpok());
-    langwrit[langCount].setText(details.getLangWrit());
-    langcost[langCount].setText(details.getCost());
-    Calc();
+        if (langCount < 3) {
+            details.runLang();
+            if (details.isResult() == true) {
+                langCount++;
+                lang[langCount].setText(details.getLang());
+                langspok[langCount].setText(details.getLangSpok());
+                langwrit[langCount].setText(details.getLangWrit());
+                langcost[langCount].setText(details.getCost());
+                Calc();
             }
-}
-else{
-    JOptionPane.showMessageDialog(null, "Languages Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
-}
+        } else {
+            JOptionPane.showMessageDialog(null, "Languages Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonLangAddActionPerformed
 
     private void jButtonLangRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLangRemoveActionPerformed
-          int ra = -1;
+        int ra = -1;
         JComboBox lan = new JComboBox();
         lan.removeAllItems();
         for (int r = 0; r < lang.length; r++) {
@@ -844,8 +843,8 @@ else{
                     langcost[i].setText("");
                     langCount--;
                     String[] t = new String[ra + 1];
-                    String[] tw = new String[ra +1];
-                    String[] ts = new String [ra+1];
+                    String[] tw = new String[ra + 1];
+                    String[] ts = new String[ra + 1];
                     String[] tc = new String[ra + 1];
                     int ta = 0;
                     for (int s = ra; s >= 0; s--) {
@@ -1072,8 +1071,15 @@ else{
                 dis = dis + j;
             }
         }
+        int lan = 0;
+        for (int i = 0; i < lang.length; i++) {
+            if ("" != langcost[i].getText()) {
+                int j = Integer.parseInt(langcost[i].getText());
+                lan = lan + j;
+            }
+        }
         StatCalc sc = new StatCalc(st, dx, iq, hp, ht, will, per, fp,
-                this.character.getHeight(), bs, bm, pu, tl, adv, dis);
+                this.character.getHeight(), bs, bm, pu, tl, adv, dis, lan);
         sc.Calc();
         jLabelSizeMod.setText(Integer.toString(sc.getSm()));
         jLabelSTCost.setText(Integer.toString(sc.getSpentST()));
