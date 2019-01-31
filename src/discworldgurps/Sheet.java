@@ -5,11 +5,9 @@
  */
 package discworldgurps;
 
-import discworldgurps.data.Advantages;
 import discworldgurps.data.Character;
 import discworldgurps.data.DataLoader;
 import discworldgurps.details.Details;
-import discworldgurps.data.Disadvantages;
 import discworldgurps.data.StatCalc;
 import java.awt.GridLayout;
 import java.awt.KeyboardFocusManager;
@@ -689,9 +687,11 @@ public class Sheet extends javax.swing.JFrame {
     private void jButtonAdvAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvAddActionPerformed
         if (advCount < 9) {
             details.runAdvantages();
-            advlab[advCount].setText(details.getDesc());
-            advcost[advCount].setText(details.getCost());
-            Calc();
+            if (advCount != -1) {
+                advlab[advCount].setText(details.getDesc());
+                advcost[advCount].setText(details.getCost());
+                Calc();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Advantages Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
         }
@@ -707,7 +707,7 @@ public class Sheet extends javax.swing.JFrame {
                 ra++;
             }
         }
-        if (ra > 0) {
+        if (ra >= 0) {
             int rem = JOptionPane.showConfirmDialog(null, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
             try {
                 if (rem == 0) {
@@ -744,9 +744,11 @@ public class Sheet extends javax.swing.JFrame {
     private void jButtonDisAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisAddActionPerformed
         if (disCount < 9) {
             details.runDisadvantages();
-            dislab[disCount].setText(details.getDesc());
-            discost[disCount].setText(details.getCost());
-            Calc();
+            if (disCount != -1) {
+                dislab[disCount].setText(details.getDesc());
+                discost[disCount].setText(details.getCost());
+                Calc();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Disadvantages Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
         }
@@ -762,7 +764,7 @@ public class Sheet extends javax.swing.JFrame {
                 ra++;
             }
         }
-        if (ra > 0) {
+        if (ra >= 0) {
             int rem = JOptionPane.showConfirmDialog(null, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
             try {
                 if (rem == 0) {
@@ -832,7 +834,7 @@ public class Sheet extends javax.swing.JFrame {
                 ra++;
             }
         }
-        if (ra > 0) {
+        if (ra >= 0) {
             int rem = JOptionPane.showConfirmDialog(null, lan, "Which Language?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
             try {
                 if (rem == 0) {

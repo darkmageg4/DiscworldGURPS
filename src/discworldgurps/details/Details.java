@@ -46,6 +46,7 @@ public class Details {
                             this.cost = Integer.toString(cost);
                         } else {
                             advCount--;
+
                         }
                     } else {
                         desc = DL.getAdvantages().get(i).getName();
@@ -77,6 +78,7 @@ public class Details {
                         cost = getCost();
                     } else {
                         disCount--;
+
                     }
                 } else {
                     if ("1".equals(DL.getDisadvantages().get(i).getLvl())) {
@@ -93,7 +95,7 @@ public class Details {
         } catch (Exception ex) {
         }
     }
-    
+
     public void runLang() {
         Lang lang = new Lang(null, true);
         lang.setModal(true);
@@ -119,13 +121,13 @@ public class Details {
                     Reputation();
                     break;
                 case "Congregation":
-                    Congregation();
+                    OtherDetails(string);
                     break;
                 case "Contacts":
-                    Contact();
+                    OtherDetails(string);
                     break;
                 case "Patron":
-                    Patron();
+                    OtherDetails(string);
                     break;
                 case "Lifting ST":
                     // TO DO
@@ -141,10 +143,10 @@ public class Details {
                     break;
                 // Disadvantages
                 case "Dependents":
-                    //TO DO
+                    OtherDetails(string);
                     break;
                 case "Enemies":
-                    //TO DO
+                    OtherDetails(string);
                     break;
                 case "Duty":
                     //TO DO
@@ -186,42 +188,14 @@ public class Details {
         }
     }
 
-    private void Congregation() {
-        Congregation cong = new Congregation(null, true);
-        cong.setModal(true);
-        cong.setLocationRelativeTo(null);
-        cong.setVisible(true);
-        if (cong.closed != 1) {
-            desc = cong.getCongDesc();
-            cost = cong.getCongCost();
-            result = true;
-        } else {
-            result = false;
-        }
-    }
-
-    private void Contact() {
-        Contact cont = new Contact(null, true);
-        cont.setModal(true);
-        cont.setLocationRelativeTo(null);
-        cont.setVisible(true);
-        if (cont.closed != 1) {
-            desc = cont.getContDesc();
-            cost = cont.getContCost();
-            result = true;
-        } else {
-            result = false;
-        }
-    }
-
-    private void Patron() {
-        Patron pat = new Patron(null, true);
-        pat.setModal(true);
-        pat.setLocationRelativeTo(null);
-        pat.setVisible(true);
-        if (pat.closed != 1) {
-            desc = pat.getPatDesc();
-            cost = pat.getPatCost();
+    private void OtherDetails(String string) {
+        OtherDetails od = new OtherDetails(null, true, string);
+        od.setModal(true);
+        od.setLocationRelativeTo(null);
+        od.setVisible(true);
+        if (od.closed != 1) {
+            desc = od.getDesc();
+            cost = od.getCost();
             result = true;
         } else {
             result = false;
