@@ -39,12 +39,18 @@ public class Sheet extends javax.swing.JFrame {
     DataLoader DL = new DataLoader();
     Details details = new Details();
 
-    int advCount = -1;
-    int disCount = -1;
-    JLabel[] advlab = new JLabel[10];
-    JLabel[] advcost = new JLabel[10];
-    JLabel[] dislab = new JLabel[10];
-    JLabel[] discost = new JLabel[10];
+    public static int advCount = -1;
+    public static int disCount = -1;
+    public static int langCount = -1;
+    private JLabel[] advlab = new JLabel[10];
+    private JLabel[] advcost = new JLabel[10];
+    private JLabel[] dislab = new JLabel[10];
+    private JLabel[] discost = new JLabel[10];
+    private JLabel[] lang = new JLabel[4];
+    private JLabel[] langspok = new JLabel[4];
+    private JLabel[] langwrit = new JLabel[4];
+    private JLabel[] langcost = new JLabel[4];
+    private JLabel[] langspacer = new JLabel[4];
 
     int Rep = 0;
 
@@ -183,24 +189,11 @@ public class Sheet extends javax.swing.JFrame {
         jPanelDis = new javax.swing.JPanel();
         jPanelDisCost = new javax.swing.JPanel();
         jLabelDisTotal = new javax.swing.JLabel();
-        jButtonAdvAdd1 = new javax.swing.JButton();
-        jButtonAdvRemove1 = new javax.swing.JButton();
-        jLabelLang1 = new javax.swing.JLabel();
-        jLabelLangSpoken1 = new javax.swing.JLabel();
-        jLabelLangWritten1 = new javax.swing.JLabel();
-        jLabelLangCost1 = new javax.swing.JLabel();
-        jLabelLang2 = new javax.swing.JLabel();
-        jLabelLangSpoken2 = new javax.swing.JLabel();
-        jLabelLangWritten2 = new javax.swing.JLabel();
-        jLabelLangCost2 = new javax.swing.JLabel();
-        jLabelLangWritten3 = new javax.swing.JLabel();
-        jLabelLang3 = new javax.swing.JLabel();
-        jLabelLangSpoken3 = new javax.swing.JLabel();
-        jLabelLangCost3 = new javax.swing.JLabel();
-        jLabelLang4 = new javax.swing.JLabel();
-        jLabelLangSpoken4 = new javax.swing.JLabel();
-        jLabelLangWritten4 = new javax.swing.JLabel();
-        jLabelLangCost4 = new javax.swing.JLabel();
+        jButtonLangAdd = new javax.swing.JButton();
+        jButtonLangRemove = new javax.swing.JButton();
+        jPanelLang = new javax.swing.JPanel();
+        jPanelLangSpokWrit = new javax.swing.JPanel();
+        jPanelLangCost = new javax.swing.JPanel();
         SheetBG = new javax.swing.JLabel();
         jScrollPaneDetails = new javax.swing.JScrollPane();
         jPanelDetails = new javax.swing.JPanel();
@@ -532,69 +525,35 @@ public class Sheet extends javax.swing.JFrame {
         jLabelDisTotal.setText("0");
         jPanelSheet.add(jLabelDisTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 1270, 40, 20));
 
-        jButtonAdvAdd1.setText("Add");
-        jButtonAdvAdd1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButtonAdvAdd1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLangAdd.setText("Add");
+        jButtonLangAdd.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonLangAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAdvAdd1ActionPerformed(evt);
+                jButtonLangAddActionPerformed(evt);
             }
         });
-        jPanelSheet.add(jButtonAdvAdd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 60, 20));
+        jPanelSheet.add(jButtonLangAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 60, 20));
 
-        jButtonAdvRemove1.setText("Rem");
-        jButtonAdvRemove1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButtonAdvRemove1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLangRemove.setText("Rem");
+        jButtonLangRemove.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonLangRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAdvRemove1ActionPerformed(evt);
+                jButtonLangRemoveActionPerformed(evt);
             }
         });
-        jPanelSheet.add(jButtonAdvRemove1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 70, 20));
-        jPanelSheet.add(jLabelLang1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 220, 30));
+        jPanelSheet.add(jButtonLangRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 70, 20));
 
-        jLabelLangSpoken1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanelSheet.add(jLabelLangSpoken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 100, 30));
+        jPanelLang.setOpaque(false);
+        jPanelLang.setLayout(new java.awt.GridLayout());
+        jPanelSheet.add(jPanelLang, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 210, 100));
 
-        jLabelLangWritten1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanelSheet.add(jLabelLangWritten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 90, 30));
+        jPanelLangSpokWrit.setOpaque(false);
+        jPanelLangSpokWrit.setLayout(new java.awt.GridLayout());
+        jPanelSheet.add(jPanelLangSpokWrit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 170, 100));
 
-        jLabelLangCost1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLangCost1.setText("0");
-        jPanelSheet.add(jLabelLangCost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, 30, 20));
-
-        jLabelLang2.setToolTipText("");
-        jPanelSheet.add(jLabelLang2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 220, 20));
-
-        jLabelLangSpoken2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanelSheet.add(jLabelLangSpoken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 100, 20));
-
-        jLabelLangWritten2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanelSheet.add(jLabelLangWritten2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 280, 90, 20));
-
-        jLabelLangCost2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLangCost2.setText("0");
-        jPanelSheet.add(jLabelLangCost2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 280, 30, 20));
-
-        jLabelLangWritten3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanelSheet.add(jLabelLangWritten3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, 90, 30));
-        jPanelSheet.add(jLabelLang3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 220, 30));
-
-        jLabelLangSpoken3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanelSheet.add(jLabelLangSpoken3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 100, 30));
-
-        jLabelLangCost3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLangCost3.setText("0");
-        jPanelSheet.add(jLabelLangCost3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 300, 30, 30));
-        jPanelSheet.add(jLabelLang4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 220, 20));
-
-        jLabelLangSpoken4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanelSheet.add(jLabelLangSpoken4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 100, 20));
-
-        jLabelLangWritten4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanelSheet.add(jLabelLangWritten4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 330, 90, 20));
-
-        jLabelLangCost4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLangCost4.setText("0");
-        jPanelSheet.add(jLabelLangCost4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 330, 30, 20));
+        jPanelLangCost.setOpaque(false);
+        jPanelLangCost.setLayout(new java.awt.GridLayout());
+        jPanelSheet.add(jPanelLangCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 20, 90));
 
         SheetBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/discworldgurps/resources/CharacterSheet.jpg"))); // NOI18N
         SheetBG.setMaximumSize(null);
@@ -728,173 +687,113 @@ public class Sheet extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemLoadActionPerformed
 
     private void jButtonAdvAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvAddActionPerformed
-        DL.LoadAdv();
-        JComboBox adv = new JComboBox();
-        adv.removeAllItems();
-        for (Advantages s : DL.getAdvantages()) {
-            adv.addItem(s);
+        if (advCount < 9) {
+            details.runAdvantages();
+            advlab[advCount].setText(details.getDesc());
+            advcost[advCount].setText(details.getCost());
+            Calc();
+        } else {
+            JOptionPane.showMessageDialog(null, "Advantages Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
         }
-        int add = JOptionPane.showConfirmDialog(null, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
-        try {
-            if (add == 0) {
-                advCount++;
-                int i = adv.getSelectedIndex();
-                if ("D".equals(DL.getAdvantages().get(i).getCost())) {
-                    details.run(DL.getAdvantages().get(i).getName(), "a");
-                    if (details.isResult() == true) {
-                        advlab[advCount].setText(details.getDesc());
-                        advcost[advCount].setText(details.getCost());
-                    } else {
-                        advCount--;
-                    }
-                } else {
-                    if ("1".equals(DL.getAdvantages().get(i).getLvl())) {
-                        String lvl = JOptionPane.showInputDialog("What level?");
-                        if (lvl != null && !"".equals(lvl)){
-                        int cost = Integer.parseInt(DL.getAdvantages().get(i).getCost()) * Integer.parseInt(lvl);
-                        advlab[advCount].setText(String.format("%s (Level %s)", DL.getAdvantages().get(i).getName(), lvl));
-                        advcost[advCount].setText(Integer.toString(cost));
-                        } else {
-                            advCount--;
-                        }
-                    } else {
-                        advlab[advCount].setText(DL.getAdvantages().get(i).getName());
-                        advcost[advCount].setText(DL.getAdvantages().get(i).getCost());
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        Calc();
     }//GEN-LAST:event_jButtonAdvAddActionPerformed
 
     private void jButtonAdvRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvRemoveActionPerformed
-        int r = 0;
-        int ra = 0;
+        int ra = -1;
         JComboBox adv = new JComboBox();
         adv.removeAllItems();
-        for (r = 0; r < advlab.length; r++) {
+        for (int r = 0; r < advlab.length; r++) {
             if (advlab[r].getText() != "") {
                 adv.addItem(advlab[r].getText());
                 ra++;
             }
         }
-        if (ra > 0){
-        int rem = JOptionPane.showConfirmDialog(null, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
-        try {
-            if (rem == 0) {
-                int i = adv.getSelectedIndex();
-                advlab[i].setText("");
-                advcost[i].setText("");
-                advCount--;
-                String[] t = new String[ra + 1];
-                String[] tc = new String[ra + 1];
-                int ta = 0;
-                for (int s = ra; s >= 0; s--) {
-                    t[ta] = advlab[s].getText();
-                    tc[ta] = advcost[s].getText();
-                    advlab[s].setText("");
-                    advcost[s].setText("");
-                    ta++;
-                }
-                int ab = 0;
-                for (int a = 0; a <= t.length; a++) {
-                    if (t[ta - 1] != "") {
-                        advlab[ab].setText(t[ta - 1]);
-                        advcost[ab].setText(tc[ta - 1]);
-                        ab++;
+        if (ra > 0) {
+            int rem = JOptionPane.showConfirmDialog(null, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+            try {
+                if (rem == 0) {
+                    int i = adv.getSelectedIndex();
+                    advlab[i].setText("");
+                    advcost[i].setText("");
+                    advCount--;
+                    String[] t = new String[ra + 1];
+                    String[] tc = new String[ra + 1];
+                    int ta = 0;
+                    for (int s = ra; s >= 0; s--) {
+                        t[ta] = advlab[s].getText();
+                        tc[ta] = advcost[s].getText();
+                        advlab[s].setText("");
+                        advcost[s].setText("");
+                        ta++;
                     }
-                    ta--;
+                    int ab = 0;
+                    for (int a = 0; a <= t.length; a++) {
+                        if (t[ta - 1] != "") {
+                            advlab[ab].setText(t[ta - 1]);
+                            advcost[ab].setText(tc[ta - 1]);
+                            ab++;
+                        }
+                        ta--;
+                    }
                 }
+            } catch (Exception ex) {
             }
-        } catch (Exception ex) {
-        }
-        Calc();
+            Calc();
         }
     }//GEN-LAST:event_jButtonAdvRemoveActionPerformed
 
     private void jButtonDisAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisAddActionPerformed
-
-        DL.LoadDis();
-        JComboBox dis = new JComboBox();
-        dis.removeAllItems();
-        for (Disadvantages s : DL.getDisadvantages()) {
-            dis.addItem(s);
+        if (disCount < 9) {
+            details.runDisadvantages();
+            dislab[disCount].setText(details.getDesc());
+            discost[disCount].setText(details.getCost());
+            Calc();
+        } else {
+            JOptionPane.showMessageDialog(null, "Disadvantages Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
         }
-        int add = JOptionPane.showConfirmDialog(null, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
-        try {
-            if (add == 0) {
-                disCount++;
-                int i = dis.getSelectedIndex();
-                if ("D".equals(DL.getDisadvantages().get(i).getCost())) {
-                    details.run(DL.getDisadvantages().get(i).getName(), "d");
-                    if (details.isResult() == true) {
-                        dislab[disCount].setText(details.getDesc());
-                        discost[disCount].setText(details.getCost());
-                    } else {
-                        disCount--;
-                    }
-                } else {
-                    if ("1".equals(DL.getDisadvantages().get(i).getLvl())) {
-                        String lvl = JOptionPane.showInputDialog("What level?");
-                        int cost = Integer.parseInt(DL.getDisadvantages().get(i).getCost()) * Integer.parseInt(lvl);
-                        dislab[disCount].setText(String.format("%s (Level %s)", DL.getDisadvantages().get(i).getName(), lvl));
-                        discost[disCount].setText(Integer.toString(cost));
-                    } else {
-                        dislab[disCount].setText(DL.getDisadvantages().get(i).getName());
-                        discost[disCount].setText(DL.getDisadvantages().get(i).getCost());
-                    }
-                }
-            }
-        } catch (Exception ex) {
-        }
-        Calc();
     }//GEN-LAST:event_jButtonDisAddActionPerformed
 
     private void jButtonDisRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisRemoveActionPerformed
-        int r = 0;
-        int ra = 0;
+        int ra = -1;
         JComboBox dis = new JComboBox();
         dis.removeAllItems();
-        for (r = 0; r < dislab.length; r++) {
+        for (int r = 0; r < dislab.length; r++) {
             if (dislab[r].getText() != "") {
                 dis.addItem(dislab[r].getText());
                 ra++;
             }
         }
-        if (ra > 0){
-        int rem = JOptionPane.showConfirmDialog(null, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
-        try {
-            if (rem == 0) {
-                int i = dis.getSelectedIndex();
-                dislab[i].setText("");
-                discost[i].setText("");
-                disCount--;
-                String[] t = new String[ra + 1];
-                String[] tc = new String[ra + 1];
-                int ta = 0;
-                for (int s = ra; s >= 0; s--) {
-                    t[ta] = dislab[s].getText();
-                    tc[ta] = discost[s].getText();
-                    dislab[s].setText("");
-                    discost[s].setText("");
-                    ta++;
-                }
-                int ab = 0;
-                for (int a = 0; a <= t.length; a++) {
-
-                    if (t[ta - 1] != "") {
-                        dislab[ab].setText(t[ta - 1]);
-                        discost[ab].setText(tc[ta - 1]);
-                        ab++;
+        if (ra > 0) {
+            int rem = JOptionPane.showConfirmDialog(null, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+            try {
+                if (rem == 0) {
+                    int i = dis.getSelectedIndex();
+                    dislab[i].setText("");
+                    discost[i].setText("");
+                    disCount--;
+                    String[] t = new String[ra + 1];
+                    String[] tc = new String[ra + 1];
+                    int ta = 0;
+                    for (int s = ra; s >= 0; s--) {
+                        t[ta] = dislab[s].getText();
+                        tc[ta] = discost[s].getText();
+                        dislab[s].setText("");
+                        discost[s].setText("");
+                        ta++;
                     }
-                    ta--;
+                    int ab = 0;
+                    for (int a = 0; a <= t.length; a++) {
+
+                        if (t[ta - 1] != "") {
+                            dislab[ab].setText(t[ta - 1]);
+                            discost[ab].setText(tc[ta - 1]);
+                            ab++;
+                        }
+                        ta--;
+                    }
                 }
+            } catch (Exception ex) {
             }
-        } catch (Exception ex) {
-        }
-        Calc();
+            Calc();
         }
     }//GEN-LAST:event_jButtonDisRemoveActionPerformed
 
@@ -907,13 +806,77 @@ public class Sheet extends javax.swing.JFrame {
         Calc();
     }//GEN-LAST:event_jButtonAddPointsActionPerformed
 
-    private void jButtonAdvAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvAdd1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAdvAdd1ActionPerformed
+    private void jButtonLangAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLangAddActionPerformed
+if (langCount < 3){
+        details.runLang();
+if (details.isResult() == true){
+    langCount++;
+    lang[langCount].setText(details.getLang());
+    langspok[langCount].setText(details.getLangSpok());
+    langwrit[langCount].setText(details.getLangWrit());
+    langcost[langCount].setText(details.getCost());
+    Calc();
+            }
+}
+else{
+    JOptionPane.showMessageDialog(null, "Languages Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
+}
+    }//GEN-LAST:event_jButtonLangAddActionPerformed
 
-    private void jButtonAdvRemove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdvRemove1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAdvRemove1ActionPerformed
+    private void jButtonLangRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLangRemoveActionPerformed
+          int ra = -1;
+        JComboBox lan = new JComboBox();
+        lan.removeAllItems();
+        for (int r = 0; r < lang.length; r++) {
+            if (lang[r].getText() != "") {
+                lan.addItem(lang[r].getText());
+                ra++;
+            }
+        }
+        if (ra > 0) {
+            int rem = JOptionPane.showConfirmDialog(null, lan, "Which Language?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+            try {
+                if (rem == 0) {
+                    int i = lan.getSelectedIndex();
+                    lang[i].setText("");
+                    langwrit[i].setText("");
+                    langspok[i].setText("");
+                    langcost[i].setText("");
+                    langCount--;
+                    String[] t = new String[ra + 1];
+                    String[] tw = new String[ra +1];
+                    String[] ts = new String [ra+1];
+                    String[] tc = new String[ra + 1];
+                    int ta = 0;
+                    for (int s = ra; s >= 0; s--) {
+                        t[ta] = lang[s].getText();
+                        tw[ta] = langwrit[s].getText();
+                        ts[ta] = langspok[s].getText();
+                        tc[ta] = langcost[s].getText();
+                        lang[s].setText("");
+                        langwrit[s].setText("");
+                        langspok[s].setText("");
+                        langcost[s].setText("");
+                        ta++;
+                    }
+                    int ab = 0;
+                    for (int a = 0; a <= t.length; a++) {
+
+                        if (t[ta - 1] != "") {
+                            lang[ab].setText(t[ta - 1]);
+                            langwrit[ab].setText(tw[ta - 1]);
+                            langspok[ab].setText(ts[ta - 1]);
+                            langcost[ab].setText(tc[ta - 1]);
+                            ab++;
+                        }
+                        ta--;
+                    }
+                }
+            } catch (Exception ex) {
+            }
+            Calc();
+        }
+    }//GEN-LAST:event_jButtonLangRemoveActionPerformed
 
     /**
      * Runs Start.java
@@ -1155,18 +1118,29 @@ public class Sheet extends javax.swing.JFrame {
     }
 
     private void LabelCreator() {
-        GridLayout experimentLayout = new GridLayout(0, 1);
-        jPanelAdv.setLayout(experimentLayout);
-        jPanelAdvCost.setLayout(experimentLayout);
+        GridLayout Default = new GridLayout(0, 1);
+        GridLayout LangLayout = new GridLayout(0, 3);
+        jPanelAdv.setLayout(Default);
+        jPanelAdvCost.setLayout(Default);
         for (int i = 0; i < advlab.length; i++) {
             jPanelAdv.add(advlab[i] = new JLabel());
             jPanelAdvCost.add(advcost[i] = new JLabel());
         }
-        jPanelDis.setLayout(experimentLayout);
-        jPanelDisCost.setLayout(experimentLayout);
+        jPanelDis.setLayout(Default);
+        jPanelDisCost.setLayout(Default);
         for (int i = 0; i < advlab.length; i++) {
             jPanelDis.add(dislab[i] = new JLabel());
             jPanelDisCost.add(discost[i] = new JLabel());
+        }
+        jPanelLang.setLayout(Default);
+        jPanelLangSpokWrit.setLayout(LangLayout);
+        jPanelLangCost.setLayout(Default);
+        for (int i = 0; i < lang.length; i++) {
+            jPanelLang.add(lang[i] = new JLabel());
+            jPanelLangSpokWrit.add(langspok[i] = new JLabel());
+            jPanelLangSpokWrit.add(langspacer[i] = new JLabel());
+            jPanelLangSpokWrit.add(langwrit[i] = new JLabel());
+            jPanelLangCost.add(langcost[i] = new JLabel());
         }
     }
 
@@ -1211,11 +1185,11 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JLabel SheetBG;
     private javax.swing.JButton jButtonAddPoints;
     private javax.swing.JButton jButtonAdvAdd;
-    private javax.swing.JButton jButtonAdvAdd1;
     private javax.swing.JButton jButtonAdvRemove;
-    private javax.swing.JButton jButtonAdvRemove1;
     private javax.swing.JButton jButtonDisAdd;
     private javax.swing.JButton jButtonDisRemove;
+    private javax.swing.JButton jButtonLangAdd;
+    private javax.swing.JButton jButtonLangRemove;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1248,22 +1222,6 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelHTCost;
     private javax.swing.JLabel jLabelHeight;
     private javax.swing.JLabel jLabelIQCost;
-    private javax.swing.JLabel jLabelLang1;
-    private javax.swing.JLabel jLabelLang2;
-    private javax.swing.JLabel jLabelLang3;
-    private javax.swing.JLabel jLabelLang4;
-    private javax.swing.JLabel jLabelLangCost1;
-    private javax.swing.JLabel jLabelLangCost2;
-    private javax.swing.JLabel jLabelLangCost3;
-    private javax.swing.JLabel jLabelLangCost4;
-    private javax.swing.JLabel jLabelLangSpoken1;
-    private javax.swing.JLabel jLabelLangSpoken2;
-    private javax.swing.JLabel jLabelLangSpoken3;
-    private javax.swing.JLabel jLabelLangSpoken4;
-    private javax.swing.JLabel jLabelLangWritten1;
-    private javax.swing.JLabel jLabelLangWritten2;
-    private javax.swing.JLabel jLabelLangWritten3;
-    private javax.swing.JLabel jLabelLangWritten4;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelPerCost;
     private javax.swing.JLabel jLabelPlayerName;
@@ -1288,6 +1246,9 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelDis;
     private javax.swing.JPanel jPanelDisCost;
     private javax.swing.JPanel jPanelInventory;
+    private javax.swing.JPanel jPanelLang;
+    private javax.swing.JPanel jPanelLangCost;
+    private javax.swing.JPanel jPanelLangSpokWrit;
     private javax.swing.JPanel jPanelReputation;
     private javax.swing.JPanel jPanelSheet;
     private javax.swing.JScrollPane jScrollPaneDetails;

@@ -1,6 +1,10 @@
 package discworldgurps.details;
 
+import static discworldgurps.Sheet.advCount;
+import static discworldgurps.Sheet.disCount;
+import discworldgurps.data.Advantages;
 import discworldgurps.data.DataLoader;
+import discworldgurps.data.Disadvantages;
 import discworldgurps.data.Talents;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -10,9 +14,103 @@ public class Details {
     private boolean result = false;
     public String ad;
     private String desc, cost;
+    private String lang, langSpok, langWrit;
     DataLoader DL = new DataLoader();
 
-    public void run(String string, String ad) {
+    public void runAdvantages() {
+        DL.LoadAdv();
+        JComboBox adv = new JComboBox();
+        adv.removeAllItems();
+        for (Advantages s : DL.getAdvantages()) {
+            adv.addItem(s);
+        }
+        int add = JOptionPane.showConfirmDialog(null, adv, "Which Advantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        try {
+            if (add == 0) {
+                advCount++;
+                int i = adv.getSelectedIndex();
+                if ("D".equals(DL.getAdvantages().get(i).getCost())) {
+                    runDetails(DL.getAdvantages().get(i).getName(), "a");
+                    if (result == true) {
+                        desc = getDesc();
+                        cost = getCost();
+                    } else {
+                        advCount--;
+                    }
+                } else {
+                    if ("1".equals(DL.getAdvantages().get(i).getLvl())) {
+                        String lvl = JOptionPane.showInputDialog("What level?", "1");
+                        if (lvl != null && !"".equals(lvl)) {
+                            int cost = Integer.parseInt(DL.getAdvantages().get(i).getCost()) * Integer.parseInt(lvl);
+                            desc = String.format("%s (Level %s)", DL.getAdvantages().get(i).getName(), lvl);
+                            this.cost = Integer.toString(cost);
+                        } else {
+                            advCount--;
+                        }
+                    } else {
+                        desc = DL.getAdvantages().get(i).getName();
+                        cost = DL.getAdvantages().get(i).getCost();
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void runDisadvantages() {
+        DL.LoadDis();
+        JComboBox dis = new JComboBox();
+        dis.removeAllItems();
+        for (Disadvantages s : DL.getDisadvantages()) {
+            dis.addItem(s);
+        }
+        int add = JOptionPane.showConfirmDialog(null, dis, "Which Disadvantage?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        try {
+            if (add == 0) {
+                disCount++;
+                int i = dis.getSelectedIndex();
+                if ("D".equals(DL.getDisadvantages().get(i).getCost())) {
+                    runDetails(DL.getDisadvantages().get(i).getName(), "d");
+                    if (result == true) {
+                        desc = getDesc();
+                        cost = getCost();
+                    } else {
+                        disCount--;
+                    }
+                } else {
+                    if ("1".equals(DL.getDisadvantages().get(i).getLvl())) {
+                        String lvl = JOptionPane.showInputDialog("What level?", "1");
+                        int cost = Integer.parseInt(DL.getDisadvantages().get(i).getCost()) * Integer.parseInt(lvl);
+                        desc = String.format("%s (Level %s)", DL.getDisadvantages().get(i).getName(), lvl);
+                        this.cost = Integer.toString(cost);
+                    } else {
+                        desc = DL.getDisadvantages().get(i).getName();
+                        cost = DL.getDisadvantages().get(i).getCost();
+                    }
+                }
+            }
+        } catch (Exception ex) {
+        }
+    }
+    
+    public void runLang() {
+        Lang lang = new Lang(null, true);
+        lang.setModal(true);
+        lang.setLocationRelativeTo(null);
+        lang.setVisible(true);
+        if (lang.closed != 1) {
+            this.lang = lang.getLang();
+            langSpok = lang.getLangSpok();
+            langWrit = lang.getLangWrit();
+            cost = lang.getCost();
+            result = true;
+        } else {
+            result = false;
+        }
+    }
+
+    public void runDetails(String string, String ad) {
         this.ad = ad;
         if (null != string) {
             switch (string) {
@@ -86,7 +184,6 @@ public class Details {
         } else {
             result = false;
         }
-
     }
 
     private void Congregation() {
@@ -153,7 +250,7 @@ public class Details {
         }
     }
 
-    public void UnusualBackground() {
+    private void UnusualBackground() {
         UnusualBackground ub = new UnusualBackground(null, true);
         ub.setModal(true);
         ub.setLocationRelativeTo(null);
@@ -181,6 +278,18 @@ public class Details {
 
     public String getAd() {
         return ad;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public String getLangSpok() {
+        return langSpok;
+    }
+
+    public String getLangWrit() {
+        return langWrit;
     }
 
 }
