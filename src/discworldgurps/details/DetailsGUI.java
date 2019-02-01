@@ -5,27 +5,35 @@
  */
 package discworldgurps.details;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mageg
  */
-public class OtherDetails extends javax.swing.JDialog {
+public class DetailsGUI extends javax.swing.JDialog {
 
-//    private int a, b;
     private double a, b, c;
     private int cost;
     private String desc;
     private static String string;
+    private static String ad;
 
     public int closed = 0;
 
     /**
-     * Creates new form Contacts
+     * Creates new DetailsGUI. Default set-up is Contact
+     *
+     * @param parent
+     * @param modal
+     * @param string The ad/dis name
+     * @param ad Whether it's an ad or dis
      */
-    public OtherDetails(java.awt.Frame parent, boolean modal, String string) {
+    public DetailsGUI(java.awt.Frame parent, boolean modal, String string, String ad) {
         super(parent, modal);
         initComponents();
         this.string = string;
+        this.ad = ad;
         Switch();
     }
 
@@ -49,6 +57,9 @@ public class OtherDetails extends javax.swing.JDialog {
         jButtonAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(null);
+        setMinimumSize(null);
+        setPreferredSize(new java.awt.Dimension(500, 200));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -109,23 +120,21 @@ public class OtherDetails extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jTextFieldDesc)
                     .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabelA, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxC, 0, 123, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxC, 0, 123, Short.MAX_VALUE)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -155,11 +164,11 @@ public class OtherDetails extends javax.swing.JDialog {
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         switch (string) {
+            case "Reputation":
+                Reputation();
+                break;
             case "Congregation":
                 Congregation();
-                break;
-            case "Contact":
-                Contact();
                 break;
             case "Patron":
                 Patron();
@@ -171,9 +180,14 @@ public class OtherDetails extends javax.swing.JDialog {
                 Enemies();
                 break;
             default:
+                Contact();
                 break;
         }
-        dispose();
+        if ("".equals(jTextFieldDesc.getText())) {
+            JOptionPane.showMessageDialog(null, "You didn't enter a description!", "You silly goose!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+        }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -186,6 +200,24 @@ public class OtherDetails extends javax.swing.JDialog {
 
     private void Switch() {
         switch (string) {
+            case "Reputation":
+                jLabelA.setText("Reputation Level");
+                jComboBoxA.removeAllItems();
+                jComboBoxA.addItem("Reputation + 1");
+                jComboBoxA.addItem("Reputation + 2");
+                jComboBoxA.addItem("Reputation + 3");
+                jComboBoxA.addItem("Reputation + 4");
+                jLabelB.setText("People Affected");
+                jComboBoxB.removeAllItems();
+                jComboBoxB.addItem("Almost Everyone");
+                jComboBoxB.addItem("AE except a Large Class");
+                jComboBoxB.addItem("Large Class");
+                jComboBoxB.addItem("Small Class");
+                jComboBoxC.removeAllItems();
+                jComboBoxC.addItem("All The Time");
+                jComboBoxC.addItem("Occasionally");
+                jComboBoxC.addItem("Sometimes");
+                break;
             case "Congregation":
                 jLabelA.setText("Congregation Size");
                 jComboBoxA.removeAllItems();
@@ -194,9 +226,6 @@ public class OtherDetails extends javax.swing.JDialog {
                 jComboBoxA.addItem("Large (Up to 100)");
                 jComboBoxB.setVisible(false);
                 jLabelB.setVisible(false);
-                break;
-            case "Contact":
-                // This is the default for the frame
                 break;
             case "Patron":
                 jLabelA.setText("Patron Power");
@@ -242,6 +271,72 @@ public class OtherDetails extends javax.swing.JDialog {
         }
     }
 
+    private void Reputation() {
+        String repMod = "1";
+        switch (jComboBoxA.getSelectedIndex()) {
+            case 0:
+                a = 5;
+                repMod = "1";
+                break;
+            case 1:
+                a = 10;
+                repMod = "2";
+                break;
+            case 2:
+                a = 15;
+                repMod = "3";
+                break;
+            case 3:
+                a = 20;
+                repMod = "4";
+                break;
+            default:
+                break;
+        }
+        switch (jComboBoxB.getSelectedIndex()) {
+            case 0:
+                b = 1;
+                break;
+            case 1:
+                b = 0.67;
+                break;
+            case 2:
+                b = 0.5;
+                break;
+            case 3:
+                b = 0.34;
+                break;
+            default:
+                break;
+        }
+        switch (jComboBoxC.getSelectedIndex()) {
+            case 0:
+                c = 1;
+                break;
+            case 1:
+                c = 0.5;
+                break;
+            case 2:
+                c = 0.34;
+                break;
+            default:
+                break;
+        }
+        if ("d".equals(this.ad)) {
+            cost = (int) ((-a * b) * c);
+            if (cost > -1) {
+                cost = -1;
+            }
+            desc = String.format("Rep: %s (Mod: -%s | Freq: %s)", jTextFieldDesc.getText(), repMod, jComboBoxC.getSelectedItem().toString());
+        } else {
+            cost = (int) ((a * b) * c);
+            if (cost < 1) {
+                cost = 1;
+            }
+            desc = String.format("Rep: %s (Mod: +%s | Freq: %s)", jTextFieldDesc.getText(), repMod, jComboBoxC.getSelectedItem().toString());
+        }
+    }
+
     private void Congregation() {
         switch (jComboBoxA.getSelectedIndex()) {
             case 0:
@@ -272,6 +367,7 @@ public class OtherDetails extends javax.swing.JDialog {
             default:
                 break;
         }
+
         cost = (int) (a * c);
         desc = String.format("Cong: %s (%s appears on %s)", jTextFieldDesc.getText(), jComboBoxA.getSelectedItem(), jComboBoxC.getSelectedItem());
     }
@@ -506,14 +602,18 @@ public class OtherDetails extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OtherDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OtherDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OtherDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OtherDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailsGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -522,7 +622,7 @@ public class OtherDetails extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                OtherDetails dialog = new OtherDetails(new javax.swing.JFrame(), true, string);
+                DetailsGUI dialog = new DetailsGUI(new javax.swing.JFrame(), true, string, ad);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

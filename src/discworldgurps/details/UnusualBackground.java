@@ -14,15 +14,17 @@ import javax.swing.JOptionPane;
 public class UnusualBackground extends javax.swing.JDialog {
 
     public int closed = 0;
+    private static String ad;
 
     private String ubDesc, ubCost;
 
     /**
      * Creates new form UnusualBackground
      */
-    public UnusualBackground(java.awt.Frame parent, boolean modal) {
+    public UnusualBackground(java.awt.Frame parent, boolean modal, String ad) {
         super(parent, modal);
         initComponents();
+        this.ad = ad;
     }
 
     /**
@@ -103,12 +105,25 @@ public class UnusualBackground extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonUBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUBAddActionPerformed
-        if (Integer.parseInt(jTextFieldUBCost.getText()) > 0) {
-            ubDesc = jTextFieldUBDesc.getText();
-            ubCost = jTextFieldUBCost.getText();
-            dispose();
+        if ("".equals(jTextFieldUBDesc.getText())) {
+            JOptionPane.showMessageDialog(null, "You didn't enter a description!", "You silly goose!", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "The cost needs to be positive", "That's a Disadvantage!", JOptionPane.ERROR_MESSAGE);
+            if ("a".equals(this.ad)) {
+                if (Integer.parseInt(jTextFieldUBCost.getText()) > 0) {
+                    ubDesc = jTextFieldUBDesc.getText();
+                    ubCost = jTextFieldUBCost.getText();
+                } else {
+                    JOptionPane.showMessageDialog(null, "The cost needs to be positive", "That's a Disadvantage!", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                if (Integer.parseInt(jTextFieldUBCost.getText()) < 0) {
+                    ubDesc = jTextFieldUBDesc.getText();
+                    ubCost = jTextFieldUBCost.getText();
+                } else {
+                    JOptionPane.showMessageDialog(null, "The cost needs to be negative", "That's an Advantage!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            dispose();
         }
 
 
@@ -160,7 +175,7 @@ public class UnusualBackground extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                UnusualBackground dialog = new UnusualBackground(new javax.swing.JFrame(), true);
+                UnusualBackground dialog = new UnusualBackground(new javax.swing.JFrame(), true, ad);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

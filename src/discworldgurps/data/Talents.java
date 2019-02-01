@@ -28,7 +28,7 @@ public class Talents {
 
     @Override
     public String toString() {
-        return String.format("%s : %s points", name,cost);
+        return String.format("%s : %s points per lvl", name,cost);
     }
 
 }

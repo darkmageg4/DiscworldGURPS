@@ -17,6 +17,9 @@ public class Details {
     private String lang, langSpok, langWrit;
     DataLoader DL = new DataLoader();
 
+    /**
+     * Runs the advantages pop up
+     */
     public void runAdvantages() {
         DL.LoadAdv();
         JComboBox adv = new JComboBox();
@@ -59,6 +62,9 @@ public class Details {
         }
     }
 
+    /**
+     * Runs the disadvantages pop up
+     */
     public void runDisadvantages() {
         DL.LoadDis();
         JComboBox dis = new JComboBox();
@@ -96,6 +102,9 @@ public class Details {
         }
     }
 
+    /**
+     * Runs the Lang.java pop up
+     */
     public void runLang() {
         Lang lang = new Lang(null, true);
         lang.setModal(true);
@@ -112,23 +121,17 @@ public class Details {
         }
     }
 
+    /**
+     * Runs the appropriate pop up for the ad/dis selected
+     *
+     * @param string The advantage or disadvantage name
+     * @param ad Whether it's an advantage or disadvantage
+     */
     public void runDetails(String string, String ad) {
         this.ad = ad;
         if (null != string) {
             switch (string) {
                 // Advantages
-                case "Reputation":
-                    Reputation();
-                    break;
-                case "Congregation":
-                    OtherDetails(string);
-                    break;
-                case "Contacts":
-                    OtherDetails(string);
-                    break;
-                case "Patron":
-                    OtherDetails(string);
-                    break;
                 case "Lifting ST":
                     // TO DO
                     break;
@@ -136,18 +139,12 @@ public class Details {
                     Talents();
                     break;
                 case "Unusual Background":
-                    UnusualBackground();
+                    UnusualBackground(ad);
                     break;
                 case "Voice Of Command":
                     //TO DO
                     break;
                 // Disadvantages
-                case "Dependents":
-                    OtherDetails(string);
-                    break;
-                case "Enemies":
-                    OtherDetails(string);
-                    break;
                 case "Duty":
                     //TO DO
                     break;
@@ -155,7 +152,7 @@ public class Details {
                     //TO DO
                     break;
                 case "Physical Problems":
-                    //TO DO
+                    UnusualBackground(ad);
                     break;
                 case "Poor Impulse Control":
                     //TO DO
@@ -164,32 +161,14 @@ public class Details {
                     //TO DO
                     break;
                 default:
+                    DetailsGUI(string, ad);
                     break;
             }
         }
     }
 
-    /**
-     * Opens Rep pop up
-     *
-     * @return result
-     */
-    private void Reputation() {
-        Reputation rep = new Reputation(null, true, this.ad);
-        rep.setModal(true);
-        rep.setLocationRelativeTo(null);
-        rep.setVisible(true);
-        if (rep.closed != 1) {
-            desc = rep.getRepDesc();
-            cost = rep.getRepCost();
-            result = true;
-        } else {
-            result = false;
-        }
-    }
-
-    private void OtherDetails(String string) {
-        OtherDetails od = new OtherDetails(null, true, string);
+    private void DetailsGUI(String string, String ad) {
+        DetailsGUI od = new DetailsGUI(null, true, string, ad);
         od.setModal(true);
         od.setLocationRelativeTo(null);
         od.setVisible(true);
@@ -213,8 +192,10 @@ public class Details {
         try {
             if (add == 0) {
                 int i = tal.getSelectedIndex();
-                desc = String.format("Talent: %s", DL.getTalents().get(i).getName());
-                cost = DL.getTalents().get(i).getCost();
+
+                String lvl = JOptionPane.showInputDialog("What level?", "1");
+                cost = Integer.toString(Integer.parseInt(DL.getTalents().get(i).getCost()) * Integer.parseInt(lvl));
+                desc = String.format("Talent: %s (lvl %s)", DL.getTalents().get(i).getName(), lvl);
                 result = true;
             } else {
                 result = false;
@@ -224,8 +205,8 @@ public class Details {
         }
     }
 
-    private void UnusualBackground() {
-        UnusualBackground ub = new UnusualBackground(null, true);
+    private void UnusualBackground(String ad) {
+        UnusualBackground ub = new UnusualBackground(null, true, ad);
         ub.setModal(true);
         ub.setLocationRelativeTo(null);
         ub.setVisible(true);
