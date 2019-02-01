@@ -40,6 +40,7 @@ public class Sheet extends javax.swing.JFrame {
     public static int advCount = -1;
     public static int disCount = -1;
     public static int langCount = -1;
+    public static int skillsCount = -1;
     private JLabel[] advlab = new JLabel[10];
     private JLabel[] advcost = new JLabel[10];
     private JLabel[] dislab = new JLabel[10];
@@ -49,6 +50,10 @@ public class Sheet extends javax.swing.JFrame {
     private JLabel[] langwrit = new JLabel[4];
     private JLabel[] langcost = new JLabel[4];
     private JLabel[] langspacer = new JLabel[4];
+    private JLabel[] skills = new JLabel[23];
+    private JLabel[] skillsLvl = new JLabel[23];
+    private JLabel[] skillsRelLvl = new JLabel[23];
+    private JLabel[] skillsCost = new JLabel[23];
 
     int Rep = 0;
 
@@ -192,6 +197,13 @@ public class Sheet extends javax.swing.JFrame {
         jPanelLang = new javax.swing.JPanel();
         jPanelLangSpokWrit = new javax.swing.JPanel();
         jPanelLangCost = new javax.swing.JPanel();
+        jPanelSkills = new javax.swing.JPanel();
+        jPanelSkillsLvl = new javax.swing.JPanel();
+        jPanelSkillsRelLvl = new javax.swing.JPanel();
+        jPanelSkillsCost = new javax.swing.JPanel();
+        jButtonSkillsAdd = new javax.swing.JButton();
+        jButtonSkillsRemove = new javax.swing.JButton();
+        jLabelSkillsTotal = new javax.swing.JLabel();
         SheetBG = new javax.swing.JLabel();
         jScrollPaneDetails = new javax.swing.JScrollPane();
         jPanelDetails = new javax.swing.JPanel();
@@ -211,7 +223,6 @@ public class Sheet extends javax.swing.JFrame {
         jMenuItemNew = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         setResizable(false);
 
         jScrollPaneSheet.setMaximumSize(null);
@@ -464,6 +475,7 @@ public class Sheet extends javax.swing.JFrame {
         jPanelSheet.add(jLabelSwing, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 60, 20));
 
         jButtonAdvAdd.setText("Add");
+        jButtonAdvAdd.setFocusable(false);
         jButtonAdvAdd.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonAdvAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -473,6 +485,7 @@ public class Sheet extends javax.swing.JFrame {
         jPanelSheet.add(jButtonAdvAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 640, 60, 20));
 
         jButtonAdvRemove.setText("Rem");
+        jButtonAdvRemove.setFocusable(false);
         jButtonAdvRemove.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonAdvRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,6 +508,7 @@ public class Sheet extends javax.swing.JFrame {
         jPanelSheet.add(jLabelAdvTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 940, 50, 20));
 
         jButtonDisAdd.setText("Add");
+        jButtonDisAdd.setFocusable(false);
         jButtonDisAdd.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonDisAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -504,6 +518,7 @@ public class Sheet extends javax.swing.JFrame {
         jPanelSheet.add(jButtonDisAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 970, 60, 20));
 
         jButtonDisRemove.setText("Rem");
+        jButtonDisRemove.setFocusable(false);
         jButtonDisRemove.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonDisRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -524,6 +539,7 @@ public class Sheet extends javax.swing.JFrame {
         jPanelSheet.add(jLabelDisTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 1270, 40, 20));
 
         jButtonLangAdd.setText("Add");
+        jButtonLangAdd.setFocusable(false);
         jButtonLangAdd.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonLangAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -533,6 +549,7 @@ public class Sheet extends javax.swing.JFrame {
         jPanelSheet.add(jButtonLangAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 60, 20));
 
         jButtonLangRemove.setText("Rem");
+        jButtonLangRemove.setFocusable(false);
         jButtonLangRemove.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonLangRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -542,16 +559,101 @@ public class Sheet extends javax.swing.JFrame {
         jPanelSheet.add(jButtonLangRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 70, 20));
 
         jPanelLang.setOpaque(false);
-        jPanelLang.setLayout(new java.awt.GridLayout());
+        jPanelLang.setLayout(new java.awt.GridLayout(1, 0));
         jPanelSheet.add(jPanelLang, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 210, 100));
 
         jPanelLangSpokWrit.setOpaque(false);
-        jPanelLangSpokWrit.setLayout(new java.awt.GridLayout());
+        jPanelLangSpokWrit.setLayout(new java.awt.GridLayout(1, 0));
         jPanelSheet.add(jPanelLangSpokWrit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 170, 100));
 
         jPanelLangCost.setOpaque(false);
-        jPanelLangCost.setLayout(new java.awt.GridLayout());
+        jPanelLangCost.setLayout(new java.awt.GridLayout(1, 0));
         jPanelSheet.add(jPanelLangCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 20, 90));
+
+        jPanelSkills.setOpaque(false);
+
+        javax.swing.GroupLayout jPanelSkillsLayout = new javax.swing.GroupLayout(jPanelSkills);
+        jPanelSkills.setLayout(jPanelSkillsLayout);
+        jPanelSkillsLayout.setHorizontalGroup(
+            jPanelSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        jPanelSkillsLayout.setVerticalGroup(
+            jPanelSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+
+        jPanelSheet.add(jPanelSkills, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 690, 240, 630));
+
+        jPanelSkillsLvl.setOpaque(false);
+
+        javax.swing.GroupLayout jPanelSkillsLvlLayout = new javax.swing.GroupLayout(jPanelSkillsLvl);
+        jPanelSkillsLvl.setLayout(jPanelSkillsLvlLayout);
+        jPanelSkillsLvlLayout.setHorizontalGroup(
+            jPanelSkillsLvlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        jPanelSkillsLvlLayout.setVerticalGroup(
+            jPanelSkillsLvlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+
+        jPanelSheet.add(jPanelSkillsLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 690, 30, 630));
+
+        jPanelSkillsRelLvl.setOpaque(false);
+
+        javax.swing.GroupLayout jPanelSkillsRelLvlLayout = new javax.swing.GroupLayout(jPanelSkillsRelLvl);
+        jPanelSkillsRelLvl.setLayout(jPanelSkillsRelLvlLayout);
+        jPanelSkillsRelLvlLayout.setHorizontalGroup(
+            jPanelSkillsRelLvlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        jPanelSkillsRelLvlLayout.setVerticalGroup(
+            jPanelSkillsRelLvlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+
+        jPanelSheet.add(jPanelSkillsRelLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 690, 70, 630));
+
+        jPanelSkillsCost.setOpaque(false);
+
+        javax.swing.GroupLayout jPanelSkillsCostLayout = new javax.swing.GroupLayout(jPanelSkillsCost);
+        jPanelSkillsCost.setLayout(jPanelSkillsCostLayout);
+        jPanelSkillsCostLayout.setHorizontalGroup(
+            jPanelSkillsCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanelSkillsCostLayout.setVerticalGroup(
+            jPanelSkillsCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+
+        jPanelSheet.add(jPanelSkillsCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 690, 20, 630));
+
+        jButtonSkillsAdd.setText("Add");
+        jButtonSkillsAdd.setFocusable(false);
+        jButtonSkillsAdd.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonSkillsAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSkillsAddActionPerformed(evt);
+            }
+        });
+        jPanelSheet.add(jButtonSkillsAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 640, 60, 20));
+
+        jButtonSkillsRemove.setText("Rem");
+        jButtonSkillsRemove.setFocusable(false);
+        jButtonSkillsRemove.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonSkillsRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSkillsRemoveActionPerformed(evt);
+            }
+        });
+        jPanelSheet.add(jButtonSkillsRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 70, 20));
+
+        jLabelSkillsTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelSkillsTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSkillsTotal.setText("0");
+        jPanelSheet.add(jLabelSkillsTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 1325, 40, 20));
 
         SheetBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/discworldgurps/resources/CharacterSheet.jpg"))); // NOI18N
         SheetBG.setMaximumSize(null);
@@ -879,6 +981,75 @@ public class Sheet extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonLangRemoveActionPerformed
 
+    private void jButtonSkillsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkillsAddActionPerformed
+        if (skillsCount < 22) {
+            details.runSkills();
+            if (skillsCount != -1) {
+                skills[skillsCount].setText(details.getSkillName());
+                skillsRelLvl[skillsCount].setText(details.getSkillRelLvl());
+                skillsCost[skillsCount].setText(details.getCost());
+                Calc();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Skills Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonSkillsAddActionPerformed
+
+    private void jButtonSkillsRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkillsRemoveActionPerformed
+        int ra = -1;
+        JComboBox ski = new JComboBox();
+        ski.removeAllItems();
+        for (int r = 0; r < skills.length; r++) {
+            if (skills[r].getText() != "") {
+                ski.addItem(skills[r].getText());
+                ra++;
+            }
+        }
+        if (ra >= 0) {
+            int rem = JOptionPane.showConfirmDialog(null, ski, "Which Language?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+            try {
+                if (rem == 0) {
+                    int i = ski.getSelectedIndex();
+                    skills[i].setText("");
+                    skillsLvl[i].setText("");
+                    skillsRelLvl[i].setText("");
+                    skillsCost[i].setText("");
+                    skillsCount--;
+                    String[] t = new String[ra + 1];
+                    String[] tw = new String[ra + 1];
+                    String[] ts = new String[ra + 1];
+                    String[] tc = new String[ra + 1];
+                    int ta = 0;
+                    for (int s = ra; s >= 0; s--) {
+                        t[ta] = skills[s].getText();
+                        tw[ta] = skillsLvl[s].getText();
+                        ts[ta] = skillsRelLvl[s].getText();
+                        tc[ta] = skillsCost[s].getText();
+                        skills[s].setText("");
+                        skillsLvl[s].setText("");
+                        skillsRelLvl[s].setText("");
+                        skillsCost[s].setText("");
+                        ta++;
+                    }
+                    int ab = 0;
+                    for (int a = 0; a <= t.length; a++) {
+
+                        if (t[ta - 1] != "") {
+                            skills[ab].setText(t[ta - 1]);
+                            skillsLvl[ab].setText(tw[ta - 1]);
+                            skillsRelLvl[ab].setText(ts[ta - 1]);
+                            skillsCost[ab].setText(tc[ta - 1]);
+                            ab++;
+                        }
+                        ta--;
+                    }
+                }
+            } catch (Exception ex) {
+            }
+            Calc();
+        }
+    }//GEN-LAST:event_jButtonSkillsRemoveActionPerformed
+
     /**
      * Runs Start.java
      */
@@ -960,9 +1131,37 @@ public class Sheet extends javax.swing.JFrame {
                     dis[i] = dislab[i].getText();
                 }
                 for (int i = 0; i < discost.length; i++) {
-                    dis[i + 10] = dislab[i].getText();
+                    dis[i + 10] = discost[i].getText();
                 }
                 this.character.setDisadvantages(dis);
+                String[] lan = new String[16];
+                for (int i = 0; i < lang.length; i++) {
+                    lan[i] = lang[i].getText();
+                }
+                for (int i = 0; i < lang.length; i++) {
+                    lan[i + 4] = langspok[i].getText();
+                }
+                for (int i = 0; i < lang.length; i++) {
+                    lan[i + 8] = langwrit[i].getText();
+                }
+                for (int i = 0; i < lang.length; i++) {
+                    lan[i + 12] = langcost[i].getText();
+                }
+                this.character.setLang(lan);
+                String[] ski = new String[92];
+                for (int i = 0; i < skills.length; i++) {
+                    ski[i] = skills[i].getText();
+                }
+                for (int i = 0; i < skills.length; i++) {
+                    ski[i + 23] = skillsLvl[i].getText();
+                }
+                for (int i = 0; i < skills.length; i++) {
+                    ski[i + 46] = skillsRelLvl[i].getText();
+                }
+                for (int i = 0; i < skills.length; i++) {
+                    ski[i + 69] = skillsCost[i].getText();
+                }
+                this.character.setSkills(ski);
 
                 this.character.Save(file);
                 this.setTitle(file.getName());
@@ -1042,6 +1241,50 @@ public class Sheet extends javax.swing.JFrame {
                 discost[i].setText(this.character.getDisadvantages()[i + 10]);
             }
         }
+        langCount = -1;
+        for (int i = 0; i < lang.length; i++) {
+            if (!"".equals(this.character.getLang()[i]) && this.character.getLang()[i] != null) {
+                lang[i].setText(this.character.getLang()[i]);
+                langCount++;
+            }
+        }
+        for (int i = 0; i < lang.length; i++) {
+            if (!"".equals(this.character.getLang()[i + 4]) && this.character.getLang()[i + 4] != null) {
+                langspok[i].setText(this.character.getLang()[i + 4]);
+            }
+        }
+        for (int i = 0; i < lang.length; i++) {
+            if (!"".equals(this.character.getLang()[i + 8]) && this.character.getLang()[i + 8] != null) {
+                langwrit[i].setText(this.character.getLang()[i + 8]);
+            }
+        }
+        for (int i = 0; i < lang.length; i++) {
+            if (!"".equals(this.character.getLang()[i + 12]) && this.character.getLang()[i + 12] != null) {
+                langcost[i].setText(this.character.getLang()[i + 12]);
+            }
+        }
+        skillsCount = -1;
+        for (int i = 0; i < skills.length; i++) {
+            if (!"".equals(this.character.getSkills()[i]) && this.character.getSkills()[i] != null) {
+                skills[i].setText(this.character.getSkills()[i]);
+                skillsCount++;
+            }
+        }
+        for (int i = 0; i < skills.length; i++) {
+            if (!"".equals(this.character.getSkills()[i + 23]) && this.character.getSkills()[i + 23] != null) {
+                skillsLvl[i].setText(this.character.getSkills()[i + 23]);
+            }
+        }
+        for (int i = 0; i < skills.length; i++) {
+            if (!"".equals(this.character.getSkills()[i + 46]) && this.character.getSkills()[i + 46] != null) {
+                skillsRelLvl[i].setText(this.character.getSkills()[i + 46]);
+            }
+        }
+        for (int i = 0; i < skills.length; i++) {
+            if (!"".equals(this.character.getSkills()[i + 69]) && this.character.getSkills()[i + 69] != null) {
+                skillsCost[i].setText(this.character.getSkills()[i + 69]);
+            }
+        }
         Calc();
         this.setTitle(character.getName());
     }
@@ -1080,8 +1323,15 @@ public class Sheet extends javax.swing.JFrame {
                 lan = lan + j;
             }
         }
+        int ski = 0;
+        for (int i = 0; i < skills.length; i++) {
+            if ("" != skillsCost[i].getText()) {
+                int j = Integer.parseInt(skillsCost[i].getText());
+                ski = ski + j;
+            }
+        }
         StatCalc sc = new StatCalc(st, dx, iq, hp, ht, will, per, fp,
-                this.character.getHeight(), bs, bm, pu, tl, adv, dis, lan);
+                this.character.getHeight(), bs, bm, pu, tl, adv, dis, lan, ski);
         sc.Calc();
         jLabelSizeMod.setText(Integer.toString(sc.getSm()));
         jLabelSTCost.setText(Integer.toString(sc.getSpentST()));
@@ -1097,10 +1347,47 @@ public class Sheet extends javax.swing.JFrame {
         jLabelTLCost.setText(Integer.toString(sc.getSpentTL()));
         jLabelAdvTotal.setText(Integer.toString(adv));
         jLabelDisTotal.setText(Integer.toString(dis));
+        jLabelSkillsTotal.setText(Integer.toString(ski));
         jLabelPointsUnspent.setText(Integer.toString(sc.getPointsUnspent()));
         DL.LoadDamage();
         jLabelThrust.setText(DL.getDamage().get(Integer.parseInt(jTextFieldST.getText()) - 1).thrust());
         jLabelSwing.setText(DL.getDamage().get(Integer.parseInt(jTextFieldST.getText()) - 1).swing());
+        for (int i = 0; i < skills.length; i++) {
+            if (skillsRelLvl[i].getText() != null && skillsRelLvl[i].getText() != "") {
+                String skillA = skillsRelLvl[i].getText().substring(0, 2);
+                System.out.println(skillsRelLvl[i].getText().substring(0, 2));
+                int skillL;
+                if (skillsRelLvl[i].getText().contains("-")) {
+                    skillL = Integer.parseInt(skillsRelLvl[i].getText().substring(3));
+                } else {
+                    skillL = Integer.parseInt(skillsRelLvl[i].getText().substring(4));
+                }
+                int stat = 0;
+                switch (skillA) {
+                    case "ST":
+                        stat = Integer.parseInt(jTextFieldST.getText());
+                        break;
+                    case "DX":
+                        stat = Integer.parseInt(jTextFieldDX.getText());
+                        break;
+                    case "IQ":
+                        stat = Integer.parseInt(jTextFieldIQ.getText());
+                        break;
+                    case "HT":
+                        stat = Integer.parseInt(jTextFieldHT.getText());
+                        break;
+                    case "Will":
+                        stat = Integer.parseInt(jTextFieldWill.getText());
+                        break;
+                    case "Per":
+                        stat = Integer.parseInt(jTextFieldPer.getText());
+                        break;
+                }
+                System.out.println(stat);
+                System.out.println(skillL);
+                skillsLvl[i].setText(Integer.toString(stat + skillL));
+            }
+        }
         Encumberance();
     }
 
@@ -1150,6 +1437,16 @@ public class Sheet extends javax.swing.JFrame {
             jPanelLangSpokWrit.add(langwrit[i] = new JLabel());
             jPanelLangCost.add(langcost[i] = new JLabel());
         }
+        jPanelSkills.setLayout(Default);
+        jPanelSkillsLvl.setLayout(Default);
+        jPanelSkillsRelLvl.setLayout(Default);
+        jPanelSkillsCost.setLayout(Default);
+        for (int i = 0; i < skills.length; i++) {
+            jPanelSkills.add(skills[i] = new JLabel());
+            jPanelSkillsLvl.add(skillsLvl[i] = new JLabel());
+            jPanelSkillsRelLvl.add(skillsRelLvl[i] = new JLabel());
+            jPanelSkillsCost.add(skillsCost[i] = new JLabel());
+        }
     }
 
     /**
@@ -1198,6 +1495,8 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDisRemove;
     private javax.swing.JButton jButtonLangAdd;
     private javax.swing.JButton jButtonLangRemove;
+    private javax.swing.JButton jButtonSkillsAdd;
+    private javax.swing.JButton jButtonSkillsRemove;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1238,6 +1537,7 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelRepTitle;
     private javax.swing.JLabel jLabelSTCost;
     private javax.swing.JLabel jLabelSizeMod;
+    private javax.swing.JLabel jLabelSkillsTotal;
     private javax.swing.JLabel jLabelSwing;
     private javax.swing.JLabel jLabelTLCost;
     private javax.swing.JLabel jLabelThrust;
@@ -1259,6 +1559,10 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLangSpokWrit;
     private javax.swing.JPanel jPanelReputation;
     private javax.swing.JPanel jPanelSheet;
+    private javax.swing.JPanel jPanelSkills;
+    private javax.swing.JPanel jPanelSkillsCost;
+    private javax.swing.JPanel jPanelSkillsLvl;
+    private javax.swing.JPanel jPanelSkillsRelLvl;
     private javax.swing.JScrollPane jScrollPaneDetails;
     private javax.swing.JScrollPane jScrollPaneInventory;
     private javax.swing.JScrollPane jScrollPaneSheet;

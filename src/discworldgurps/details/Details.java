@@ -2,9 +2,11 @@ package discworldgurps.details;
 
 import static discworldgurps.Sheet.advCount;
 import static discworldgurps.Sheet.disCount;
+import static discworldgurps.Sheet.skillsCount;
 import discworldgurps.data.Advantages;
 import discworldgurps.data.DataLoader;
 import discworldgurps.data.Disadvantages;
+import discworldgurps.data.Skills;
 import discworldgurps.data.Talents;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -15,6 +17,10 @@ public class Details {
     public String ad;
     private String desc, cost;
     private String lang, langSpok, langWrit;
+    int[][] skillsArray = new int[4][14];
+    private String skillName, skillRelLvl, skillAtt;
+    private int skillLvlVal;
+
     DataLoader DL = new DataLoader();
 
     /**
@@ -121,6 +127,57 @@ public class Details {
         }
     }
 
+    public void runSkills() {
+        DL.LoadSkills();
+        JComboBox ski = new JComboBox();
+        ski.removeAllItems();
+        for (Skills s : DL.getSkills()) {
+            ski.addItem(s);
+        }
+        int add = JOptionPane.showConfirmDialog(null, ski, "Which Skill?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        try {
+            if (add == 0) {
+                skillsCount++;
+                SkillsArray();
+                int i = ski.getSelectedIndex();
+                String lvl = JOptionPane.showInputDialog("What level?", "0");
+                if (lvl != null && !"".equals(lvl)) {
+                    skillLvlVal = Integer.parseInt(lvl);
+                    int skillCost = 1;
+                    switch (DL.getSkills().get(i).getDiff()) {
+                        case "E":
+                            skillCost = skillsArray[0][3 + skillLvlVal];
+                            break;
+                        case "A":
+                            skillCost = skillsArray[1][3 + skillLvlVal];
+                            break;
+                        case "H":
+                            skillCost = skillsArray[2][3 + skillLvlVal];
+                            break;
+                        case "VH":
+                            skillCost = skillsArray[3][3 + skillLvlVal];
+                            break;
+                    }
+                    int cost = skillCost;
+                    skillName = String.format("%s (%s)", DL.getSkills().get(i).getName(), DL.getSkills().get(i).getDiff());
+                    if (skillLvlVal >= 0){
+                    skillRelLvl = String.format("%s +%s", DL.getSkills().get(i).getAtt(), lvl);
+                } else{
+                     skillRelLvl = String.format("%s %s", DL.getSkills().get(i).getAtt(), lvl);   
+                    }
+                    skillAtt = DL.getSkills().get(i).getAtt();
+                    this.cost = Integer.toString(cost);
+                } else {
+                    skillsCount--;
+
+                }
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * Runs the appropriate pop up for the ad/dis selected
      *
@@ -219,6 +276,16 @@ public class Details {
         }
     }
 
+    private void SkillsArray() {
+        int[][] skillsArrayBuild = {
+            {1, 1, 1, 1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36},
+            {1, 1, 1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40},
+            {1, 1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44},
+            {1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48}
+        };
+        this.skillsArray = skillsArrayBuild;
+    }
+
     public boolean isResult() {
         return result;
     }
@@ -245,6 +312,22 @@ public class Details {
 
     public String getLangWrit() {
         return langWrit;
+    }
+
+    public String getSkillName() {
+        return skillName;
+    }
+
+    public String getSkillRelLvl() {
+        return skillRelLvl;
+    }
+
+    public String getSkillAtt() {
+        return skillAtt;
+    }
+
+    public int getSkillLvlVal() {
+        return skillLvlVal;
     }
 
 }

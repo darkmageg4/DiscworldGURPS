@@ -1,0 +1,169 @@
+skill,att,diff
+Astronomy/TL,IQ,H
+Astrozoology,IQ,H
+History,IQ,H
+Literature,IQ,H
+Mathematics/TL,IQ,H
+Metallurgy/TL,IQ,H
+Natural Philosophy/TL,IQ,H
+Philosophy,IQ,H
+Acting,IQ,A
+Administration,IQ,A
+Alchemy/TL,IQ,VH
+Animal Handling,IQ,A
+Area Knowledge,IQ,E
+Artist,IQ,H
+Conducting,IQ,A
+Dancing,DX,A
+Directing,IQ,A
+Jeweller/TL,IQ,H
+Musical Composition,IQ,H
+Musical Instrument,IQ,H
+Performance,IQ,A
+Poetry,IQ,A
+Singing,HT,E
+Body Language,Per,A
+Camouflage,IQ,E
+Carousing,HT,E
+Computer Programming,IQ,H
+Connoisseur,IQ,A
+Criminology/TL,IQ,A
+Cryptography/TL,IQ,H
+Current Affairs/TL,IQ,E
+Detect Lies,Per,H
+Disguise/TL,IQ,A
+Engineer/TL,IQ,H
+Escape,DX,H
+Fast-Draw,DX,E
+Fishing,Per,E
+Fortune-Telling,IQ,A
+Gambling,IQ,A
+Games,IQ,E
+Sports,DX,A
+Artillery/TL,IQ,A
+Gunner/TL,DX,E
+Hobby(DX),DX,E
+Hobby(IQ),IQ,E
+Housekeeping,IQ,E
+Gesture,IQ,E
+Shouting at Foreigners,IQ,E
+Diplomacy,IQ,H
+Fast-Talk,IQ,A
+Intimidation,Will,A
+Savoir-Faire,IQ,E
+Sex Appeal,HT,A
+Streetwise,IQ,A
+Interrogation,IQ,A
+Knot-Tying,DX,E
+Heraldry,IQ,A
+Hidden Lore,IQ,A
+Occultism,IQ,A
+Sacred Texts,IQ,A
+Counterfeiting/TL,IQ,H
+Filch,DX,A
+Forced Entry,DX,E
+Forgery/TL,IQ,H
+Holdout,IQ,A
+Lockpicking/TL,IQ,A
+Pickpocket,DX,H
+Smuggling,IQ,A
+Law,IQ,H
+Leadership,IQ,A
+Magic,IQ,VH
+Magical Forms,IQ,VH
+Diagnosis/TL,IQ,H
+First Aid/TL,IQ,E
+Herbalism,IQ,H
+Midwifery,IQ,A
+Physician/TL,IQ,H
+Surgery/TL,IQ,VH
+Veterinary/TL,IQ,H
+Rapier,DX,A
+Flail,DX,H
+Axe/Mace,DX,A
+Two-Handed Axe/Mace,DX,A
+Polearm,DX,A
+Spear,DX,A
+Staff,DX,A
+Broadsword,DX,A
+Knife,DX,E
+Shortsword,DX,A
+Two-Handed Sword,DX,A
+Merchant,IQ,A
+Mimicry,IQ,H
+Blowpipe,DX,H
+Bow,DX,A
+Crossbow,DX,E
+Guns/TL,DX,E
+Innate Attack,DX,E
+Sling,DX,H
+Throwing,DX,A
+Thrown Weapon,DX,E
+Mount,DX,A
+Acrobatics,DX,H
+Aerobatics,DX,H
+Climbing,DX,A
+Hiking,HT,A
+Jumping,DX,E
+Running,HT,A
+Swimming,HT,E
+Naturalist,IQ,H
+Navigation/TL,IQ,A
+Observation,Per,A
+Intelligence Analysis/TL,IQ,H
+Strategy,IQ,H
+Tactics,IQ,H
+Photography,IQ,A
+Poisons/TL,IQ,H
+Politics,IQ,A
+Accounting,IQ,H
+Architecture/TL,IQ,A
+Carpentry,IQ,E
+Cartography,IQ,A
+Finance,IQ,H
+Fool's Lore,IQ,A
+Gardening,IQ,E
+Packing,IQ,A
+Panhandling,IQ,E
+Printing/TL,IQ,A
+Seamanship/TL,IQ,E
+Smith/TL,IQ,A
+Telegraphy/TL,IQ,E
+Profession(Other),IQ,A
+Propaganda/TL,IQ,A
+Prospecting/TL,IQ,A
+Psychology,IQ,H
+Public Speaking,IQ,A
+Religious Ritual,IQ,H
+Armoury/TL,IQ,A
+Mechanic/TL,IQ,A
+Research/TL,IQ,A
+Riding,DX,A
+Scrounging,Per,E
+Search,Per,A
+Sewing/TL,DX,E
+Shadowing,IQ,A
+Sheild,DX,E
+Shiphandling/TL,IQ,H
+Sleight Of Hand,DX,H
+Soldier/TL,IQ,A
+Stealth,DX,A
+Survival,Per,A
+Teaching,IQ,A
+Thaumatology,IQ,VH
+Theology,IQ,H
+Tracking,Per,A
+Traps/TL,IQ,A
+Boxing,DX,A
+Brawling,DX,E
+Judo,DX,H
+Karate,DX,H
+Wrestling,DX,A
+Boating/TL,DX,A
+Teamster,IQ,A
+Bicycling,DX,E
+Driving,DX,A
+Piloting,DX,A
+Submarine,DX,A
+Weather Sense/TL,IQ,A
+Writing,IQ,A

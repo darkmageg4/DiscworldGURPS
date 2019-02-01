@@ -13,6 +13,7 @@ public class DataLoader {
     ArrayList<Armour> armour = new ArrayList<>();
     ArrayList<WeaponsMelee> wepmel = new ArrayList<>();
     ArrayList<Talents> talents = new ArrayList<>();
+    ArrayList<Skills> skills = new ArrayList<>();
 
     /**
      * Loads in the Damage.csv which gives the damage values
@@ -87,6 +88,22 @@ public class DataLoader {
 //        }
     }
 
+    public void LoadSkills() {
+        try {
+            load.reader("./src/discworldgurps/resources/skills.csv");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Collections.sort(load.tmp, new ItemComparator());
+        for (ItemLoader il : load.tmp) {
+            skills.add(new Skills(il.a, il.b, il.c));
+        }
+//        load.tmp.clear();
+//        for (Skills a : skills) {
+//            System.out.println(a);
+//        }
+    }
+
     /**
      * Loads the armour
      */
@@ -157,6 +174,10 @@ public class DataLoader {
 
     public ArrayList<Disadvantages> getDisadvantages() {
         return disadvantages;
+    }
+
+    public ArrayList<Skills> getSkills() {
+        return skills;
     }
 
 }

@@ -24,7 +24,7 @@ public class Character implements Serializable {
     private double bs;
     private int bm;
     private int tl;
-    private String[] advantages, disadvantages;
+    private String[] advantages, disadvantages, lang, skills;
 
     /**
      * Default values
@@ -53,6 +53,8 @@ public class Character implements Serializable {
         this.tl = 4;
         this.advantages = new String[20];
         this.disadvantages = new String[20];
+        this.lang = new String[16];
+        this.skills = new String[92];
     }
 
     public Character(String name, String playerName, int points, double height, int weight,
@@ -81,6 +83,8 @@ public class Character implements Serializable {
         this.tl = tl;
         this.advantages = new String[20];
         this.disadvantages = new String[20];
+        this.lang = new String[16];
+        this.skills = new String[92];
     }
 
     public String getName() {
@@ -278,6 +282,24 @@ public class Character implements Serializable {
         this.disadvantages = disadvantages;
     }
 
+    public String[] getLang() {
+        return lang;
+    }
+
+    public void setLang(String[] lang) {
+        this.lang = lang;
+    }
+
+    public String[] getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String[] skills) {
+        this.skills = skills;
+    }
+    
+    
+
     /**
      * Saves the current character
      *
@@ -329,6 +351,8 @@ public class Character implements Serializable {
             this.bm = tmp.getBm();
             this.advantages = tmp.getAdvantages();
             this.disadvantages = tmp.getDisadvantages();
+            this.lang = tmp.getLang();
+            this.skills = tmp.getSkills();
         } catch (EOFException ex) {
             ex.printStackTrace();
         }
