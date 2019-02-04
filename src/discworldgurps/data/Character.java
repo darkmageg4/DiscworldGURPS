@@ -24,7 +24,8 @@ public class Character implements Serializable {
     private double bs;
     private int bm;
     private int tl;
-    private String[] advantages, disadvantages, lang, skills;
+    private String[] advantages, disadvantages, lang, culture, skills;
+    private String charNotes, otherNotes;
 
     /**
      * Default values
@@ -54,7 +55,9 @@ public class Character implements Serializable {
         this.advantages = new String[20];
         this.disadvantages = new String[20];
         this.lang = new String[16];
+        this.culture = new String[6];
         this.skills = new String[92];
+        this.charNotes = "";
     }
 
     public Character(String name, String playerName, int points, double height, int weight,
@@ -83,8 +86,10 @@ public class Character implements Serializable {
         this.tl = tl;
         this.advantages = new String[20];
         this.disadvantages = new String[20];
-        this.lang = new String[16];
-        this.skills = new String[92];
+        this.lang = lang;
+        this.culture = culture;
+        this.skills = skills;
+        this.charNotes = charNotes;
     }
 
     public String getName() {
@@ -290,6 +295,14 @@ public class Character implements Serializable {
         this.lang = lang;
     }
 
+    public String[] getCulture() {
+        return culture;
+    }
+
+    public void setCulture(String[] culture) {
+        this.culture = culture;
+    }
+
     public String[] getSkills() {
         return skills;
     }
@@ -297,8 +310,22 @@ public class Character implements Serializable {
     public void setSkills(String[] skills) {
         this.skills = skills;
     }
-    
-    
+
+    public String getCharNotes() {
+        return charNotes;
+    }
+
+    public void setCharNotes(String charNotes) {
+        this.charNotes = charNotes;
+    }
+
+    public String getOtherNotes() {
+        return otherNotes;
+    }
+
+    public void setOtherNotes(String otherNotes) {
+        this.otherNotes = otherNotes;
+    }
 
     /**
      * Saves the current character
@@ -352,7 +379,10 @@ public class Character implements Serializable {
             this.advantages = tmp.getAdvantages();
             this.disadvantages = tmp.getDisadvantages();
             this.lang = tmp.getLang();
+            this.culture = tmp.getCulture();
             this.skills = tmp.getSkills();
+            this.charNotes = tmp.getCharNotes();
+            this.otherNotes = tmp.getOtherNotes();
         } catch (EOFException ex) {
             ex.printStackTrace();
         }

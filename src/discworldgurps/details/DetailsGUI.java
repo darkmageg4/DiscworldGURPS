@@ -34,7 +34,7 @@ public class DetailsGUI extends javax.swing.JDialog {
         initComponents();
         this.string = string;
         this.ad = ad;
-        Switch();
+        Switch(ad);
     }
 
     /**
@@ -198,15 +198,23 @@ public class DetailsGUI extends javax.swing.JDialog {
         closed = 1;
     }//GEN-LAST:event_formWindowClosing
 
-    private void Switch() {
+    private void Switch(String ad) {
         switch (string) {
             case "Reputation":
                 jLabelA.setText("Reputation Level");
                 jComboBoxA.removeAllItems();
+                if ("a".equals(ad)){
                 jComboBoxA.addItem("Reputation + 1");
                 jComboBoxA.addItem("Reputation + 2");
                 jComboBoxA.addItem("Reputation + 3");
                 jComboBoxA.addItem("Reputation + 4");
+                }
+                else{
+                jComboBoxA.addItem("Reputation - 1");
+                jComboBoxA.addItem("Reputation - 2");
+                jComboBoxA.addItem("Reputation - 3");
+                jComboBoxA.addItem("Reputation - 4");
+                }
                 jLabelB.setText("People Affected");
                 jComboBoxB.removeAllItems();
                 jComboBoxB.addItem("Almost Everyone");

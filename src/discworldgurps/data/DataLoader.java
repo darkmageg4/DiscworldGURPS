@@ -14,6 +14,7 @@ public class DataLoader {
     ArrayList<WeaponsMelee> wepmel = new ArrayList<>();
     ArrayList<Talents> talents = new ArrayList<>();
     ArrayList<Skills> skills = new ArrayList<>();
+    ArrayList<Culture> cult = new ArrayList<>();
 
     /**
      * Loads in the Damage.csv which gives the damage values
@@ -24,6 +25,7 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        damage.clear();
         for (ItemLoader il : load.tmp) {
             damage.add(new Damage(il.a, il.b, il.c));
         }
@@ -44,6 +46,7 @@ public class DataLoader {
             ex.printStackTrace();
         }
         Collections.sort(load.tmp, new ItemComparator());
+        advantages.clear();
         for (ItemLoader il : load.tmp) {
             advantages.add(new Advantages(il.a, il.b, il.c));
         }
@@ -60,6 +63,7 @@ public class DataLoader {
             ex.printStackTrace();
         }
         Collections.sort(load.tmp, new ItemComparator());
+        talents.clear();
         for (ItemLoader il : load.tmp) {
             talents.add(new Talents(il.a, il.b));
         }
@@ -79,12 +83,28 @@ public class DataLoader {
             ex.printStackTrace();
         }
         Collections.sort(load.tmp, new ItemComparator());
+        disadvantages.clear();
         for (ItemLoader il : load.tmp) {
             disadvantages.add(new Disadvantages(il.a, il.b, il.c));
         }
-//        load.tmp.clear();
+        load.tmp.clear();
 //        for (Disadvantages a : disadvantages) {
 //            System.out.printf("%s - %s\n", a, a.getCost());
+//        }
+    }
+    public void LoadCult() {
+        try {
+            load.reader("./src/discworldgurps/resources/culture.csv");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        cult.clear();
+        for (ItemLoader il : load.tmp) {
+            cult.add(new Culture(il.a, il.b));
+        }
+        load.tmp.clear();
+//        for (Culture a : cult) {
+//            System.out.printf(a);
 //        }
     }
 
@@ -95,10 +115,11 @@ public class DataLoader {
             ex.printStackTrace();
         }
         Collections.sort(load.tmp, new ItemComparator());
+        skills.clear();
         for (ItemLoader il : load.tmp) {
             skills.add(new Skills(il.a, il.b, il.c));
         }
-//        load.tmp.clear();
+        load.tmp.clear();
 //        for (Skills a : skills) {
 //            System.out.println(a);
 //        }
@@ -113,6 +134,7 @@ public class DataLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        armour.clear();
         for (ItemLoader il : load.tmp) {
             armour.add(new Armour(il.a, il.b, il.c, il.d, il.e));
         }
@@ -132,6 +154,7 @@ public class DataLoader {
             ex.printStackTrace();
         }
         Collections.sort(load.tmp, new ItemComparator());
+        wepmel.clear();
         for (ItemLoader il : load.tmp) {
             wepmel.add(new WeaponsMelee(il.a, il.b, il.c, il.d, il.e, il.f, il.g, il.h, il.i, il.j));
         }
@@ -179,5 +202,10 @@ public class DataLoader {
     public ArrayList<Skills> getSkills() {
         return skills;
     }
+
+    public ArrayList<Culture> getCult() {
+        return cult;
+    }
+    
 
 }

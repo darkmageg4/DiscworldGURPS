@@ -1,9 +1,11 @@
 package discworldgurps.details;
 
 import static discworldgurps.Sheet.advCount;
+import static discworldgurps.Sheet.cultCount;
 import static discworldgurps.Sheet.disCount;
 import static discworldgurps.Sheet.skillsCount;
 import discworldgurps.data.Advantages;
+import discworldgurps.data.Culture;
 import discworldgurps.data.DataLoader;
 import discworldgurps.data.Disadvantages;
 import discworldgurps.data.Skills;
@@ -160,10 +162,10 @@ public class Details {
                     }
                     int cost = skillCost;
                     skillName = String.format("%s (%s)", DL.getSkills().get(i).getName(), DL.getSkills().get(i).getDiff());
-                    if (skillLvlVal >= 0){
-                    skillRelLvl = String.format("%s +%s", DL.getSkills().get(i).getAtt(), lvl);
-                } else{
-                     skillRelLvl = String.format("%s %s", DL.getSkills().get(i).getAtt(), lvl);   
+                    if (skillLvlVal >= 0) {
+                        skillRelLvl = String.format("%s +%s", DL.getSkills().get(i).getAtt(), lvl);
+                    } else {
+                        skillRelLvl = String.format("%s %s", DL.getSkills().get(i).getAtt(), lvl);
                     }
                     skillAtt = DL.getSkills().get(i).getAtt();
                     this.cost = Integer.toString(cost);
@@ -253,6 +255,37 @@ public class Details {
                 String lvl = JOptionPane.showInputDialog("What level?", "1");
                 cost = Integer.toString(Integer.parseInt(DL.getTalents().get(i).getCost()) * Integer.parseInt(lvl));
                 desc = String.format("Talent: %s (lvl %s)", DL.getTalents().get(i).getName(), lvl);
+                result = true;
+            } else {
+                result = false;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void runCulture() {
+        DL.LoadCult();
+        JComboBox cul = new JComboBox();
+        cul.removeAllItems();
+        for (Culture s : DL.getCult()) {
+            cul.addItem(s);
+        }
+        int add = JOptionPane.showConfirmDialog(null, cul, "Which culture?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        try {
+            if (add == 0) {
+                int i = cul.getSelectedIndex();
+                cost = DL.getCult().get(i).getCost();
+                if ("Other".equals(DL.getCult().get(i).getName())) {
+                    String input = JOptionPane.showInputDialog("Description");
+                    if (input != null && input != "") {
+                        desc = input;
+                    } else {
+                        cultCount--;
+                    }
+                } else {
+                    desc = DL.getCult().get(i).getName();
+                }
                 result = true;
             } else {
                 result = false;

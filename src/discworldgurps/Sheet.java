@@ -40,6 +40,7 @@ public class Sheet extends javax.swing.JFrame {
     public static int advCount = -1;
     public static int disCount = -1;
     public static int langCount = -1;
+    public static int cultCount = -1;
     public static int skillsCount = -1;
     private JLabel[] advlab = new JLabel[10];
     private JLabel[] advcost = new JLabel[10];
@@ -50,6 +51,8 @@ public class Sheet extends javax.swing.JFrame {
     private JLabel[] langwrit = new JLabel[4];
     private JLabel[] langcost = new JLabel[4];
     private JLabel[] langspacer = new JLabel[4];
+    private JLabel[] culture = new JLabel[3];
+    private JLabel[] cultureCost = new JLabel[3];
     private JLabel[] skills = new JLabel[23];
     private JLabel[] skillsLvl = new JLabel[23];
     private JLabel[] skillsRelLvl = new JLabel[23];
@@ -111,7 +114,6 @@ public class Sheet extends javax.swing.JFrame {
                 });
 
         this.setExtendedState(MAXIMIZED_VERT);
-        jPanelReputation.setVisible(false);
         Start();
 
     }
@@ -137,6 +139,8 @@ public class Sheet extends javax.swing.JFrame {
         jLabelSizeMod = new javax.swing.JLabel();
         jLabelWeight = new javax.swing.JLabel();
         jLabelAge = new javax.swing.JLabel();
+        jLabelNotes1 = new javax.swing.JLabel();
+        jLabelNotes2 = new javax.swing.JLabel();
         jTextFieldST = new javax.swing.JTextField();
         jLabelSTCost = new javax.swing.JLabel();
         jTextFieldDX = new javax.swing.JTextField();
@@ -194,6 +198,10 @@ public class Sheet extends javax.swing.JFrame {
         jLabelDisTotal = new javax.swing.JLabel();
         jButtonLangAdd = new javax.swing.JButton();
         jButtonLangRemove = new javax.swing.JButton();
+        jPanelCulture = new javax.swing.JPanel();
+        jPanelCultureCost = new javax.swing.JPanel();
+        jButtonCultAdd = new javax.swing.JButton();
+        jButtonCultRem = new javax.swing.JButton();
         jPanelLang = new javax.swing.JPanel();
         jPanelLangSpokWrit = new javax.swing.JPanel();
         jPanelLangCost = new javax.swing.JPanel();
@@ -207,13 +215,12 @@ public class Sheet extends javax.swing.JFrame {
         SheetBG = new javax.swing.JLabel();
         jScrollPaneDetails = new javax.swing.JScrollPane();
         jPanelDetails = new javax.swing.JPanel();
-        jPanelReputation = new javax.swing.JPanel();
-        jLabelRepTitle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaCharacterNotes = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        RepCost3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaOtherNotes = new javax.swing.JTextArea();
         jScrollPaneInventory = new javax.swing.JScrollPane();
         jPanelInventory = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -273,6 +280,8 @@ public class Sheet extends javax.swing.JFrame {
         jLabelAge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelAge.setText("0");
         jPanelSheet.add(jLabelAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, 80, 30));
+        jPanelSheet.add(jLabelNotes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 630, 30));
+        jPanelSheet.add(jLabelNotes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 630, 30));
 
         jTextFieldST.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldST.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -558,6 +567,56 @@ public class Sheet extends javax.swing.JFrame {
         });
         jPanelSheet.add(jButtonLangRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 70, 20));
 
+        jPanelCulture.setOpaque(false);
+
+        javax.swing.GroupLayout jPanelCultureLayout = new javax.swing.GroupLayout(jPanelCulture);
+        jPanelCulture.setLayout(jPanelCultureLayout);
+        jPanelCultureLayout.setHorizontalGroup(
+            jPanelCultureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+        );
+        jPanelCultureLayout.setVerticalGroup(
+            jPanelCultureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
+        jPanelSheet.add(jPanelCulture, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, 310, 80));
+
+        jPanelCultureCost.setOpaque(false);
+
+        javax.swing.GroupLayout jPanelCultureCostLayout = new javax.swing.GroupLayout(jPanelCultureCost);
+        jPanelCultureCost.setLayout(jPanelCultureCostLayout);
+        jPanelCultureCostLayout.setHorizontalGroup(
+            jPanelCultureCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanelCultureCostLayout.setVerticalGroup(
+            jPanelCultureCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
+        jPanelSheet.add(jPanelCultureCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 400, 20, 80));
+
+        jButtonCultAdd.setText("Add");
+        jButtonCultAdd.setFocusable(false);
+        jButtonCultAdd.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonCultAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCultAddActionPerformed(evt);
+            }
+        });
+        jPanelSheet.add(jButtonCultAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 380, 60, 20));
+
+        jButtonCultRem.setText("Rem");
+        jButtonCultRem.setFocusable(false);
+        jButtonCultRem.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonCultRem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCultRemActionPerformed(evt);
+            }
+        });
+        jPanelSheet.add(jButtonCultRem, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, 70, 20));
+
         jPanelLang.setOpaque(false);
         jPanelLang.setLayout(new java.awt.GridLayout(1, 0));
         jPanelSheet.add(jPanelLang, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 210, 100));
@@ -665,72 +724,59 @@ public class Sheet extends javax.swing.JFrame {
 
         jTabbedPaneSheet.addTab("Sheet", jScrollPaneSheet);
 
-        jLabelRepTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelRepTitle.setText("Reputation");
+        jTextAreaCharacterNotes.setColumns(20);
+        jTextAreaCharacterNotes.setLineWrap(true);
+        jTextAreaCharacterNotes.setRows(5);
+        jTextAreaCharacterNotes.setWrapStyleWord(true);
+        jTextAreaCharacterNotes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextAreaCharacterNotesFocusLost(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTextAreaCharacterNotes);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Reputation");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Character Notes");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("People Affected");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Other Notes");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Frequency");
+        jTextAreaOtherNotes.setColumns(20);
+        jTextAreaOtherNotes.setLineWrap(true);
+        jTextAreaOtherNotes.setRows(5);
+        jTextAreaOtherNotes.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(jTextAreaOtherNotes);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Description");
-
-        RepCost3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        RepCost3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        RepCost3.setText("0");
-
-        javax.swing.GroupLayout jPanelReputationLayout = new javax.swing.GroupLayout(jPanelReputation);
-        jPanelReputation.setLayout(jPanelReputationLayout);
-        jPanelReputationLayout.setHorizontalGroup(
-            jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelReputationLayout.createSequentialGroup()
-                .addGroup(jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelReputationLayout.createSequentialGroup()
-                        .addGroup(jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelReputationLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel2)
-                                .addGap(61, 61, 61)
-                                .addComponent(jLabel3)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanelReputationLayout.createSequentialGroup()
-                                .addGap(333, 333, 333)
-                                .addComponent(jLabelRepTitle)))
-                        .addGap(0, 300, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReputationLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(RepCost3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanelReputationLayout.setVerticalGroup(
-            jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelReputationLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelDetailsLayout = new javax.swing.GroupLayout(jPanelDetails);
+        jPanelDetails.setLayout(jPanelDetailsLayout);
+        jPanelDetailsLayout.setHorizontalGroup(
+            jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelRepTitle)
-                .addGap(18, 18, 18)
-                .addGroup(jPanelReputationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addComponent(RepCost3)
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-
-        jPanelDetails.add(jPanelReputation);
+        jPanelDetailsLayout.setVerticalGroup(
+            jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDetailsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
 
         jScrollPaneDetails.setViewportView(jPanelDetails);
 
-        jTabbedPaneSheet.addTab("Details", jScrollPaneDetails);
+        jTabbedPaneSheet.addTab("Notes", jScrollPaneDetails);
 
         jScrollPaneInventory.setViewportView(jPanelInventory);
 
@@ -1050,6 +1096,71 @@ public class Sheet extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonSkillsRemoveActionPerformed
 
+    private void jButtonCultAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCultAddActionPerformed
+        if (cultCount < 2) {
+            details.runCulture();
+            if (details.isResult() == true) {
+                cultCount++;
+                if (cultCount != -1) {
+                    culture[cultCount].setText(details.getDesc());
+                    cultureCost[cultCount].setText(details.getCost());
+                    Calc();
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Cultures Full!", "Sorry...", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonCultAddActionPerformed
+
+    private void jButtonCultRemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCultRemActionPerformed
+        int ra = -1;
+        JComboBox cul = new JComboBox();
+        cul.removeAllItems();
+        for (int r = 0; r < culture.length; r++) {
+            if (culture[r].getText() != "") {
+                cul.addItem(culture[r].getText());
+                ra++;
+            }
+        }
+        if (ra >= 0) {
+            int rem = JOptionPane.showConfirmDialog(null, cul, "Which Culture?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+            try {
+                if (rem == 0) {
+                    int i = cul.getSelectedIndex();
+                    culture[i].setText("");
+                    cultureCost[i].setText("");
+                    cultCount--;
+                    String[] t = new String[ra + 1];
+                    String[] tc = new String[ra + 1];
+                    int ta = 0;
+                    for (int s = ra; s >= 0; s--) {
+                        t[ta] = culture[s].getText();
+                        tc[ta] = cultureCost[s].getText();
+                        culture[s].setText("");
+                        cultureCost[s].setText("");
+                        ta++;
+                    }
+                    int ab = 0;
+                    for (int a = 0; a <= t.length; a++) {
+
+                        if (t[ta - 1] != "") {
+                            culture[ab].setText(t[ta - 1]);
+                            cultureCost[ab].setText(tc[ta - 1]);
+                            ab++;
+                        }
+                        ta--;
+                    }
+                }
+            } catch (Exception ex) {
+            }
+            Calc();
+        }
+    }//GEN-LAST:event_jButtonCultRemActionPerformed
+
+    private void jTextAreaCharacterNotesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextAreaCharacterNotesFocusLost
+Notes();
+    }//GEN-LAST:event_jTextAreaCharacterNotesFocusLost
+
     /**
      * Runs Start.java
      */
@@ -1148,6 +1259,14 @@ public class Sheet extends javax.swing.JFrame {
                     lan[i + 12] = langcost[i].getText();
                 }
                 this.character.setLang(lan);
+                String[] cul = new String[6];
+                for (int i = 0; i < culture.length; i++) {
+                    cul[i] = culture[i].getText();
+                }
+                for (int i = 0; i < culture.length; i++) {
+                    cul[i + 3] = cultureCost[i].getText();
+                }
+                this.character.setCulture(cul);
                 String[] ski = new String[92];
                 for (int i = 0; i < skills.length; i++) {
                     ski[i] = skills[i].getText();
@@ -1162,7 +1281,8 @@ public class Sheet extends javax.swing.JFrame {
                     ski[i + 69] = skillsCost[i].getText();
                 }
                 this.character.setSkills(ski);
-
+                this.character.setCharNotes(jTextAreaCharacterNotes.getText());
+                this.character.setOtherNotes(jTextAreaOtherNotes.getText());
                 this.character.Save(file);
                 this.setTitle(file.getName());
             } catch (FileNotFoundException ex) {
@@ -1263,6 +1383,18 @@ public class Sheet extends javax.swing.JFrame {
                 langcost[i].setText(this.character.getLang()[i + 12]);
             }
         }
+        cultCount = -1;
+        for (int i = 0; i < culture.length; i++) {
+            if (!"".equals(this.character.getCulture()[i]) && this.character.getCulture()[i] != null) {
+                culture[i].setText(this.character.getCulture()[i]);
+                cultCount++;
+            }
+        }
+        for (int i = 0; i < cultureCost.length; i++) {
+            if (!"".equals(this.character.getCulture()[i + 3]) && this.character.getCulture()[i + 3] != null) {
+                cultureCost[i].setText(this.character.getCulture()[i + 3]);
+            }
+        }
         skillsCount = -1;
         for (int i = 0; i < skills.length; i++) {
             if (!"".equals(this.character.getSkills()[i]) && this.character.getSkills()[i] != null) {
@@ -1285,6 +1417,8 @@ public class Sheet extends javax.swing.JFrame {
                 skillsCost[i].setText(this.character.getSkills()[i + 69]);
             }
         }
+        jTextAreaCharacterNotes.setText(this.character.getCharNotes());
+        jTextAreaOtherNotes.setText(this.character.getOtherNotes());
         Calc();
         this.setTitle(character.getName());
     }
@@ -1310,7 +1444,7 @@ public class Sheet extends javax.swing.JFrame {
             }
         }
         int dis = 0;
-        for (int i = 0; i < dislab.length; i++) {
+        for (int i = 0; i < discost.length; i++) {
             if ("" != discost[i].getText()) {
                 int j = Integer.parseInt(discost[i].getText());
                 dis = dis + j;
@@ -1323,6 +1457,13 @@ public class Sheet extends javax.swing.JFrame {
                 lan = lan + j;
             }
         }
+        int cul = 0;
+        for (int i = 0; i < culture.length; i++) {
+            if ("" != cultureCost[i].getText()) {
+                int j = Integer.parseInt(cultureCost[i].getText());
+                cul = cul + j;
+            }
+        }
         int ski = 0;
         for (int i = 0; i < skills.length; i++) {
             if ("" != skillsCost[i].getText()) {
@@ -1331,8 +1472,9 @@ public class Sheet extends javax.swing.JFrame {
             }
         }
         StatCalc sc = new StatCalc(st, dx, iq, hp, ht, will, per, fp,
-                this.character.getHeight(), bs, bm, pu, tl, adv, dis, lan, ski);
+                this.character.getHeight(), bs, bm, pu, tl, adv, dis, lan, ski, cul);
         sc.Calc();
+        Notes();
         jLabelSizeMod.setText(Integer.toString(sc.getSm()));
         jLabelSTCost.setText(Integer.toString(sc.getSpentST()));
         jLabelDXCost.setText(Integer.toString(sc.getSpentDX()));
@@ -1355,7 +1497,6 @@ public class Sheet extends javax.swing.JFrame {
         for (int i = 0; i < skills.length; i++) {
             if (skillsRelLvl[i].getText() != null && skillsRelLvl[i].getText() != "") {
                 String skillA = skillsRelLvl[i].getText().substring(0, 2);
-                System.out.println(skillsRelLvl[i].getText().substring(0, 2));
                 int skillL;
                 if (skillsRelLvl[i].getText().contains("-")) {
                     skillL = Integer.parseInt(skillsRelLvl[i].getText().substring(3));
@@ -1383,8 +1524,6 @@ public class Sheet extends javax.swing.JFrame {
                         stat = Integer.parseInt(jTextFieldPer.getText());
                         break;
                 }
-                System.out.println(stat);
-                System.out.println(skillL);
                 skillsLvl[i].setText(Integer.toString(stat + skillL));
             }
         }
@@ -1411,6 +1550,23 @@ public class Sheet extends javax.swing.JFrame {
         jLabelEncDodge4.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText()) - 3)));
         jLabelEncDodge5.setText(Integer.toString((Integer.parseInt(jLabelEncDodge1.getText()) - 4)));
     }
+    
+    private void Notes(){
+                try {
+            if (jTextAreaCharacterNotes.getText().length() < 110) {
+                jLabelNotes1.setText(jTextAreaCharacterNotes.getText());
+                jLabelNotes2.setText("");
+            } else if (jTextAreaCharacterNotes.getText().length() < 220) {
+                jLabelNotes1.setText(jTextAreaCharacterNotes.getText().substring(0, 110));
+                jLabelNotes2.setText(jTextAreaCharacterNotes.getText().substring(110));
+            } else {
+                jLabelNotes1.setText(jTextAreaCharacterNotes.getText().substring(0, 110));
+                jLabelNotes2.setText(jTextAreaCharacterNotes.getText().substring(110, 220) + "...");
+            }
+        } catch (Exception ex) {
+
+        }
+    }
 
     private void LabelCreator() {
         GridLayout Default = new GridLayout(0, 1);
@@ -1436,6 +1592,12 @@ public class Sheet extends javax.swing.JFrame {
             jPanelLangSpokWrit.add(langspacer[i] = new JLabel());
             jPanelLangSpokWrit.add(langwrit[i] = new JLabel());
             jPanelLangCost.add(langcost[i] = new JLabel());
+        }
+        jPanelCulture.setLayout(Default);
+        jPanelCultureCost.setLayout(Default);
+        for (int i = 0; i < culture.length; i++) {
+            jPanelCulture.add(culture[i] = new JLabel());
+            jPanelCultureCost.add(cultureCost[i] = new JLabel());
         }
         jPanelSkills.setLayout(Default);
         jPanelSkillsLvl.setLayout(Default);
@@ -1486,11 +1648,12 @@ public class Sheet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel RepCost3;
     private javax.swing.JLabel SheetBG;
     private javax.swing.JButton jButtonAddPoints;
     private javax.swing.JButton jButtonAdvAdd;
     private javax.swing.JButton jButtonAdvRemove;
+    private javax.swing.JButton jButtonCultAdd;
+    private javax.swing.JButton jButtonCultRem;
     private javax.swing.JButton jButtonDisAdd;
     private javax.swing.JButton jButtonDisRemove;
     private javax.swing.JButton jButtonLangAdd;
@@ -1500,8 +1663,6 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAdvTotal;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelBL;
@@ -1530,11 +1691,12 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelHeight;
     private javax.swing.JLabel jLabelIQCost;
     private javax.swing.JLabel jLabelName;
+    private javax.swing.JLabel jLabelNotes1;
+    private javax.swing.JLabel jLabelNotes2;
     private javax.swing.JLabel jLabelPerCost;
     private javax.swing.JLabel jLabelPlayerName;
     private javax.swing.JLabel jLabelPoints;
     private javax.swing.JLabel jLabelPointsUnspent;
-    private javax.swing.JLabel jLabelRepTitle;
     private javax.swing.JLabel jLabelSTCost;
     private javax.swing.JLabel jLabelSizeMod;
     private javax.swing.JLabel jLabelSkillsTotal;
@@ -1550,6 +1712,8 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSave;
     private javax.swing.JPanel jPanelAdv;
     private javax.swing.JPanel jPanelAdvCost;
+    private javax.swing.JPanel jPanelCulture;
+    private javax.swing.JPanel jPanelCultureCost;
     private javax.swing.JPanel jPanelDetails;
     private javax.swing.JPanel jPanelDis;
     private javax.swing.JPanel jPanelDisCost;
@@ -1557,16 +1721,19 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLang;
     private javax.swing.JPanel jPanelLangCost;
     private javax.swing.JPanel jPanelLangSpokWrit;
-    private javax.swing.JPanel jPanelReputation;
     private javax.swing.JPanel jPanelSheet;
     private javax.swing.JPanel jPanelSkills;
     private javax.swing.JPanel jPanelSkillsCost;
     private javax.swing.JPanel jPanelSkillsLvl;
     private javax.swing.JPanel jPanelSkillsRelLvl;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneDetails;
     private javax.swing.JScrollPane jScrollPaneInventory;
     private javax.swing.JScrollPane jScrollPaneSheet;
     private javax.swing.JTabbedPane jTabbedPaneSheet;
+    private javax.swing.JTextArea jTextAreaCharacterNotes;
+    private javax.swing.JTextArea jTextAreaOtherNotes;
     private javax.swing.JTextField jTextFieldBM;
     private javax.swing.JTextField jTextFieldBS;
     private javax.swing.JTextField jTextFieldDX;
