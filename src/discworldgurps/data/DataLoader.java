@@ -15,6 +15,8 @@ public class DataLoader {
     ArrayList<Talents> talents = new ArrayList<>();
     ArrayList<Skills> skills = new ArrayList<>();
     ArrayList<Culture> cult = new ArrayList<>();
+    ArrayList<Phobias> phob = new ArrayList<>();
+    ArrayList<PIC> pic = new ArrayList<>();
 
     /**
      * Loads in the Damage.csv which gives the damage values
@@ -92,6 +94,7 @@ public class DataLoader {
 //            System.out.printf("%s - %s\n", a, a.getCost());
 //        }
     }
+
     public void LoadCult() {
         try {
             load.reader("./src/discworldgurps/resources/culture.csv");
@@ -104,6 +107,37 @@ public class DataLoader {
         }
         load.tmp.clear();
 //        for (Culture a : cult) {
+//            System.out.printf(a);
+//        }
+    }
+
+    public void LoadPhob() {
+        try {
+            load.reader("./src/discworldgurps/resources/phobias.csv");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        phob.clear();
+        for (ItemLoader il : load.tmp) {
+            phob.add(new Phobias(il.a, il.b));
+        }
+        load.tmp.clear();
+//        for (Phobias a : phob) {
+//            System.out.printf(a);
+//        }
+    }
+    public void LoadPIC() {
+        try {
+            load.reader("./src/discworldgurps/resources/pic.csv");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        pic.clear();
+        for (ItemLoader il : load.tmp) {
+            pic.add(new PIC(il.a, il.b));
+        }
+        load.tmp.clear();
+//        for (PIC a : pic) {
 //            System.out.printf(a);
 //        }
     }
@@ -206,6 +240,13 @@ public class DataLoader {
     public ArrayList<Culture> getCult() {
         return cult;
     }
-    
+
+    public ArrayList<Phobias> getPhob() {
+        return phob;
+    }
+
+    public ArrayList<PIC> getPic() {
+        return pic;
+    }
 
 }

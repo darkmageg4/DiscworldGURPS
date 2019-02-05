@@ -39,22 +39,20 @@ public class StatCalc {
      * Takes in the height and calculates the height related modifiers
      */
     public void SizeMods() {
-        if (height <= 2.5) {
+        if (height >= 0 && height < 3.5) {
             sm = -9;
-        } else if (height > 2.5 && height < 3.5) {
-            sm = -8;
         } else if (height >= 3.5 && height < 5) {
-            sm = -7;
+            sm = -8;
         } else if (height >= 5 && height < 7) {
-            sm = -6;
+            sm = -7;
         } else if (height >= 7 && height < 10) {
-            sm = -5;
+            sm = -6;
         } else if (height >= 10 && height < 18) {
-            sm = -4;
+            sm = -5;
         } else if (height >= 18 && height < 24) {
-            sm = -3;
+            sm = -4;
         } else if (height >= 24 && height < 36) {
-            sm = -2;
+            sm = -3;
         } else if (height >= 36 && height < 54) {
             sm = -2;
         } else if (height >= 54 && height < 78) {

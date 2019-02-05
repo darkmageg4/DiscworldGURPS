@@ -8,6 +8,8 @@ import discworldgurps.data.Advantages;
 import discworldgurps.data.Culture;
 import discworldgurps.data.DataLoader;
 import discworldgurps.data.Disadvantages;
+import discworldgurps.data.PIC;
+import discworldgurps.data.Phobias;
 import discworldgurps.data.Skills;
 import discworldgurps.data.Talents;
 import javax.swing.JComboBox;
@@ -161,7 +163,7 @@ public class Details {
                             break;
                     }
                     int cost = skillCost;
-                    skillName = String.format("%s (%s)", DL.getSkills().get(i).getName(), DL.getSkills().get(i).getDiff());
+                    skillName = String.format("%s", DL.getSkills().get(i).getName());
                     if (skillLvlVal >= 0) {
                         skillRelLvl = String.format("%s +%s", DL.getSkills().get(i).getAtt(), lvl);
                     } else {
@@ -204,20 +206,14 @@ public class Details {
                     //TO DO
                     break;
                 // Disadvantages
-                case "Duty":
-                    //TO DO
-                    break;
                 case "Phobias":
-                    //TO DO
+                    runPhobias();
                     break;
                 case "Physical Problems":
                     UnusualBackground(ad);
                     break;
                 case "Poor Impulse Control":
-                    //TO DO
-                    break;
-                case "Secret":
-                    //TO DO
+                    runPIC();
                     break;
                 default:
                     DetailsGUI(string, ad);
@@ -278,13 +274,80 @@ public class Details {
                 cost = DL.getCult().get(i).getCost();
                 if ("Other".equals(DL.getCult().get(i).getName())) {
                     String input = JOptionPane.showInputDialog("Description");
-                    if (input != null && input != "") {
+                    if (!"".equals(input)) {
                         desc = input;
                     } else {
+                        JOptionPane.showMessageDialog(null, "You didn't enter a description!", "You silly goose!", JOptionPane.ERROR_MESSAGE);
                         cultCount--;
                     }
                 } else {
                     desc = DL.getCult().get(i).getName();
+                }
+                result = true;
+            } else {
+                result = false;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void runPhobias() {
+        DL.LoadPhob();
+        JComboBox pho = new JComboBox();
+        pho.removeAllItems();
+        for (Phobias s : DL.getPhob()) {
+            pho.addItem(s);
+        }
+        int add = JOptionPane.showConfirmDialog(null, pho, "Which phobia?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        try {
+            if (add == 0) {
+                int i = pho.getSelectedIndex();
+                if (DL.getPhob().get(i).getName().contains("Other")) {
+                    String input = JOptionPane.showInputDialog("Description");
+                    if (!"".equals(input)) {
+                        desc = String.format("Phobia: %s", input);
+                        cost = DL.getPhob().get(i).getCost();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "You didn't enter a description!", "You silly goose!", JOptionPane.ERROR_MESSAGE);
+                        disCount--;
+                    }
+                } else {
+                    desc = String.format("Phobia: %s", DL.getPhob().get(i).getName());
+                    cost = DL.getPhob().get(i).getCost();
+                }
+                result = true;
+            } else {
+                result = false;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void runPIC() {
+        DL.LoadPIC();
+        JComboBox pi = new JComboBox();
+        pi.removeAllItems();
+        for (PIC s : DL.getPic()) {
+            pi.addItem(s);
+        }
+        int add = JOptionPane.showConfirmDialog(null, pi, "Which PIC?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION);
+        try {
+            if (add == 0) {
+                int i = pi.getSelectedIndex();
+                if (DL.getPic().get(i).getName().contains("Other")) {
+                    String input = JOptionPane.showInputDialog("Description");
+                    if (!"".equals(input)) {
+                        desc = String.format("PIC: %s", input);
+                        cost = DL.getPic().get(i).getCost();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "You didn't enter a description!", "You silly goose!", JOptionPane.ERROR_MESSAGE);
+                        disCount--;
+                    }
+                } else {
+                    desc = String.format("PIC: %s", DL.getPic().get(i).getName());
+                    cost = DL.getPic().get(i).getCost();
                 }
                 result = true;
             } else {

@@ -34,6 +34,7 @@ public class DetailsGUI extends javax.swing.JDialog {
         initComponents();
         this.string = string;
         this.ad = ad;
+        this.setTitle(string);
         Switch(ad);
     }
 
@@ -179,6 +180,12 @@ public class DetailsGUI extends javax.swing.JDialog {
             case "Enemies":
                 Enemies();
                 break;
+            case "Duty":
+                Duty();
+                break;
+            case "Secret":
+                Secret();
+                break;
             default:
                 Contact();
                 break;
@@ -203,17 +210,16 @@ public class DetailsGUI extends javax.swing.JDialog {
             case "Reputation":
                 jLabelA.setText("Reputation Level");
                 jComboBoxA.removeAllItems();
-                if ("a".equals(ad)){
-                jComboBoxA.addItem("Reputation + 1");
-                jComboBoxA.addItem("Reputation + 2");
-                jComboBoxA.addItem("Reputation + 3");
-                jComboBoxA.addItem("Reputation + 4");
-                }
-                else{
-                jComboBoxA.addItem("Reputation - 1");
-                jComboBoxA.addItem("Reputation - 2");
-                jComboBoxA.addItem("Reputation - 3");
-                jComboBoxA.addItem("Reputation - 4");
+                if ("a".equals(ad)) {
+                    jComboBoxA.addItem("Reputation + 1");
+                    jComboBoxA.addItem("Reputation + 2");
+                    jComboBoxA.addItem("Reputation + 3");
+                    jComboBoxA.addItem("Reputation + 4");
+                } else {
+                    jComboBoxA.addItem("Reputation - 1");
+                    jComboBoxA.addItem("Reputation - 2");
+                    jComboBoxA.addItem("Reputation - 3");
+                    jComboBoxA.addItem("Reputation - 4");
                 }
                 jLabelB.setText("People Affected");
                 jComboBoxB.removeAllItems();
@@ -274,7 +280,29 @@ public class DetailsGUI extends javax.swing.JDialog {
                 jComboBoxB.addItem("Rival");
                 jComboBoxB.addItem("Hunter");
                 break;
+            case "Duty":
+                jLabelA.setText("Danger");
+                jComboBoxA.removeAllItems();
+                jComboBoxA.addItem("Ext. Hazardous");
+                jComboBoxA.addItem("Normal");
+                jComboBoxA.addItem("Non Hazardous");
+                jComboBoxB.setVisible(false);
+                jLabelB.setVisible(false);
+                break;
+            case "Secret":
+                jLabelA.setText("Severity");
+                jComboBoxA.removeAllItems();
+                jComboBoxA.addItem("Serious Embarassment");
+                jComboBoxA.addItem("Utter Rejection");
+                jComboBoxA.addItem("Imprisonment or Exile");
+                jComboBoxA.addItem("Possible Death");
+                jComboBoxB.setVisible(false);
+                jLabelB.setVisible(false);
+                jComboBoxC.setVisible(false);
+                jLabelC.setVisible(false);
+                break;
             default:
+                // Contacts
                 break;
         }
     }
@@ -378,6 +406,61 @@ public class DetailsGUI extends javax.swing.JDialog {
 
         cost = (int) (a * c);
         desc = String.format("Cong: %s (%s appears on %s)", jTextFieldDesc.getText(), jComboBoxA.getSelectedItem(), jComboBoxC.getSelectedItem());
+    }
+    private void Duty() {
+        switch (jComboBoxA.getSelectedIndex()) {
+            case 0:
+                a = -5;
+                break;
+            case 1:
+                a = 0;
+                break;
+            case 2:
+                a = +5;
+                break;
+            default:
+                break;
+        }
+        switch (jComboBoxC.getSelectedIndex()) {
+            case 0:
+                c = -15;
+                break;
+            case 1:
+                c = -10;
+                break;
+            case 2:
+                c = -5;
+                break;
+            case 3:
+                c = -2;
+                break;
+            default:
+                break;
+        }
+
+        cost = (int) (a + c);
+        desc = String.format("Duty: %s (%s appears on %s)", jTextFieldDesc.getText(), jComboBoxA.getSelectedItem(), jComboBoxC.getSelectedItem());
+    }
+    private void Secret() {
+        switch (jComboBoxA.getSelectedIndex()) {
+            case 0:
+                a = -5;
+                break;
+            case 1:
+                a = -10;
+                break;
+            case 2:
+                a = -20;
+                break;
+            case 3:
+                a = -30;
+                break;
+            default:
+                break;
+        }
+
+        cost = (int) (a);
+        desc = String.format("Secret: %s", jTextFieldDesc.getText());
     }
 
     private void Contact() {
