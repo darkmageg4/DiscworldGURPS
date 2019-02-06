@@ -1011,7 +1011,12 @@ public class Sheet extends javax.swing.JFrame {
                 lang[langCount].setText(details.getLang());
                 langspok[langCount].setText(details.getLangSpok());
                 langwrit[langCount].setText(details.getLangWrit());
-                langcost[langCount].setText(details.getCost());
+                if (langCount == 0) {
+                    langcost[langCount].setText("0");
+
+                } else {
+                    langcost[langCount].setText(details.getCost());
+                }
                 Calc();
             }
         } else {
@@ -1156,7 +1161,11 @@ public class Sheet extends javax.swing.JFrame {
                 cultCount++;
                 if (cultCount != -1) {
                     culture[cultCount].setText(details.getDesc());
-                    cultureCost[cultCount].setText(details.getCost());
+                    if (cultCount == 0) {
+                        cultureCost[cultCount].setText("0");
+                    } else {
+                        cultureCost[cultCount].setText(details.getCost());
+                    }
                     Calc();
                 }
             }
