@@ -59,7 +59,6 @@ public class Details {
                             this.cost = Integer.toString(cost);
                         } else {
                             advCount--;
-
                         }
                     } else {
                         desc = DL.getAdvantages().get(i).getName();
@@ -194,7 +193,7 @@ public class Details {
             switch (string) {
                 // Advantages
                 case "Lifting ST":
-                    // TO DO
+                    LST();
                     break;
                 case "Talent":
                     Talents();
@@ -203,7 +202,7 @@ public class Details {
                     UnusualBackground(ad);
                     break;
                 case "Voice Of Command":
-                    //TO DO
+                    VoC();
                     break;
                 // Disadvantages
                 case "Phobias":
@@ -356,6 +355,53 @@ public class Details {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void VoC() {
+        String lvl = JOptionPane.showInputDialog("What level?", "1");
+        if (lvl != null && !"".equals(lvl)) {
+            Object[] mod = {"-5", "-10", "-15", "-20", "-25"};
+            JComboBox modSelect = new JComboBox(mod);
+            modSelect.setSelectedIndex(0);
+            JOptionPane.showMessageDialog(null, modSelect, "Mod",
+                    JOptionPane.QUESTION_MESSAGE);
+            int modCost = -5;
+            switch (modSelect.getSelectedIndex()) {
+                case 0:
+                    modCost = -5;
+                    break;
+                case 1:
+                    modCost = -10;
+                    break;
+                case 2:
+                    modCost = -15;
+                    break;
+                case 3:
+                    modCost = -20;
+                    break;
+                case 4:
+                    modCost = -25;
+                    break;
+            }
+            int VoCcost = 90 + (Integer.parseInt(lvl) * 5) + modCost;
+            desc = String.format("Voice Of Command (Lvl: %s Mod: %s)", lvl, modSelect.getSelectedItem());
+            this.cost = Integer.toString(VoCcost);
+            result = true;
+        } else {
+            advCount--;
+        }
+    }
+
+    private void LST() {
+            String lvl = JOptionPane.showInputDialog("What level?", "1");
+            if (lvl != null && !"".equals(lvl)) {
+            desc = String.format("Lifting ST (%s)", lvl);
+            this.cost = Integer.toString(0);
+            result=true;
+            }
+            else {
+                advCount--;
+            }
     }
 
     private void UnusualBackground(String ad) {

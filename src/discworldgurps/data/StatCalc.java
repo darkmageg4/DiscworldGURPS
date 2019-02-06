@@ -12,9 +12,11 @@ public class StatCalc {
     final private int points;
     private int pointsUnspent;
     final private int tl;
-    final private int adv, dis, lan, cul, ski;
+    final private int adv, dis, lan, cul, ski, mag, sta;
 
-    public StatCalc(int st, int dx, int iq, int hp, int ht, int will, int per, int fp, double height, double bs, int bm, int points, int tl, int adv, int dis, int lan, int ski, int cul) {
+    public StatCalc(int st, int dx, int iq, int hp, int ht, int will, int per,
+            int fp, double height, double bs, int bm, int points, int tl,
+            int adv, int dis, int lan, int ski, int cul, int mag, int sta) {
         this.st = st;
         this.dx = dx;
         this.iq = iq;
@@ -33,6 +35,8 @@ public class StatCalc {
         this.lan = lan;
         this.cul = cul;
         this.ski = ski;
+        this.mag = mag;
+        this.sta = sta;
     }
 
     /**
@@ -99,7 +103,7 @@ public class StatCalc {
         spentTL = (this.tl - 4) * 5;
         pointsUnspent = this.points - (spentST + spentDX + spentIQ + spentHT + spentHP
                 + spentWill + spentPer + spentFP + spentBS + spentBM + spentTL + adv + dis
-                + lan + ski + cul);
+                + lan + ski + cul + mag + sta);
     }
 
     public int getSpentST() {

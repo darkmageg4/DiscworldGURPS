@@ -5,7 +5,7 @@
  */
 package discworldgurps;
 
-import discworldgurps.data.Character;
+import discworldgurps.data.Player;
 import discworldgurps.data.DataLoader;
 import discworldgurps.details.Details;
 import discworldgurps.data.StatCalc;
@@ -32,7 +32,7 @@ import javax.swing.SwingUtilities;
  */
 public class Sheet extends javax.swing.JFrame {
 
-    Character character;
+    Player character;
 
     DataLoader DL = new DataLoader();
     Details details = new Details();
@@ -101,15 +101,15 @@ public class Sheet extends javax.swing.JFrame {
                                 }
                             });
                         }
-                        if (e.getNewValue() instanceof JComboBox) {
-                            //  invokeLater needed for JFormattedTextField
-                            SwingUtilities.invokeLater(new Runnable() {
-                                public void run() {
-                                    JComboBox comboBox = (JComboBox) e.getNewValue();
-                                    Calc();
-                                }
-                            });
-                        }
+//                        if (e.getNewValue() instanceof JComboBox) {
+//                            //  invokeLater needed for JFormattedTextField
+//                            SwingUtilities.invokeLater(new Runnable() {
+//                                public void run() {
+//                                    JComboBox comboBox = (JComboBox) e.getNewValue();
+//                                    Calc();
+//                                }
+//                            });
+//                        }
                     }
                 });
 
@@ -211,6 +211,12 @@ public class Sheet extends javax.swing.JFrame {
         jButtonSkillsAdd = new javax.swing.JButton();
         jButtonSkillsRemove = new javax.swing.JButton();
         jLabelSkillsTotal = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextAreaReactionMods = new javax.swing.JTextArea();
+        jTextFieldMagery = new javax.swing.JTextField();
+        jTextFieldMagCost = new javax.swing.JTextField();
+        jTextFieldStaff = new javax.swing.JTextField();
+        jTextFieldStaffCost = new javax.swing.JTextField();
         SheetBG = new javax.swing.JLabel();
         jScrollPaneDetails = new javax.swing.JScrollPane();
         jPanelDetails = new javax.swing.JPanel();
@@ -712,6 +718,26 @@ public class Sheet extends javax.swing.JFrame {
         jLabelSkillsTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelSkillsTotal.setText("0");
         jPanelSheet.add(jLabelSkillsTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 1325, 40, 20));
+
+        jTextAreaReactionMods.setColumns(20);
+        jTextAreaReactionMods.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextAreaReactionMods.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaReactionMods);
+
+        jPanelSheet.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 540, 360, 90));
+
+        jTextFieldMagery.setOpaque(false);
+        jPanelSheet.add(jTextFieldMagery, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 170, 160, -1));
+
+        jTextFieldMagCost.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldMagCost.setText("0");
+        jTextFieldMagCost.setOpaque(false);
+        jPanelSheet.add(jTextFieldMagCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 170, 30, -1));
+        jPanelSheet.add(jTextFieldStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 180, -1));
+
+        jTextFieldStaffCost.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldStaffCost.setText("0");
+        jPanelSheet.add(jTextFieldStaffCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 200, 30, -1));
 
         SheetBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/discworldgurps/resources/CharacterSheet.jpg"))); // NOI18N
         SheetBG.setMaximumSize(null);
@@ -1222,7 +1248,7 @@ public class Sheet extends javax.swing.JFrame {
      * character
      */
     private void NewChar() {
-        character = new Character();
+        character = new Player();
         NewCharacter newCharacter = new NewCharacter(this, true);
         newCharacter.setModal(true);
         newCharacter.setLocationRelativeTo(null);
@@ -1314,6 +1340,11 @@ public class Sheet extends javax.swing.JFrame {
                 this.character.setSkills(ski);
                 this.character.setCharNotes(jTextAreaCharacterNotes.getText());
                 this.character.setOtherNotes(jTextAreaOtherNotes.getText());
+                this.character.setReactionMods(jTextAreaReactionMods.getText());
+                this.character.setMagery(jTextFieldMagery.getText());
+                this.character.setMagCost(Integer.parseInt(jTextFieldMagCost.getText()));
+                this.character.setStaff(jTextFieldStaff.getText());
+                this.character.setStaffCost(Integer.parseInt(jTextFieldStaffCost.getText()));
                 this.character.Save(file);
                 this.setTitle(file.getName());
             } catch (FileNotFoundException ex) {
@@ -1327,7 +1358,7 @@ public class Sheet extends javax.swing.JFrame {
     }
 
     private void Load() {
-        character = new Character();
+        character = new Player();
         int returnval = this.jFileChooser1.showOpenDialog(this);
         if (returnval == JFileChooser.APPROVE_OPTION) {
             File file = jFileChooser1.getSelectedFile();
@@ -1390,6 +1421,11 @@ public class Sheet extends javax.swing.JFrame {
         }
         jTextAreaCharacterNotes.setText("");
         jTextAreaOtherNotes.setText("");
+        jTextAreaReactionMods.setText("");
+        jTextFieldMagery.setText("");
+        jTextFieldMagCost.setText("0");
+        jTextFieldStaff.setText("");
+        jTextFieldStaffCost.setText("0");
         Calc();
     }
 
@@ -1497,6 +1533,12 @@ public class Sheet extends javax.swing.JFrame {
         }
         jTextAreaCharacterNotes.setText(this.character.getCharNotes());
         jTextAreaOtherNotes.setText(this.character.getOtherNotes());
+        jTextAreaReactionMods.setText(this.character.getReactionMods());
+        jTextFieldMagery.setText(this.character.getMagery());
+        jTextFieldMagCost.setText(Integer.toString(this.character.getMagCost()));
+        jTextFieldStaff.setText(this.character.getStaff());
+        jTextFieldStaffCost.setText(Integer.toString(this.character.getStaffCost()));
+
         Calc();
         this.setTitle(character.getName());
     }
@@ -1514,6 +1556,18 @@ public class Sheet extends javax.swing.JFrame {
         int bm = Integer.parseInt(jTextFieldBM.getText());
         int pu = Integer.parseInt(jLabelPoints.getText());
         int tl = Integer.parseInt(jTextFieldTL.getText());
+        for (int i = 0; i < advlab.length; i++) {
+            if (advlab[i].getText().contains("Lifting ST")) {
+                int LSTCost = 3;
+                int lvl = Integer.parseInt(advlab[i].getText().substring(12, 13));
+                if (Integer.parseInt(jLabelSizeMod.getText()) != 0 && Integer.parseInt(jLabelSizeMod.getText()) > 0) {
+                    int sm = Integer.parseInt(jLabelSizeMod.getText().substring(1, 2));
+                    String costMod = String.format("1.%s", sm);
+                    LSTCost = (int) (3 / Double.parseDouble(costMod));
+                }
+                advcost[i].setText(Integer.toString(lvl * LSTCost));
+            }
+        }
         int adv = 0;
         for (int i = 0; i < advlab.length; i++) {
             if ("" != advcost[i].getText()) {
@@ -1549,11 +1603,17 @@ public class Sheet extends javax.swing.JFrame {
                 ski = ski + j;
             }
         }
+        int mag = Integer.parseInt(jTextFieldMagCost.getText());
+        int sta = Integer.parseInt(jTextFieldStaffCost.getText());
         StatCalc sc = new StatCalc(st, dx, iq, hp, ht, will, per, fp,
-                this.character.getHeight(), bs, bm, pu, tl, adv, dis, lan, ski, cul);
+                this.character.getHeight(), bs, bm, pu, tl, adv, dis, lan, ski, cul, mag, sta);
         sc.Calc();
         Notes();
-        jLabelSizeMod.setText(Integer.toString(sc.getSm()));
+        if (sc.getSm() > 0) {
+            jLabelSizeMod.setText(String.format("+%s", Integer.toString(sc.getSm())));
+        } else {
+            jLabelSizeMod.setText(Integer.toString(sc.getSm()));
+        }
         jLabelSTCost.setText(Integer.toString(sc.getSpentST()));
         jLabelDXCost.setText(Integer.toString(sc.getSpentDX()));
         jLabelIQCost.setText(Integer.toString(sc.getSpentIQ()));
@@ -1572,40 +1632,32 @@ public class Sheet extends javax.swing.JFrame {
         DL.LoadDamage();
         jLabelThrust.setText(DL.getDamage().get(Integer.parseInt(jTextFieldST.getText()) - 1).thrust());
         jLabelSwing.setText(DL.getDamage().get(Integer.parseInt(jTextFieldST.getText()) - 1).swing());
+        Skills();
+        Encumberance();
+    }
+
+    private void Skills() {
         for (int i = 0; i < skills.length; i++) {
             if (skillsRelLvl[i].getText() != null && skillsRelLvl[i].getText() != "") {
-                String skillA = skillsRelLvl[i].getText().substring(0, 2);
-                int skillL;
-                if (skillsRelLvl[i].getText().contains("-")) {
-                    skillL = Integer.parseInt(skillsRelLvl[i].getText().substring(3));
-                } else {
-                    skillL = Integer.parseInt(skillsRelLvl[i].getText().substring(4));
-                }
+                int j = skillsRelLvl[i].getText().length() - 1;
+                int skillL = Integer.parseInt(skillsRelLvl[i].getText().substring(j));
                 int stat = 0;
-                switch (skillA) {
-                    case "ST":
-                        stat = Integer.parseInt(jTextFieldST.getText());
-                        break;
-                    case "DX":
-                        stat = Integer.parseInt(jTextFieldDX.getText());
-                        break;
-                    case "IQ":
-                        stat = Integer.parseInt(jTextFieldIQ.getText());
-                        break;
-                    case "HT":
-                        stat = Integer.parseInt(jTextFieldHT.getText());
-                        break;
-                    case "Will":
-                        stat = Integer.parseInt(jTextFieldWill.getText());
-                        break;
-                    case "Per":
-                        stat = Integer.parseInt(jTextFieldPer.getText());
-                        break;
+                if (skillsRelLvl[i].getText().contains("ST")) {
+                    stat = Integer.parseInt(jTextFieldST.getText());
+                } else if (skillsRelLvl[i].getText().contains("DX")) {
+                    stat = Integer.parseInt(jTextFieldDX.getText());
+                } else if (skillsRelLvl[i].getText().contains("IQ")) {
+                    stat = Integer.parseInt(jTextFieldIQ.getText());
+                } else if (skillsRelLvl[i].getText().contains("HT")) {
+                    stat = Integer.parseInt(jTextFieldHT.getText());
+                } else if (skillsRelLvl[i].getText().contains("Will")) {
+                    stat = Integer.parseInt(jTextFieldWill.getText());
+                } else if (skillsRelLvl[i].getText().contains("Per")) {
+                    stat = Integer.parseInt(jTextFieldPer.getText());
                 }
                 skillsLvl[i].setText(Integer.toString(stat + skillL));
             }
         }
-        Encumberance();
     }
 
     private void Encumberance() {
@@ -1696,16 +1748,24 @@ public class Sheet extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Sheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sheet.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Sheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sheet.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Sheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sheet.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Sheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sheet.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1798,12 +1858,14 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelSkillsRelLvl;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPaneDetails;
     private javax.swing.JScrollPane jScrollPaneInventory;
     private javax.swing.JScrollPane jScrollPaneSheet;
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTextArea jTextAreaCharacterNotes;
     private javax.swing.JTextArea jTextAreaOtherNotes;
+    private javax.swing.JTextArea jTextAreaReactionMods;
     private javax.swing.JTextField jTextFieldBM;
     private javax.swing.JTextField jTextFieldBS;
     private javax.swing.JTextField jTextFieldDX;
@@ -1815,8 +1877,12 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIQ;
     private javax.swing.JTextField jTextFieldMP;
     private javax.swing.JTextField jTextFieldMPCurrent;
+    private javax.swing.JTextField jTextFieldMagCost;
+    private javax.swing.JTextField jTextFieldMagery;
     private javax.swing.JTextField jTextFieldPer;
     private javax.swing.JTextField jTextFieldST;
+    private javax.swing.JTextField jTextFieldStaff;
+    private javax.swing.JTextField jTextFieldStaffCost;
     private javax.swing.JTextField jTextFieldTL;
     private javax.swing.JTextField jTextFieldWill;
     // End of variables declaration//GEN-END:variables

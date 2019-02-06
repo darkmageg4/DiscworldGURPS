@@ -10,7 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Character implements Serializable {
+public class Player implements Serializable {
 
     private String name;
     private String playerName;
@@ -26,11 +26,14 @@ public class Character implements Serializable {
     private int tl;
     private String[] advantages, disadvantages, lang, culture, skills;
     private String charNotes, otherNotes;
+    private String magery, staff;
+    private int magCost, staffCost;
+    private String reactionMods;
 
     /**
      * Default values
      */
-    public Character() {
+    public Player() {
         this.name = "Name";
         this.playerName = "playerName";
         this.points = 75;
@@ -58,9 +61,15 @@ public class Character implements Serializable {
         this.culture = new String[6];
         this.skills = new String[92];
         this.charNotes = "";
+        this.otherNotes = "";
+        this.reactionMods = "";
+        this.magery = "";
+        this.magCost = 0;
+        this.staff = "";
+        this.staffCost = 0;
     }
 
-    public Character(String name, String playerName, int points, double height, int weight,
+    public Player(String name, String playerName, int points, double height, int weight,
             int age, int st, int dx, int iq, int hp, int ht, int will, int per,
             int fp, int hpCurrent, int fpCurrent, int mp, int mpCurrent, double bs, int bm, int tl) {
         this.name = name;
@@ -90,6 +99,12 @@ public class Character implements Serializable {
         this.culture = culture;
         this.skills = skills;
         this.charNotes = charNotes;
+        this.otherNotes = otherNotes;
+        this.reactionMods = reactionMods;
+        this.magery = magery;
+        this.magCost = magCost;
+        this.staff = staff;
+        this.staffCost = staffCost;
     }
 
     public String getName() {
@@ -327,6 +342,46 @@ public class Character implements Serializable {
         this.otherNotes = otherNotes;
     }
 
+    public String getMagery() {
+        return magery;
+    }
+
+    public void setMagery(String magery) {
+        this.magery = magery;
+    }
+
+    public String getStaff() {
+        return staff;
+    }
+
+    public void setStaff(String staff) {
+        this.staff = staff;
+    }
+
+    public String getReactionMods() {
+        return reactionMods;
+    }
+
+    public void setReactionMods(String reactionMods) {
+        this.reactionMods = reactionMods;
+    }
+
+    public int getMagCost() {
+        return magCost;
+    }
+
+    public void setMagCost(int magCost) {
+        this.magCost = magCost;
+    }
+
+    public int getStaffCost() {
+        return staffCost;
+    }
+
+    public void setStaffCost(int staffCost) {
+        this.staffCost = staffCost;
+    }
+
     /**
      * Saves the current character
      *
@@ -355,7 +410,7 @@ public class Character implements Serializable {
         FileInputStream is = new FileInputStream(file);
         ObjectInputStream input = new ObjectInputStream(is);
         try {
-            Character tmp = (Character) input.readObject();
+            Player tmp = (Player) input.readObject();
             this.name = tmp.getName();
             this.playerName = tmp.getPlayerName();
             this.points = tmp.getPoints();
@@ -383,6 +438,11 @@ public class Character implements Serializable {
             this.skills = tmp.getSkills();
             this.charNotes = tmp.getCharNotes();
             this.otherNotes = tmp.getOtherNotes();
+            this.reactionMods = tmp.getReactionMods();
+            this.magery = tmp.getMagery();
+            this.magCost = tmp.getMagCost();
+            this.staff = tmp.getStaff();
+            this.staffCost = tmp.getStaffCost();
         } catch (EOFException ex) {
             ex.printStackTrace();
         }
