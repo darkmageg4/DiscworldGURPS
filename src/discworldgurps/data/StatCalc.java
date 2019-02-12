@@ -43,41 +43,41 @@ public class StatCalc {
      * Takes in the height and calculates the height related modifiers
      */
     public void SizeMods() {
-        if (height >= 0 && height < 3.5) {
+        if (height >= 0 && height <= 2.5) {
             sm = -9;
-        } else if (height >= 3.5 && height < 5) {
+        } else if (height >= 2.6 && height <= 3.5) {
             sm = -8;
-        } else if (height >= 5 && height < 7) {
+        } else if (height >= 3.6 && height <= 5) {
             sm = -7;
-        } else if (height >= 7 && height < 10) {
+        } else if (height >= 5.1 && height <= 7) {
             sm = -6;
-        } else if (height >= 10 && height < 18) {
+        } else if (height >= 7.1 && height <= 10) {
             sm = -5;
-        } else if (height >= 18 && height < 24) {
+        } else if (height >= 10.1 && height <= 18) {
             sm = -4;
-        } else if (height >= 24 && height < 36) {
+        } else if (height >= 118.1 && height <= 24) {
             sm = -3;
-        } else if (height >= 36 && height < 54) {
+        } else if (height >= 24.1 && height <= 36) {
             sm = -2;
-        } else if (height >= 54 && height < 78) {
+        } else if (height >= 36.1 && height <= 54) {
             sm = -1;
-        } else if (height >= 78 && height < 108) {
+        } else if (height >= 54.1 && height <= 78) {
             STCost = 10;
             HPCost = 2;
             sm = 0;
-        } else if (height >= 108 && height < 180) {
+        } else if (height >= 78.1 && height <= 108) {
             STCost = 9;
             HPCost = 1;
             sm = 1;
-        } else if (height >= 180 && height < 252) {
+        } else if (height >= 108.1 && height <= 180) {
             STCost = 8;
             HPCost = 1;
             sm = 2;
-        } else if (height >= 252 && height < 360) {
+        } else if (height >= 180.1 && height <= 252) {
             STCost = 7;
             HPCost = 1;
             sm = 3;
-        } else if (height >= 360) {
+        } else if (height >= 252.1) {
             STCost = 6;
             HPCost = 1;
             sm = 4;

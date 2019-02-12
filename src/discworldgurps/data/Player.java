@@ -29,6 +29,7 @@ public class Player implements Serializable {
     private String magery, staff;
     private int magCost, staffCost;
     private String reactionMods;
+    private int dr, parry, block;
 
     /**
      * Default values
@@ -67,6 +68,9 @@ public class Player implements Serializable {
         this.magCost = 0;
         this.staff = "";
         this.staffCost = 0;
+        this.dr = 0;
+        this.parry = 0;
+        this.block = 0;
     }
 
     public Player(String name, String playerName, int points, double height, int weight,
@@ -105,6 +109,9 @@ public class Player implements Serializable {
         this.magCost = magCost;
         this.staff = staff;
         this.staffCost = staffCost;
+        this.dr = dr;
+        this.parry = parry;
+        this.block = block;
     }
 
     public String getName() {
@@ -382,6 +389,30 @@ public class Player implements Serializable {
         this.staffCost = staffCost;
     }
 
+    public int getDr() {
+        return dr;
+    }
+
+    public void setDr(int dr) {
+        this.dr = dr;
+    }
+
+    public int getParry() {
+        return parry;
+    }
+
+    public void setParry(int parry) {
+        this.parry = parry;
+    }
+
+    public int getBlock() {
+        return block;
+    }
+
+    public void setBlock(int block) {
+        this.block = block;
+    }
+
     /**
      * Saves the current character
      *
@@ -443,6 +474,9 @@ public class Player implements Serializable {
             this.magCost = tmp.getMagCost();
             this.staff = tmp.getStaff();
             this.staffCost = tmp.getStaffCost();
+            this.dr = tmp.getDr();
+            this.parry = tmp.getParry();
+            this.block = tmp.getBlock();
         } catch (EOFException ex) {
             ex.printStackTrace();
         }

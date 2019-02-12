@@ -11,6 +11,7 @@ import discworldgurps.details.Details;
 import discworldgurps.data.StatCalc;
 import java.awt.GridLayout;
 import java.awt.KeyboardFocusManager;
+import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
@@ -112,8 +113,8 @@ public class Sheet extends javax.swing.JFrame {
 //                        }
                     }
                 });
-
-        this.setExtendedState(MAXIMIZED_VERT);
+//        Rectangle rect = new Rectangle(1800, 1080);
+        this.setSize(this.getWidth()+20, getHeight()-50);
         Start();
 
     }
@@ -217,6 +218,9 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldMagCost = new javax.swing.JTextField();
         jTextFieldStaff = new javax.swing.JTextField();
         jTextFieldStaffCost = new javax.swing.JTextField();
+        jTextFieldDR = new javax.swing.JTextField();
+        jTextFieldParry = new javax.swing.JTextField();
+        jTextFieldBlock = new javax.swing.JTextField();
         SheetBG = new javax.swing.JLabel();
         jScrollPaneDetails = new javax.swing.JScrollPane();
         jPanelDetails = new javax.swing.JPanel();
@@ -228,6 +232,14 @@ public class Sheet extends javax.swing.JFrame {
         jTextAreaOtherNotes = new javax.swing.JTextArea();
         jScrollPaneInventory = new javax.swing.JScrollPane();
         jPanelInventory = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldMoney = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextAreaEquipment = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextAreaOtherInv = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuFile = new javax.swing.JMenu();
         jMenuItemSave = new javax.swing.JMenuItem();
@@ -291,6 +303,7 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldST.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldST.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldST.setText("10");
+        jTextFieldST.setNextFocusableComponent(jTextFieldDX);
         jPanelSheet.add(jTextFieldST, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 50, 50));
 
         jLabelSTCost.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -301,6 +314,7 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldDX.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldDX.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldDX.setText("10");
+        jTextFieldDX.setNextFocusableComponent(jTextFieldIQ);
         jPanelSheet.add(jTextFieldDX, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 50, 50));
 
         jLabelDXCost.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -311,6 +325,7 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldIQ.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldIQ.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldIQ.setText("10");
+        jTextFieldIQ.setNextFocusableComponent(jTextFieldHT);
         jPanelSheet.add(jTextFieldIQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 50, 50));
 
         jLabelIQCost.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -321,6 +336,7 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldHT.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldHT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldHT.setText("10");
+        jTextFieldHT.setNextFocusableComponent(jTextFieldHP);
         jPanelSheet.add(jTextFieldHT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 50, 50));
 
         jLabelHTCost.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -331,6 +347,7 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldHP.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldHP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldHP.setText("10");
+        jTextFieldHP.setNextFocusableComponent(jTextFieldHPCurrent);
         jPanelSheet.add(jTextFieldHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 50, 50));
 
         jLabelHPCost.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -341,11 +358,13 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldHPCurrent.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldHPCurrent.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldHPCurrent.setText("10");
+        jTextFieldHPCurrent.setNextFocusableComponent(jTextFieldWill);
         jPanelSheet.add(jTextFieldHPCurrent, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 50, 50));
 
         jTextFieldWill.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldWill.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldWill.setText("10");
+        jTextFieldWill.setNextFocusableComponent(jTextFieldPer);
         jPanelSheet.add(jTextFieldWill, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 50, 50));
 
         jLabelWillCost.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -356,6 +375,7 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldPer.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldPer.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldPer.setText("10");
+        jTextFieldPer.setNextFocusableComponent(jTextFieldFP);
         jPanelSheet.add(jTextFieldPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 50, 50));
 
         jLabelPerCost.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -366,6 +386,7 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldFP.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldFP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldFP.setText("10");
+        jTextFieldFP.setNextFocusableComponent(jTextFieldFPCurrent);
         jPanelSheet.add(jTextFieldFP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 50, 50));
 
         jLabelFPCost.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -376,16 +397,19 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldFPCurrent.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldFPCurrent.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldFPCurrent.setText("10");
+        jTextFieldFPCurrent.setNextFocusableComponent(jTextFieldBS);
         jPanelSheet.add(jTextFieldFPCurrent, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 50, 50));
 
         jTextFieldMP.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldMP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldMP.setText("0");
+        jTextFieldMP.setNextFocusableComponent(jTextFieldMPCurrent);
         jPanelSheet.add(jTextFieldMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 50, 50));
 
         jTextFieldMPCurrent.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextFieldMPCurrent.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldMPCurrent.setText("0");
+        jTextFieldMPCurrent.setNextFocusableComponent(jTextFieldMagery);
         jPanelSheet.add(jTextFieldMPCurrent, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 50, 50));
 
         jLabelBL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -394,6 +418,7 @@ public class Sheet extends javax.swing.JFrame {
 
         jTextFieldBS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldBS.setText("5.0");
+        jTextFieldBS.setNextFocusableComponent(jTextFieldBM);
         jPanelSheet.add(jTextFieldBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 70, 30));
 
         jLabelBSCost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -402,6 +427,7 @@ public class Sheet extends javax.swing.JFrame {
 
         jTextFieldBM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldBM.setText("5");
+        jTextFieldBM.setNextFocusableComponent(jTextFieldMP);
         jPanelSheet.add(jTextFieldBM, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 70, 30));
 
         jLabelBMCost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -409,6 +435,7 @@ public class Sheet extends javax.swing.JFrame {
         jPanelSheet.add(jLabelBMCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 30, -1));
 
         jTextFieldTL.setText("4");
+        jTextFieldTL.setNextFocusableComponent(jTextFieldDR);
         jPanelSheet.add(jTextFieldTL, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 40, 20));
 
         jLabelTLCost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -726,18 +753,41 @@ public class Sheet extends javax.swing.JFrame {
 
         jPanelSheet.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 540, 360, 90));
 
+        jTextFieldMagery.setNextFocusableComponent(jTextFieldMagCost);
         jTextFieldMagery.setOpaque(false);
         jPanelSheet.add(jTextFieldMagery, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 170, 160, -1));
 
         jTextFieldMagCost.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldMagCost.setText("0");
+        jTextFieldMagCost.setNextFocusableComponent(jTextFieldStaff);
         jTextFieldMagCost.setOpaque(false);
         jPanelSheet.add(jTextFieldMagCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 170, 30, -1));
+
+        jTextFieldStaff.setNextFocusableComponent(jTextFieldStaffCost);
         jPanelSheet.add(jTextFieldStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 180, -1));
 
         jTextFieldStaffCost.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldStaffCost.setText("0");
+        jTextFieldStaffCost.setNextFocusableComponent(jTextFieldTL);
         jPanelSheet.add(jTextFieldStaffCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 200, 30, -1));
+
+        jTextFieldDR.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jTextFieldDR.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldDR.setText("0");
+        jTextFieldDR.setNextFocusableComponent(jTextFieldParry);
+        jPanelSheet.add(jTextFieldDR, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 60, -1));
+
+        jTextFieldParry.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jTextFieldParry.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldParry.setText("0");
+        jTextFieldParry.setNextFocusableComponent(jTextFieldBlock);
+        jPanelSheet.add(jTextFieldParry, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 60, -1));
+
+        jTextFieldBlock.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jTextFieldBlock.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldBlock.setText("0");
+        jTextFieldBlock.setNextFocusableComponent(jTextAreaReactionMods);
+        jPanelSheet.add(jTextFieldBlock, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 570, 60, -1));
 
         SheetBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/discworldgurps/resources/CharacterSheet.jpg"))); // NOI18N
         SheetBG.setMaximumSize(null);
@@ -748,6 +798,10 @@ public class Sheet extends javax.swing.JFrame {
         jScrollPaneSheet.setViewportView(jPanelSheet);
 
         jTabbedPane.addTab("Sheet", jScrollPaneSheet);
+
+        jScrollPaneDetails.setPreferredSize(new java.awt.Dimension(1002, 1403));
+
+        jPanelDetails.setPreferredSize(new java.awt.Dimension(1000, 1401));
 
         jTextAreaCharacterNotes.setColumns(20);
         jTextAreaCharacterNotes.setLineWrap(true);
@@ -778,12 +832,15 @@ public class Sheet extends javax.swing.JFrame {
             jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                .addGroup(jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanelDetailsLayout.createSequentialGroup()
+                        .addGroup(jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(0, 897, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanelDetailsLayout.setVerticalGroup(
             jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -795,13 +852,72 @@ public class Sheet extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jScrollPaneDetails.setViewportView(jPanelDetails);
 
         jTabbedPane.addTab("Notes", jScrollPaneDetails);
+
+        jScrollPaneInventory.setPreferredSize(new java.awt.Dimension(1002, 1403));
+
+        jPanelInventory.setPreferredSize(new java.awt.Dimension(1000, 1401));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Money");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Equipment");
+
+        jTextAreaEquipment.setColumns(20);
+        jTextAreaEquipment.setRows(5);
+        jScrollPane4.setViewportView(jTextAreaEquipment);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Other");
+
+        jTextAreaOtherInv.setColumns(20);
+        jTextAreaOtherInv.setRows(5);
+        jScrollPane5.setViewportView(jTextAreaOtherInv);
+
+        javax.swing.GroupLayout jPanelInventoryLayout = new javax.swing.GroupLayout(jPanelInventory);
+        jPanelInventory.setLayout(jPanelInventoryLayout);
+        jPanelInventoryLayout.setHorizontalGroup(
+            jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInventoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(jPanelInventoryLayout.createSequentialGroup()
+                        .addGroup(jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelInventoryLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(0, 831, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5))
+                .addContainerGap())
+        );
+        jPanelInventoryLayout.setVerticalGroup(
+            jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInventoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextFieldMoney, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
+                .addGap(60, 60, 60))
+        );
 
         jScrollPaneInventory.setViewportView(jPanelInventory);
 
@@ -872,12 +988,7 @@ public class Sheet extends javax.swing.JFrame {
             int test = advCount;
             details.runAdvantages();
             if (advCount != -1 && advCount != test) {
-                String optDesc = JOptionPane.showInputDialog("Description (if needed):\nEnter a descripton or just hit ok");
-                if (!"".equals(optDesc)) {
-                    advlab[advCount].setText(String.format("%s (%s)", details.getDesc(), optDesc));
-                } else {
-                    advlab[advCount].setText(details.getDesc());
-                }
+                advlab[advCount].setText(details.getDesc());
                 advcost[advCount].setText(details.getCost());
                 Calc();
             }
@@ -935,12 +1046,7 @@ public class Sheet extends javax.swing.JFrame {
             int test = disCount;
             details.runDisadvantages();
             if (disCount != -1 && test != disCount) {
-                String optDesc = JOptionPane.showInputDialog("Description (if needed):\nEnter a descripton or just hit ok");
-                if (!"".equals(optDesc)) {
-                    dislab[disCount].setText(String.format("%s (%s)", details.getDesc(), optDesc));
-                } else {
-                    dislab[disCount].setText(details.getDesc());
-                }
+                dislab[disCount].setText(details.getDesc());
                 discost[disCount].setText(details.getCost());
                 Calc();
             }
@@ -1084,12 +1190,7 @@ public class Sheet extends javax.swing.JFrame {
             int test = skillsCount;
             details.runSkills();
             if (skillsCount != -1 && test != skillsCount) {
-                String optDesc = JOptionPane.showInputDialog("Description (if needed):\nEnter a descripton or just hit ok");
-                if (!"".equals(optDesc)) {
-                    skills[skillsCount].setText(String.format("%s (%s)", details.getSkillName(), optDesc));
-                } else {
-                    skills[skillsCount].setText(details.getSkillName());
-                }
+                skills[skillsCount].setText(details.getSkillName());
                 skillsRelLvl[skillsCount].setText(details.getSkillRelLvl());
                 skillsCost[skillsCount].setText(details.getCost());
                 Calc();
@@ -1458,6 +1559,8 @@ public class Sheet extends javax.swing.JFrame {
         jTextFieldPer.setText(Integer.toString(this.character.getPer()));
         jTextFieldFP.setText(Integer.toString(this.character.getFp()));
         jTextFieldFPCurrent.setText(Integer.toString(this.character.getFpCurrent()));
+        jTextFieldMP.setText(Integer.toString(this.character.getMp()));
+        jTextFieldMPCurrent.setText(Integer.toString(this.character.getMpCurrent()));
         jTextFieldBS.setText(Double.toString(this.character.getBs()));
         jTextFieldBM.setText(Integer.toString(this.character.getBm()));
         advCount = -1;
@@ -1565,18 +1668,6 @@ public class Sheet extends javax.swing.JFrame {
         int bm = Integer.parseInt(jTextFieldBM.getText());
         int pu = Integer.parseInt(jLabelPoints.getText());
         int tl = Integer.parseInt(jTextFieldTL.getText());
-        for (int i = 0; i < advlab.length; i++) {
-            if (advlab[i].getText().contains("Lifting ST")) {
-                int LSTCost = 3;
-                int lvl = Integer.parseInt(advlab[i].getText().substring(12, 13));
-                if (Integer.parseInt(jLabelSizeMod.getText()) != 0 && Integer.parseInt(jLabelSizeMod.getText()) > 0) {
-                    int sm = Integer.parseInt(jLabelSizeMod.getText().substring(1, 2));
-                    String costMod = String.format("1.%s", sm);
-                    LSTCost = (int) (3 / Double.parseDouble(costMod));
-                }
-                advcost[i].setText(Integer.toString(lvl * LSTCost));
-            }
-        }
         int adv = 0;
         for (int i = 0; i < advlab.length; i++) {
             if ("" != advcost[i].getText()) {
@@ -1672,12 +1763,12 @@ public class Sheet extends javax.swing.JFrame {
     private void Encumberance() {
         double blcalc = Math.round((double) (Integer.parseInt(jTextFieldST.getText()) * Integer.parseInt(jTextFieldST.getText())) / 5);
         int blset = (int) blcalc;
-        jLabelBL.setText(Integer.toString(blset));
-        jLabelEnc1.setText(jLabelBL.getText());
-        jLabelEnc2.setText(Integer.toString(Integer.parseInt(jLabelBL.getText()) * 2));
-        jLabelEnc3.setText(Integer.toString(Integer.parseInt(jLabelBL.getText()) * 3));
-        jLabelEnc4.setText(Integer.toString(Integer.parseInt(jLabelBL.getText()) * 6));
-        jLabelEnc5.setText(Integer.toString(Integer.parseInt(jLabelBL.getText()) * 10));
+        jLabelBL.setText(String.format("%s lbs", Integer.toString(blset)));
+        jLabelEnc1.setText(Integer.toString(blset));
+        jLabelEnc2.setText(Integer.toString(blset * 2));
+        jLabelEnc3.setText(Integer.toString(blset * 3));
+        jLabelEnc4.setText(Integer.toString(blset * 6));
+        jLabelEnc5.setText(Integer.toString(blset * 10));
         jLabelEncBM1.setText(jTextFieldBM.getText());
         jLabelEncBM2.setText(Integer.toString((int) (Integer.parseInt(jTextFieldBM.getText()) * 0.8)));
         jLabelEncBM3.setText(Integer.toString((int) (Integer.parseInt(jTextFieldBM.getText()) * 0.6)));
@@ -1802,6 +1893,9 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAdvTotal;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelBL;
@@ -1868,15 +1962,21 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPaneDetails;
     private javax.swing.JScrollPane jScrollPaneInventory;
     private javax.swing.JScrollPane jScrollPaneSheet;
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTextArea jTextAreaCharacterNotes;
+    private javax.swing.JTextArea jTextAreaEquipment;
+    private javax.swing.JTextArea jTextAreaOtherInv;
     private javax.swing.JTextArea jTextAreaOtherNotes;
     private javax.swing.JTextArea jTextAreaReactionMods;
     private javax.swing.JTextField jTextFieldBM;
     private javax.swing.JTextField jTextFieldBS;
+    private javax.swing.JTextField jTextFieldBlock;
+    private javax.swing.JTextField jTextFieldDR;
     private javax.swing.JTextField jTextFieldDX;
     private javax.swing.JTextField jTextFieldFP;
     private javax.swing.JTextField jTextFieldFPCurrent;
@@ -1888,6 +1988,8 @@ public class Sheet extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldMPCurrent;
     private javax.swing.JTextField jTextFieldMagCost;
     private javax.swing.JTextField jTextFieldMagery;
+    private javax.swing.JTextField jTextFieldMoney;
+    private javax.swing.JTextField jTextFieldParry;
     private javax.swing.JTextField jTextFieldPer;
     private javax.swing.JTextField jTextFieldST;
     private javax.swing.JTextField jTextFieldStaff;
