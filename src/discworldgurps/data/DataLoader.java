@@ -9,6 +9,7 @@ public class DataLoader {
 
     ArrayList<Damage> damage = new ArrayList<>();
     ArrayList<Culture> cult = new ArrayList<>();
+    ArrayList<Langs> langs = new ArrayList<>();
 
     /**
      * Loads in the Damage.csv which gives the damage values
@@ -37,8 +38,26 @@ public class DataLoader {
             ex.printStackTrace();
         }
         cult.clear();
+        Collections.sort(load.tmp, new ItemComparator());
         for (ItemLoader il : load.tmp) {
             cult.add(new Culture(il.a, il.b));
+        }
+        load.tmp.clear();
+//        for (Culture a : cult) {
+//            System.out.printf(a);
+//        }
+    }
+
+    public void LoadLang() {
+        try {
+            load.reader("./src/discworldgurps/resources/lang.csv");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        langs.clear();
+        Collections.sort(load.tmp, new ItemComparator());
+        for (ItemLoader il : load.tmp) {
+            langs.add(new Langs(il.a));
         }
         load.tmp.clear();
 //        for (Culture a : cult) {
@@ -53,4 +72,10 @@ public class DataLoader {
     public ArrayList<Culture> getCult() {
         return cult;
     }
+
+    public ArrayList<Langs> getLangs() {
+        return langs;
+    }
+    
+    
 }

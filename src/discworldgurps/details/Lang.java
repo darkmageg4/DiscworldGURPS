@@ -5,6 +5,8 @@
  */
 package discworldgurps.details;
 
+import discworldgurps.data.DataLoader;
+import discworldgurps.data.Langs;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +14,8 @@ import javax.swing.JOptionPane;
  * @author mageg
  */
 public class Lang extends javax.swing.JDialog {
+    
+    DataLoader DL = new DataLoader();
 
     public int closed = 0;
     private String lang, langWrit, langSpok;
@@ -24,6 +28,11 @@ public class Lang extends javax.swing.JDialog {
     public Lang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+                DL.LoadLang();
+        jComboBoxLang.removeAllItems();
+        for (Langs s : DL.getLangs()) {
+            jComboBoxLang.addItem(s.getName());
+        }
     }
 
     /**
