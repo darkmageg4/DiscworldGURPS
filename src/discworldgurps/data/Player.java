@@ -25,11 +25,12 @@ public class Player implements Serializable {
     private int bm;
     private int tl;
     private String[] advantages, disadvantages, lang, culture, skills;
-    private String charNotes, otherNotes;
     private String magery, staff;
     private int magCost, staffCost;
     private String reactionMods;
     private int dr, parry, block;
+    private String charNotes, otherNotes, equipment, otherInv;
+    private int money;
 
     /**
      * Default values
@@ -61,8 +62,6 @@ public class Player implements Serializable {
         this.lang = new String[16];
         this.culture = new String[6];
         this.skills = new String[92];
-        this.charNotes = "";
-        this.otherNotes = "";
         this.reactionMods = "";
         this.magery = "";
         this.magCost = 0;
@@ -71,11 +70,18 @@ public class Player implements Serializable {
         this.dr = 0;
         this.parry = 0;
         this.block = 0;
+        this.charNotes = "";
+        this.otherNotes = "";
+        this.money = 0;
     }
 
     public Player(String name, String playerName, int points, double height, int weight,
             int age, int st, int dx, int iq, int hp, int ht, int will, int per,
-            int fp, int hpCurrent, int fpCurrent, int mp, int mpCurrent, double bs, int bm, int tl) {
+            int fp, int hpCurrent, int fpCurrent, int mp, int mpCurrent, double bs,
+            int bm, int tl, String[] advantages, String[] disadvantages, String[] lang,
+            String[] culture, String[] skills, String reactionMods, String magery,
+            int magCost, String staff, int staffCost, int dr, int parry, int block,
+            String charNotes, String otherNotes, int money, String equipment, String otherInv) {
         this.name = name;
         this.playerName = playerName;
         this.points = points;
@@ -97,13 +103,11 @@ public class Player implements Serializable {
         this.bs = bs;
         this.bm = bm;
         this.tl = tl;
-        this.advantages = new String[20];
-        this.disadvantages = new String[20];
+        this.advantages = advantages;
+        this.disadvantages = disadvantages;
         this.lang = lang;
         this.culture = culture;
         this.skills = skills;
-        this.charNotes = charNotes;
-        this.otherNotes = otherNotes;
         this.reactionMods = reactionMods;
         this.magery = magery;
         this.magCost = magCost;
@@ -112,6 +116,11 @@ public class Player implements Serializable {
         this.dr = dr;
         this.parry = parry;
         this.block = block;
+        this.charNotes = charNotes;
+        this.otherNotes = otherNotes;
+        this.money = money;
+        this.equipment = equipment;
+        this.otherInv = otherInv;
     }
 
     public String getName() {
@@ -413,6 +422,30 @@ public class Player implements Serializable {
         this.block = block;
     }
 
+    public String getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(String equipment) {
+        this.equipment = equipment;
+    }
+
+    public String getOtherInv() {
+        return otherInv;
+    }
+
+    public void setOtherInv(String otherInv) {
+        this.otherInv = otherInv;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     /**
      * Saves the current character
      *
@@ -467,8 +500,6 @@ public class Player implements Serializable {
             this.lang = tmp.getLang();
             this.culture = tmp.getCulture();
             this.skills = tmp.getSkills();
-            this.charNotes = tmp.getCharNotes();
-            this.otherNotes = tmp.getOtherNotes();
             this.reactionMods = tmp.getReactionMods();
             this.magery = tmp.getMagery();
             this.magCost = tmp.getMagCost();
@@ -477,6 +508,11 @@ public class Player implements Serializable {
             this.dr = tmp.getDr();
             this.parry = tmp.getParry();
             this.block = tmp.getBlock();
+            this.charNotes = tmp.getCharNotes();
+            this.otherNotes = tmp.getOtherNotes();
+            this.money = tmp.getMoney();
+            this.equipment = tmp.getEquipment();
+            this.otherInv = tmp.getOtherInv();
         } catch (EOFException ex) {
             ex.printStackTrace();
         }

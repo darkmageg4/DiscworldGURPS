@@ -32,6 +32,7 @@ public class Details {
             advCount++;
             result = true;
         } else {
+            JOptionPane.showMessageDialog(null, "You didn't enter a description!", "You silly goose!", JOptionPane.ERROR_MESSAGE);
             result = false;
         }
     }
@@ -45,9 +46,14 @@ public class Details {
             String otherCost = JOptionPane.showInputDialog(null, "Point Cost", "-1");
             if (Integer.parseInt(otherCost) > 0) {
                 cost = String.format("-%s", otherCost);
-                disCount++;
-                result = true;
+            } else {
+                cost = otherCost;
             }
+            disCount++;
+            result = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "You didn't enter a description!", "You silly goose!", JOptionPane.ERROR_MESSAGE);
+            result = false;
         }
     }
 
@@ -110,9 +116,7 @@ public class Details {
                 result = false;
             }
         }
-        }
-
-    
+    }
 
     public void runCulture() {
         DL.LoadCult();

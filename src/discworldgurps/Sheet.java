@@ -114,7 +114,7 @@ public class Sheet extends javax.swing.JFrame {
                     }
                 });
 //        Rectangle rect = new Rectangle(1800, 1080);
-        this.setSize(this.getWidth()+20, getHeight()-50);
+        this.setSize(this.getWidth() + 20, getHeight() - 50);
         Start();
 
     }
@@ -1349,6 +1349,7 @@ public class Sheet extends javax.swing.JFrame {
                     break;
                 default:
                     System.exit(0);
+                    break;
             }
         }
     }
@@ -1448,13 +1449,16 @@ public class Sheet extends javax.swing.JFrame {
                     ski[i + 69] = skillsCost[i].getText();
                 }
                 this.character.setSkills(ski);
-                this.character.setCharNotes(jTextAreaCharacterNotes.getText());
-                this.character.setOtherNotes(jTextAreaOtherNotes.getText());
                 this.character.setReactionMods(jTextAreaReactionMods.getText());
                 this.character.setMagery(jTextFieldMagery.getText());
                 this.character.setMagCost(Integer.parseInt(jTextFieldMagCost.getText()));
                 this.character.setStaff(jTextFieldStaff.getText());
                 this.character.setStaffCost(Integer.parseInt(jTextFieldStaffCost.getText()));
+                this.character.setCharNotes(jTextAreaCharacterNotes.getText());
+                this.character.setOtherNotes(jTextAreaOtherNotes.getText());
+                this.character.setMoney(Integer.parseInt(jTextFieldMoney.getText()));
+                this.character.setEquipment(jTextAreaEquipment.getText());
+                this.character.setOtherInv(jTextAreaOtherInv.getText());
                 this.character.Save(file);
                 this.setTitle(file.getName());
             } catch (FileNotFoundException ex) {
@@ -1529,13 +1533,16 @@ public class Sheet extends javax.swing.JFrame {
             skillsRelLvl[i].setText("");
             skillsCost[i].setText("");
         }
-        jTextAreaCharacterNotes.setText("");
-        jTextAreaOtherNotes.setText("");
         jTextAreaReactionMods.setText("");
         jTextFieldMagery.setText("");
         jTextFieldMagCost.setText("0");
         jTextFieldStaff.setText("");
         jTextFieldStaffCost.setText("0");
+        jTextAreaCharacterNotes.setText("");
+        jTextAreaOtherNotes.setText("");
+        jTextFieldMoney.setText("");
+        jTextAreaEquipment.setText("");
+        jTextAreaOtherInv.setText("");
         Calc();
     }
 
@@ -1643,14 +1650,16 @@ public class Sheet extends javax.swing.JFrame {
                 skillsCost[i].setText(this.character.getSkills()[i + 69]);
             }
         }
-        jTextAreaCharacterNotes.setText(this.character.getCharNotes());
-        jTextAreaOtherNotes.setText(this.character.getOtherNotes());
         jTextAreaReactionMods.setText(this.character.getReactionMods());
         jTextFieldMagery.setText(this.character.getMagery());
         jTextFieldMagCost.setText(Integer.toString(this.character.getMagCost()));
         jTextFieldStaff.setText(this.character.getStaff());
         jTextFieldStaffCost.setText(Integer.toString(this.character.getStaffCost()));
-
+        jTextAreaCharacterNotes.setText(this.character.getCharNotes());
+        jTextAreaOtherNotes.setText(this.character.getOtherNotes());
+        jTextFieldMoney.setText(Integer.toString(this.character.getMoney()));
+        jTextAreaEquipment.setText(this.character.getEquipment());
+        jTextAreaOtherInv.setText(this.character.getOtherInv());
         Calc();
         this.setTitle(character.getName());
     }
