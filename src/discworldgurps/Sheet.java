@@ -11,7 +11,6 @@ import discworldgurps.details.Details;
 import discworldgurps.data.StatCalc;
 import java.awt.GridLayout;
 import java.awt.KeyboardFocusManager;
-import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
