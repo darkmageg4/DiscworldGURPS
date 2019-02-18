@@ -1,8 +1,10 @@
 package discworldgurps.data;
 
-import java.awt.List;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,7 +22,8 @@ public class LoadCSV {
         int count = 10;
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File(file));
+            InputStream in = getClass().getResourceAsStream(file);
+            scanner = new Scanner(in);
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String[] split = scanner.nextLine().split(COMMA_DELIMITER);
@@ -32,7 +35,7 @@ public class LoadCSV {
                 }
                 tmp.add(new ItemLoader(j[0], j[1], j[2], j[3], j[4], j[5], j[6], j[7], j[8], j[9]));
             }
-        } catch (FileNotFoundException fe) {
+        } catch (Exception fe) {
             fe.printStackTrace();
         } finally {
             scanner.close();

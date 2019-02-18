@@ -16,7 +16,7 @@ public class DataLoader {
      */
     public void LoadDamage() {
         try {
-            load.reader("./src/discworldgurps/resources/damage.csv");
+            load.reader("/damage.csv");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -33,7 +33,7 @@ public class DataLoader {
 
     public void LoadCult() {
         try {
-            load.reader("./src/discworldgurps/resources/culture.csv");
+            load.reader("/culture.csv");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -50,7 +50,7 @@ public class DataLoader {
 
     public void LoadLang() {
         try {
-            load.reader("./src/discworldgurps/resources/lang.csv");
+            load.reader("/lang.csv");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -76,6 +76,5 @@ public class DataLoader {
     public ArrayList<Langs> getLangs() {
         return langs;
     }
-    
-    
+
 }
